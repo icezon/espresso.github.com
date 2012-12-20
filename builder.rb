@@ -15,7 +15,7 @@ Dir['../espresso/**/*.md'].each do |file|
   md = File.read(file).
     gsub(/```(\w+)/, "<pre>").
     gsub(/```/, "</pre>").
-    gsub(/https\:\/\/github\.com\/slivu\/espresso#tutorial/, '#')
+    gsub(/https\:\/\/github\.com\/espresso\/espresso#tutorial/, '#')
 
   engine = Tilt::RDiscountTemplate.new { md }
 
