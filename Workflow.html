@@ -1,0 +1,1803 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h2 id='route'><a href='#route'>Route</a></h2>
+
+<p>Use <code>route</code> at class or instance level to get the URL of given action.</p>
+
+<p>Returned URL will consist of app's base URL and the action's path.</p>
+
+<p>If app does not respond to given action, it will simply use it as part of URL.</p>
+
+<p>If called without arguments it will return app's base URL.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/books'
+
+    def read
+        # ...
+    end
+
+    def test
+        route :read
+        #=> /books/read
+    end
+end
+
+App.route
+#=> /
+
+App.route :read
+#=> /books/read
+
+App.route :blah
+#=> /books/blah
+</pre>
+
+
+<p>If any params given(beside action name) they will become a part of generated URL.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class News < E
+
+    def index
+        route :latest___items, 100
+        #=> /news/latest-items/100
+    end
+
+    def latest___items ipp = 10, order = 'asc'
+    end
+end
+
+News.route
+#=> /news
+
+News.route :latest___items
+#=> /news/latest-items
+
+News.route :latest___items, 20, :desc
+#=> /news/latest-items/20/desc
+</pre>
+
+
+<p>If a Hash given, it will be passed as query string.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+route :read, :var => 'val'
+#=> /read?var=val
+
+# nested params
+route :view, :var => ['1', '2', '3']
+#=> /view?var[]=1&var[]=2&var[]=3
+
+route :open, :vars => {:var1 => '1', :var2 => '2'}
+#=> /open?vars[var1]=1&vars[var2]=2
+</pre>
+
+
+<p>To get action route along with format, pass the action name as string, having desired format as suffix.<br>
+If action does not support given format, it will simply be used as a part of URL.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class Rss < E
+    map :reader
+    format :html, :xml
+
+    def mini___news
+        # ...
+    end
+end
+
+Rss.route :mini___news
+#=> /reader/mini-news
+
+Rss.route 'mini___news.html'
+#=> /reader/mini-news.html
+
+Rss.route 'mini___news.xml'
+#=> /reader/mini-news.xml
+
+Rss.route 'mini___news.json'
+#=> /reader/mini___news.json
+</pre>
+
+
+<p>You can also append format to last param and all the setups set at class level will be respected,
+just as if format passed along with action name.</p>
+
+<p><strong>Please note</strong> that though last param given with format,
+inside action it will be passed without format,
+so you do not need to remove format manually.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/'
+    format :html
+
+    def read item = nil
+        # on /read                item == nil
+        # on /read/news           item == "news"
+        # on /read/book.html      item == "book"
+        # on /read/100.html       item == "100"
+        # on /read/etc.html       item == "etc"
+        # on /read/blah.xml       item == "blah.xml"
+    end
+end
+
+App.route :read, 'book.html'
+#=> /read/book.html
+
+App.route :read, '100.html'
+#=> /read/100.html
+
+App.route :read, 'etc.html'
+#=> /read/etc.html
+
+App.route :read, 'blah.xml'
+#=> /read/blah.xml
+</pre>
+
+
+<p>If you need <strong>just the action route, without any params</strong>, use <code>[]</code> at class or instance level.</p>
+
+<p>Will return <code>nil</code> if given action not found or does not support the given format.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class Index < E
+    map :cms
+    format :html
+
+    def read
+    end
+
+    def quick___reader
+    end
+
+    def test
+        self[:read]
+        #=> /cms/read
+
+        self[:quick___reader]
+        #=> /cms/quick-reader
+
+        self['quick___reader.html']
+        #=> /cms/quick-reader.html
+
+        self['quick___reader.json']
+        #=> nil
+
+        self[:blah]
+        #=> nil
+    end
+end
+
+Index[:read]
+#=> /cms/read
+
+Index[:quick___reader]
+#=> /cms/quick-reader
+
+Index['quick___reader.html']
+#=> /cms/quick-reader.html
+
+Index['quick___reader.json']
+#=> nil
+
+Index[:blah]
+#=> nil
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='params'><a href='#params'>Params</a></h2>
+
+<p><code>params</code> - a mix of GET and POST params. Can be accessed by both symbol and string keys.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/'
+
+    def test
+        # on /test?foo=bar  params[:foo] == "bar"
+        # ...
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='passing-control'><a href='#passing-control'>Passing Control</a></h2>
+
+<p>To pass control to another action or even app, use <code>pass</code></p>
+
+<p><strong>Example:</strong> - Pass controll to :archived action if page id is less than 100_000</p>
+
+<pre>
+class App < E
+
+    def index id
+        id = id.to_i
+        pass :archived if id < 100_000
+        # ...
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Pass controll to :json action if browser accepts JSON.
+If some params given, they will be passed as arguments to destination action.</p>
+
+<pre>
+class App < E
+
+    def index
+        pass(:json, params[:type], params[:id]) if accept?(/json/)
+        # ...
+    end
+
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Passing control with modified arguments and custom HTTP params.</p>
+
+<pre>
+def index
+    pass :some_action, :some_arg, :foo => :bar
+end
+</pre>
+
+
+<p>If first argument is a valid Espresso controller, the control will be passed to it.</p>
+
+<p><strong>Example:</strong> - Passing control to inner app</p>
+
+<pre>
+class News < E
+
+    def index id, page = 1
+        # ...
+    end
+end
+
+class Index < E
+    map '/'
+
+    def index
+        pass News, :index if params[:type] == 'news'
+        # ...
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='fetching-body'><a href='#fetching-body'>Fetching Body</a></h2>
+
+<p>Sometimes you need to invoke some action or app and get the returned body.</p>
+
+<p>This is easily done by using <code>fetch</code>.</p>
+
+<p>Basically, this same as <code>pass</code> except it returns the body instead of halting request processing.</p>
+
+<p><code>fetch</code> will execute the given action or block inside current or given app and returning the body.<br>
+If block given, it will be executed instead of given action.<br>
+Please note that the action is required even when block given.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class Store < E
+
+    def products
+        @latest_blog_posts = fetch(Blog, :latest)
+        # ...
+    end
+
+    def featured_products
+        # ...
+    end
+end
+
+class Blog < E
+
+    def index
+        @featured_products = fetch(Store, :featured_products)
+        # ...
+    end
+end
+</pre>
+
+
+<p>If you need status code and/or headers, use <code>invoke</code> instead, which will return a Rack response Array.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='halt'><a href='#halt'>Halt</a></h2>
+
+<p><code>halt</code> will interrupt any process and send an arbitrary resopnse to browser.</p>
+
+<p>It accepts from 0 to 3 arguments.<br>
+If argument is a hash, it is added to headers.<br>
+If argument is a Integer, it is treated as Status-Code.<br>
+Any other arguments are treated as body.</p>
+
+<p>If a single argument given and it is an Array, it is treated as a bare Rack response and instantly sent to browser.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+def index
+    halt 'Hit the Road Jack' if SomeHelper.malicious_params?(env)
+    # ...
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Status code</p>
+
+<pre>
+def index
+    begin
+        # some logic
+    rescue => e
+        halt 500, exception_to_human_error(e)
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Custom headers</p>
+
+<pre>
+def news
+    if params['return-rss']
+        halt rssify(@items), 'Content-Type' => mime_type('.rss')
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Rack response</p>
+
+<pre>
+def download
+    halt [200, {'Content-Disposition' => "attachment; filename=some-file"}, some_IO_instance]
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='redirect'><a href='#redirect'>Redirect</a></h2>
+
+<p><code>redirect</code> will interrupt any process and redirect browser to new address with status code 302.</p>
+
+<p>To redirect with status code 301 use <code>permanent_redirect</code>.</p>
+
+<p>To wait untill request processed use <code>delayed_redirect</code> or <code>deferred_redirect</code>.</p>
+
+<p>If an exisitng action passed as first argument, it will use the route of given action for location.</p>
+
+<p>If first argument is a valid Espresso controller, it will use given app's setup to build path.</p>
+
+<p><strong>Example:</strong> - Basic redirect with hardcoded location(bad practice way in most cases)</p>
+
+<pre>
+redirect '/some/path'
+</pre>
+
+
+<p><strong>Example:</strong> - Basic redirect with dynamic location</p>
+
+<pre>
+class Articles < E
+
+    def index
+        redirect route                 # => /articles
+        redirect :read, 100            # => /articles/read/100
+        redirect News                  # => /news
+        redirect News, :read, 100      # => /news/read/100
+    end
+
+    def read id
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='reload'><a href='#reload'>Reload</a></h2>
+
+<p><code>reload</code>  will simply refresh the page.</p>
+
+<p><strong>Example:</strong> - Refreshing with same GET params</p>
+
+<pre>
+def index
+    # ...
+    reload
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Refreshing with custom GET params</p>
+
+<pre>
+def index
+    # ...
+    reload :some => 'param', :some_another => 'param'
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='error-handlers'><a href='#error-handlers'>Error Handlers</a></h2>
+
+<p>Espresso allow to set error handlers that can be used to throw errors with desired status code and body.</p>
+
+<p>When setting error handler, you should provide status code and the proc that will generate the body.<br>
+The proc may accept an argument. That will be the error message.</p>
+
+<p>When using handler, the only required argument is status code.<br>
+If error message given as 2nd argument, it will be passed to error handler proc as first argument.</p>
+
+<p><strong>Example:</strong> - Setting and using 404 error handler</p>
+
+<pre>
+class News < E
+
+    error 404 do |message|
+        "Some Error Occurred: #{ message }"
+    end
+
+    def index id
+      @page = PageModel.first(:id => id)
+      @page || error(404, "Page Not Found, sad...")
+               # will return 404 status code with body
+               # "Some Error Occurred: Page Not Found, sad..."
+      # ...
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Setting and using 500 error handler</p>
+
+<pre>
+class News < E
+
+    error 500 do | exception |
+        "Fatal Error Occurred: #{ exception }"
+    end
+    # now if you actions(or hooks) raise an exception, 
+    # it will be rescued and passed to your error handler.
+
+    def index id
+        some risky code here
+    end
+    # will return 500 status code with body
+    # "Fatal Error Occurred: undefined local variable or method `here'"
+end
+</pre>
+
+
+<p><strong>Example:</strong> Using handler without passing an error message</p>
+
+<pre>
+class App < E
+
+    error 404 do
+        "Ouch... something weird happened or you just hitted a wrong URL..."
+    end
+
+    def page id
+        error(404) unless @page = PageModel.first(:id => id)
+        # ...
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='hooks'><a href='#hooks'>Hooks</a></h2>
+
+<p><code>before</code> and <code>after</code> allow to set callbacks to be called before and after action processed.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    before do
+        @started_at = Time.now.to_f
+    end
+
+    after do
+        puts " - #{ action } consumed #{ Time.now.to_f - @started_at } milliseconds"
+    end
+
+    # ...
+end
+</pre>
+
+
+<p>To set callbacks only for specific actions, use <code>before</code>/<code>after</code> inside <code>setup</code>.</p>
+
+<p><strong>Example:</strong> - Extract item from db only before :edit, :update and :delete actions</p>
+
+<pre>
+class App < E
+
+    setup :edit, :update, :delete do
+        before { @item = Model.first(:id => action_params[:id].to_i) }
+    end
+
+    def edit id
+        # ...
+    end
+
+    def update id
+        # ...
+    end
+
+    def delete id
+        # ...
+    end
+end
+</pre>
+
+
+<p>Callbacks will be executed in the order was added.<br>
+To change the calling order, use :priority option.<br>
+The callback with highest priority will run first.</p>
+
+<p> <strong>Example:</strong> - Making sure this will run before any other hooks by setting priority to 1000(with condition there are no hooks with higher priority)</p>
+
+<pre>
+    before :priority => 1000 do
+        # ...
+    end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='authorization'><a href='#authorization'>Authorization</a></h2>
+
+<p>Types supported:</p>
+
+<ul>
+<li>Basic</li>
+<li>Digest</li>
+</ul>
+
+
+<p>To require authorization only for specific actions, use <code>auth</code> inside <code>setup</code>.</p>
+
+<p><strong>Example:</strong> - All actions under Admin controller will require(Basic) authorization</p>
+
+<pre>
+class Admin < E
+
+    auth do |user, pass|
+        [user, pass] == ['admin', 'somePasswd']
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Only :my_bikini_photos action will require(Basic) authorization</p>
+
+<pre>
+class MyBlog < E
+
+    setup :my_bikini_photos do
+        auth :my_bikini_photos do |user, pass|
+            user == "admin" && pass == "super-secret-password"
+        end
+    end
+
+    def my_bikini_photos
+        # HTML containing top secret photos
+    end
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Everything under Admin slice will require(Digest) authorization</p>
+
+<pre>
+module Admin
+    class Products < E
+        # ...
+    end
+    class Orders < E
+        # ...
+    end
+end
+
+app = Admin.mount do
+    digest_auth do |user|
+        users = { 'admin' => 'password' }
+        users[user]
+    end
+end
+app.run
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='sessions'><a href='#sessions'>Sessions</a></h2>
+
+<p>In order sessions to work they have to be enabled first.</p>
+
+<p>Sessions are enabled at app level and by default can be stored in memory, cookies or memcache.</p>
+
+<p>You can of course use any Rack session adapter, for example rack-session-mongo.</p>
+
+<p><strong>Example:</strong> - Keeping sessions in memory</p>
+
+<pre>
+class App < E
+    # ...
+end
+app = App.mount
+app.session :memory
+app.run
+</pre>
+
+
+<p><strong>Example:</strong> - Keeping sessions in cookies</p>
+
+<pre>
+class App < E
+    # ...
+end
+app = App.mount
+app.session :cookies
+app.run
+</pre>
+
+
+<p><strong>Example:</strong> - Keeping sessions in memcache</p>
+
+<pre>
+class App < E
+    # ...
+end
+app = App.mount
+app.session :memcache
+# or
+app.use Rack::Session::Memcache, :with, :some => :args
+app.run
+</pre>
+
+
+<p><strong>Example:</strong> - Keeping sessions in mongodb</p>
+
+<pre>
+$ gem install rack-session-mongo
+</pre>
+
+
+
+
+<pre>
+class App < E
+    # ...
+end
+
+require 'rack/session/mongo'
+
+app = App.mount
+app.session Rack::Session::Mongo, :with, :maybe, :some => :args
+app.run
+</pre>
+
+
+<p><strong>Read/Write Sessions</strong></p>
+
+<pre>
+session['session-name'] = 'value'
+
+session['session-name']
+#=> value
+</pre>
+
+
+<p><strong>Deleting</strong></p>
+
+<pre>
+session.delete 'session-name'
+</pre>
+
+
+<h2 id='flash'><a href='#flash'>Flash</a></h2>
+
+<p>Burn after reading! :)</p>
+
+<p><code>flash</code> allow to store a message that will be purged after first read.<br>
+The message are stored in sessions and are consistent between requests.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+# setting  message
+flash[:message] = 'top secret info'
+
+# read message
+flash[:message]
+#=> top secret info
+
+# message automatically purged after reading
+flash[:message]
+#=> nil
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='cookies'><a href='#cookies'>Cookies</a></h2>
+
+<p><strong>Example:</strong> - Setting a cookie</p>
+
+<pre>
+cookies['cookie-name'] = 'value'
+</pre>
+
+
+<p><strong>Example:</strong> - Reading a cookie</p>
+
+<pre>
+cookies['cookie-name']
+#=> value
+</pre>
+
+
+<p><strong>Example:</strong> - Setting a cookie with custom options</p>
+
+<pre>
+cookies['question_of_the_day'] = {:value => 'who is not who?', :expires => Date.today + 1, :secure => true}
+</pre>
+
+
+<p><strong>Example:</strong> - Deleting a cookie</p>
+
+<pre>
+cookies.delete 'cookie-name'
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='content-type'><a href='#content-type'>Content Type</a></h2>
+
+<p>Can be set at class and/or instance level.</p>
+
+<p><strong>Example:</strong> - Setting RSS content type at class level, for all actions</p>
+
+<pre>
+class Rss < E
+
+    content_type '.rss'
+
+    # ...
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Setting RSS content type only for :feed and :read actions</p>
+
+<pre>
+class Rss < E
+
+    setup :feed, :read do
+        content_type '.rss'
+    end
+end
+</pre>
+
+
+<p>To set content type at instance level, you should always use <code>content_type!</code>,
+cause <code>content_type</code> will only return the content type of current request.</p>
+
+<p><strong>Example:</strong> Setting content type at instance level</p>
+
+<pre>
+class App < E
+
+    def users
+        content_type!('.json') if accept?(/json/)
+        # ...
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='charset'><a href='#charset'>Charset</a></h2>
+
+<p>Updating Content-Type header by adding specified charset.</p>
+
+<p>Can be set exactly as Content-Type, at class and/or instance level.</p>
+
+<p><strong>Important:</strong> - <code>charset</code> will update only the header, so make sure that returned body is of same charset as header, if that needed at all.</p>
+
+<pre>
+class App < E
+    charset 'UTF-8'
+
+    setup /_jp\Z/ do    # setting JIS charset for actions ending in _jp
+        charset 'Shift_JIS-2004'
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='cache-control'><a href='#cache-control'>Cache Control</a></h2>
+
+<p>Control content freshness by setting Cache-Control header.</p>
+
+<p>It accepts any number of params in form of directives and/or values.</p>
+
+<p>Can be set at class and/or instance level.</p>
+
+<p>Directives:</p>
+
+<ul>
+<li>:public</li>
+<li>:private</li>
+<li>:no_cache</li>
+<li>:no_store</li>
+<li>:must_revalidate</li>
+<li>:proxy_revalidate</li>
+</ul>
+
+
+<p>Values:</p>
+
+<ul>
+<li>:max_age</li>
+<li>:min_stale</li>
+<li>:s_max_age</li>
+</ul>
+
+
+<p><strong>Example:</strong> Setting Cache-Control header at class level</p>
+
+<pre>
+class App < E
+    cache_control :private, :max_age => 60
+
+    # ...
+end
+</pre>
+
+
+<p><strong>Example:</strong> Setting Cache-Control header at instance level</p>
+
+<pre>
+def some_action
+
+    cache_control! :public, :must_revalidate, :max_age => 60
+    # Cache-Control header will be set to "Cache-Control: public, must-revalidate, max-age=60"
+
+    # ...
+end
+
+def another_action
+
+    cache_control! :public, :must_revalidate, :proxy_revalidate, :max_age => 500
+    # Cache-Control header will be set to "Cache-Control: public, must-revalidate, proxy-revalidate, max-age=500"
+
+    # ...
+end
+</pre>
+
+
+<p><em>Please note</em> that at instance level bang method should be used.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='expires'><a href='#expires'>Expires</a></h2>
+
+<p>Set Expires header and update Cache-Control by adding directives and setting max-age value.</p>
+
+<p>First argument is the value to be added to max-age value.</p>
+
+<p>It can be an integer number of seconds in the future or a Time object indicating
+when the response should be considered "stale".</p>
+
+<p>Other params are passed to <code>cache_control!</code> instance method.</p>
+
+<p>Can be set at class and/or instance level.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+def some_action
+    expires! 500, :public, :must_revalidate
+    # Cache-Control: public, must-revalidate, max-age=500
+    # Expires: Tue, 17 Jul 2012 11:26:58 GMT
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='last-modified'><a href='#last-modified'>Last Modified</a></h2>
+
+<p>Set the "Last-Modified" header indicating last modified time of the resource.</p>
+
+<p>Then, if the current request includes an "If-Modified-Since" header that is bigger or equal,
+the processing will be halted with an "304 Not Modified" response.</p>
+
+<p>Also, if the current request includes an "If-Unmodified-Since" header that is less than "Last-Modified",
+the processing will be halted with an "412 Precondition Failed" response.</p>
+
+<p>Can be set only at instance level, only by using bang method.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+def some_action
+    last_modified! Time.now - 600
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='accepted-content-type'><a href='#accepted-content-type'>Accepted Content Type</a></h2>
+
+<p>Usually the browser inform the app about accepted content type via HTTP_ACCEPT header.</p>
+
+<p><code>accept?</code> is a helper allowing to disclose what content type are actually accepted/expected by the browser.</p>
+
+<p>It accepts a string or a regular expression as first argument and will compare it to HTTP_ACCEPT header.</p>
+
+<p>If you make a request via XHR, aka Ajax, and request JSON content type,
+<code>accept?</code> will return a string containing "application/json".</p>
+
+<p>Having this, it is easy to determine what content type to send back.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    def some_action
+        if accept? /json/
+            content_type! '.json'
+        end
+    end
+end
+</pre>
+
+
+<p>Other browser expectations:</p>
+
+<ul>
+<li> accept_charset?</li>
+<li> accept_encoding?</li>
+<li> accept_language?</li>
+<li> accept_ranges?</li>
+</ul>
+
+
+<p><strong>Example:</strong></p>
+
+<pre>
+accept_charset? 'UTF-8'
+accept_charset? /iso/
+
+accept_encoding? 'gzip'
+accept_encoding? /zip/
+
+accept_language? 'en-gb'
+accept_language? /en\-(gb|us)/
+
+accept_ranges? 'bytes'
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='cache-manager'><a href='#cache-manager'>Cache Manager</a></h2>
+
+<p>Allow to cache the result of an arbitrary block and use the result on consequent requests.</p>
+
+<p><em>Note: Value is not stored if block returns false or nil.</em></p>
+
+<p>Cache can be cleared by calling <code>clear_cache!</code> method.</p>
+
+<p>If called without params, all cache will be cleared.</p>
+
+<p>To clear only specific blocks, pass their IDs as params.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    def index
+        @db_items = cache :db_items do
+            # fetching items
+        end
+        @banners = cache :banners do
+            # render banners partial
+        end
+        # ...
+    end
+
+    def products
+        cache do
+            # fetch and render products
+        end
+    end
+
+  after do
+      if 'some condition occurred'
+          # clearing cache only for @banners and @db_items
+          clear_cache! :banners, :db_items
+      end
+      if 'some another condition occurred'
+          # clearing all cache
+          clear_cache!
+      end
+  end
+end
+</pre>
+
+
+<p>By using <code>clear_cache_like!</code> is also possible to clear only keys that match a regexp or an array.</p>
+
+<pre>
+def index
+    # ...
+    @procedures = cache [user, :procedures] do
+      # ...
+    end
+    @actions = cache [user, :actions] do
+      # ...
+    end
+    @banners = cache :user_banners do
+      # ...
+    end
+    render
+end
+
+private
+def clear_user_cache
+
+    # clearing [user, :procedures] and [user, :actions] cache
+    clear_cache_like! [user]
+
+    # clearing any cache starting with 'user'
+    clear_cache_like! /\Auser_/
+
+end
+</pre>
+
+
+<p>By default the cache will be kept in memory.<br>
+If you want to use a different pool, set it by using <code>cache_pool</code> at app level.</p>
+
+<p>Just make sure your pool behaves like a Hash,
+Meant it should respond to <code>[]=</code>, <code>[]</code>, <code>delete</code> and <code>clear</code></p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='send-file'><a href='#send-file'>Send File</a></h2>
+
+<p><code>send_file</code> will send file content to browser, inline.</p>
+
+<p>The only required argument is full path to file.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+def theme____css
+    send_file File.expand_path '../../public/theme.css', __FILE__
+end
+</pre>
+
+
+<p>All files properties are detected automatically,
+however you can modify them by passing an hash of below options:</p>
+
+<ul>
+<li>:content_type</li>
+<li>:last_modified</li>
+<li>:cache_control</li>
+<li>:filename</li>
+</ul>
+
+
+<p><strong>Example:</strong></p>
+
+<pre>
+send_file '/path/to/file', :cache_control => 'max-age=3600, public, must-revalidate'
+</pre>
+
+
+<p>Recommended to use only with small files.<br>
+Or setup your web server to make use of X-Sendfile and use Rack::Sendfile.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='send-files'><a href='#send-files'>Send Files</a></h2>
+
+<p><code>send_files</code> allow to serve static files from a given directory.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+send_files '/path/to/dir'
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='attachment'><a href='#attachment'>Attachment</a></h2>
+
+<p><code>attachment</code> works as <code>send_file</code> except it will instruct browser to display Save dialog.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+attachment '/path/to/file'
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='headers'><a href='#headers'>Headers</a></h2>
+
+<p><code>response.headers</code>, or just <code>response[]</code>, allow to read/set headers to be sent to browser.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+response['Max-Forwards']
+#=> nil
+
+response['Max-Forwards'] = 5
+
+response['Max-Forwards']
+#=> 5
+
+# browser will receive Max-Forwards=5 header
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

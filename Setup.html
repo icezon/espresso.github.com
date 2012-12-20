@@ -1,0 +1,887 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h2 id='global-setup'><a href='#global-setup'>Global Setup</a></h2>
+
+<p>The main idea behind actions setup is to easily manipulate the action's behavior
+without touching the actions et all.</p>
+
+<p>That's allow to "remotely" control any number of actions with few lines of code
+and manipulate their behavior without actions refactoring.</p>
+
+<p>To illustrate an example, let's suppose that all actions should return UTF-8 charset.</p>
+
+<pre>
+class App < E
+
+    charset 'UTF-8'
+
+    # ...
+end
+</pre>
+
+
+<p>Now you can define any number of actions without bothering to add the charset inside each one.</p>
+
+<p>And when you need your actions to return another charset,
+simply change a single line of code at class level.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='setup-by-name'><a href='#setup-by-name'>Setup by Name</a></h2>
+
+<p>Global setup is just good for mostly trivial apps.</p>
+
+<p>But when it comes to develop more compelling apps, we need more control.</p>
+
+<p>And Espresso kindly offer it.</p>
+
+<p><strong># 1</strong> - Actions can be configured by name</p>
+
+<p><strong>Example:</strong> - all actions, but <code>:api</code> and <code>:json</code>, should return "text/plain" content type.
+<code>:api</code> and <code>:json</code> actions should return  "application/json"</p>
+
+<pre>
+class App < E
+
+    content_type '.txt'
+
+    setup :api, :json do
+        content_type '.json'
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><strong># 2</strong> - Actions can be configured by name regular expressions</p>
+
+<p><strong>Example:</strong> - all actions containing "<em>js</em>" will return "application/javascript" content type</p>
+
+<pre>
+class App < E
+
+    setup /_js_/ do
+        content_type '.js'
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><strong>Please Note</strong> that when you firstly setup actions by regexp
+then try to setup a specific action, the last setup will be ignored.</p>
+
+<p>To override setup set by regexp, use bang methods in specific setups.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    setup /red/ do
+      engine :ERB
+    end
+
+    setup :red_pants do
+      engine  :Erubis   # :red_pants will still use ERB engine
+      engine! :Erubis   # :red_pants will use Erubis engine
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='setup-by-format'><a href='#setup-by-format'>Setup by Format</a></h2>
+
+<p><a href="https://github.com/slivu/espresso/blob/master/docs/Routing.md#format">Format</a> is a part of routing mechanism
+but it is also hugely used when it comes to setup actions.</p>
+
+<p>It turns out that setting up actions by name and regular expressions are not enough.</p>
+
+<p>We need even more control.</p>
+
+<p>Cause "/book.html" and "/book.xml" definitely may behave diferently, even if they are backed by the same action.</p>
+
+<p>How for ex. to tell <code>book</code> action to return some charset on "/book.html" URL
+and another one on "/book.xml" URL without touching the action itself?</p>
+
+<p>Here is where format comes in action.</p>
+
+<p><strong># 1</strong> - To add some setup only for specific format, provide action name as a string, suffixed by desired format.</p>
+
+<p><strong>Example:</strong> - set charset only for <code>foo</code> action only when it is called with <code>.json</code> format</p>
+
+<pre>
+class App < E
+    format :json
+
+    setup 'foo.json' do
+        charset 'UTF-8'
+    end
+
+    def foo
+        # ...
+    end
+end
+</pre>
+
+
+<p>That's great, but useless when we have N actions to setup, cause we will have to define a setup for each action.</p>
+
+<p>That's weird.</p>
+
+<p>And here is where the format comes in action for the second time.</p>
+
+<p><strong># 2</strong> - To setup all actions that respond to some format, simply provide format without action name.</p>
+
+<p><strong>Example:</strong> - use different Cache-Control header for different formats</p>
+
+<pre>
+class App < E
+    format :html, :htm
+
+    setup '.html' do
+        cache_control :public, :must_revalidate, :max_age => 600
+    end
+
+    setup '.htm' do
+        cache_control :private, :must_revalidate, :max_age => 60
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><strong>Important Note!</strong> When setting up actions by format wildcard,
+Espresso will preserve that setup for all actions matching given format.</p>
+
+<p>And when you want to setup a specific action after you did a wildcard setup,
+you'll note that specific setup is ignored.</p>
+
+<p>It may look confusing, though it is not,
+cause specific action you want to setup already has a setup.</p>
+
+<p>To override an existing setup, simply use bang methods.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    format :html
+
+    setup '.html' do
+      engine :ERB
+    end
+
+    setup 'blah.html' do
+      engine  :Erubis   # this wont work
+      engine! :Erubis   # this will work
+    end
+end
+</pre>
+
+
+<p>Same for cases when you firstly setup a specific action,
+then trying to setup actions by format wildcard.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    format :html
+
+    setup 'blah.html' do
+      engine :ERB
+    end
+
+    setup '.html' do
+      engine  :Erubis   # :blah action will still use ERB engine
+      engine! :Erubis   # :blah action will use Erubis engine
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='remote-setup'><a href='#remote-setup'>Remote Setup</a></h2>
+
+<p>Any Espresso controller or slice can be packed as a gem and then installed on any server.<br/>
+Very useful when you need distributed apps.</p>
+
+<p>And it becomes even more useful with Remote Setup.</p>
+
+<p>Say you need the same app to run some setup on Server A and another setup on Server B,
+without touching/refactor the app at all.</p>
+
+<p>Easy!</p>
+
+<p>Let's say we have a Forum app that serves /Forums base URL and returns content of ISO-8859-1 charset.</p>
+
+<p>That's ok for Server A.</p>
+
+<p>But for Server B we need it to serve /forum base URL and return UTF-8 charset.</p>
+
+<p>For this, we pass the base URL as first param and setting charset using bang method inside block.</p>
+
+<p><strong>Example:</strong> - deploying Forum app on Server B</p>
+
+<pre>
+require 'my-mega-forum'
+
+run Forum.mount '/forum' do
+    charset! 'UTF-8'
+end
+</pre>
+
+
+<p>That's it.</p>
+
+<p><em>Please note</em> bang method, it will ensure that initial setup will be overridden.<br/>
+There are bang methods for all Espresso setups.</p>
+
+<p>Passing setup proc at mount is not the only way to setup controllers.</p>
+
+<p>You can setup them all at once by using <code>app#setup</code> method.</p>
+
+<pre>
+class Pages < E
+    # ...
+end
+
+class News < E
+    # ...
+end
+
+class Articles < E
+    # ...
+end
+
+app = EApp.new :automount
+app.setup do
+    # here setup will run inside all controllers
+end
+app.run
+
+# or you can setup controllers selectively - controller name are passed as first argument of setup proc
+
+app = EApp.new :automount
+app.setup do |ctrl|
+    if ctrl == Pages
+        # here setup will run ONLY inside Pages controller
+    end
+    # here setup will run inside all controllers
+end
+app.run
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

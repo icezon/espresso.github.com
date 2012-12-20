@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h2 id='controllers'><a href='#controllers'>Controllers</a></h2>
+
+<p>Run a single controller app:</p>
+
+<pre>
+class App < E
+    # ...
+end
+
+App.run
+
+# or
+app = App.mount
+app.run
+
+# or create a new app and mount controller
+app = EApp.new
+app.mount App
+app.run
+</pre>
+
+
+<p>Controllers can be also mounted by given name rather than by class.</p>
+
+<p>This turn to be useful when you do not want or can't wrap controllers into slices,
+meant they are not under same namespace.</p>
+
+<p>Name can be provided as a string, symbol or regex.</p>
+
+<pre>
+app = EApp.new false
+app.mount 'SomeController'
+app.mount 'SomeAnotherController'
+app.mount :NotAnotherController
+app.mount /Controller/
+# etc.
+app.run
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='slices'><a href='#slices'>Slices</a></h2>
+
+<p>Wrap the app into a slice(module) and run:</p>
+
+<pre>
+module Forum
+    class Users < E
+        # ...
+    end
+    class Posts < E
+        # ...
+    end
+end
+
+Forum.run
+
+# or
+app = Forum.mount
+app.run
+
+# or create an app and mount the slice
+app = EApp.new
+app.mount Forum
+app.run
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='roots'><a href='#roots'>Roots</a></h2>
+
+<p>To mount a controller/slice into a specific root, pass it as first argument:</p>
+
+<pre>
+module Forum
+    class Users < E
+        # ...
+    end
+    class Posts < E
+        # ...
+    end
+end
+
+app = Forum.mount '/forum'
+app.run
+
+# or
+app = EApp.new
+app.mount Forum, '/forum'
+app.run
+</pre>
+
+
+<p>If controller/slice should serve multiple roots, pass them all as arguments:</p>
+
+<pre>
+app = Forum.mount '/forum', '/Forums'
+app.run
+
+# or
+app = EApp.new
+app.mount Forum, '/forum', '/Forums'
+app.run
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='inner-apps'><a href='#inner-apps'>Inner Apps</a></h2>
+
+<p>As of version 0.3.3 Espresso supports mounting of any Rack app.</p>
+
+<p>Just mount it as a regular Espresso controller.</p>
+
+<p><strong>Example:</strong> Mounting a Sinatra app:</p>
+
+<pre>
+require 'sinatra/base'
+require 'e'
+
+class Cms < Sinatra::Base
+
+  get('/') { 
+    # ...
+  }
+
+  # ...
+
+end
+
+class App < E
+  map '/'
+
+  def index
+    # ...
+  end
+
+  # ...
+end
+
+app = EApp.new do
+  
+  mount App          # this will mount App into /
+  mount Cms, '/cms'  # this will mount Sinatra app into /cms
+end
+app.run
+</pre>
+
+
+<p>And of course inner apps supports canonical mounts, just like native controllers does:</p>
+
+<pre>
+app = EApp.new do
+  
+  # ...
+  mount Cms, '/cms', '/pages'  # this will mount Sinatra app into /cms and /pages
+end
+</pre>
+
+
+<h2 id='run'><a href='#run'>Run</a></h2>
+
+<p>By default Espresso will use WEBrick server and default WEBrick port.</p>
+
+<p>To use another server, pass <code>:server</code> option.</p>
+
+<p>If given server requires some options, pass them next to <code>:server</code> option.</p>
+
+<p><strong>Example:</strong> Use Thin server and its default port</p>
+
+<pre>
+app.run :server => :Thin
+</pre>
+
+
+<p><strong>Example:</strong> Use EventedMongrel server with custom options</p>
+
+<pre>
+app.run :server => :EventedMongrel, :Port => 9090, :num_processors => 100
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='config-ru'><a href='#config-ru'>config.ru</a></h2>
+
+<p>Running a single controller:</p>
+
+<pre>
+require 'your-app-file(s)'
+
+run MyController
+</pre>
+
+
+<p>Running a Slice:</p>
+
+<pre>
+require 'your-app-file(s)'
+
+run MySlice
+</pre>
+
+
+<p>Running an app instance:</p>
+
+<pre>
+require 'your-app-file(s)'
+
+app = App.mount
+# or
+app = EApp.new :automount
+# etc .
+
+run app
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

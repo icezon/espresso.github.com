@@ -1,0 +1,1148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h2 id='base-url'><a href='#base-url'>Base URL</a></h2>
+
+<p>By default, each class will serve the path built from its underscored name.</p>
+
+<p>Ex.: <code>Forum</code> will serve "/forum", <code>LatestNews</code> will serve "/latest_news" etc.</p>
+
+<p>This can be changed by setting base URL via <code>map</code>.</p>
+
+<p><strong>Example:</strong> - <code>Book</code> app should serve "/books"</p>
+
+<pre>
+class Book < E
+    map '/books'
+
+    def index
+        # ...
+    end
+
+    def edit
+        # ...
+    end
+end
+</pre>
+
+
+
+
+<pre>
+Now `Book` will serve:
+    /books         - backed by Book#index
+    /books/index   - backed by Book#index
+    /books/edit    - backed by Book#edit
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='canonicals'><a href='#canonicals'>Canonicals</a></h2>
+
+<p>Lets say you need your <code>News</code> app to serve both "/news" and "/headlines" base URLs.<br/>
+It is easily done by using <code>map</code> with multiple params.<br/>
+First param will be treated as base URL, any other consequent params - as canonical ones.</p>
+
+<p><strong>Example:</strong> - <code>News</code> should serve both "/news" and "/headlines" paths.</p>
+
+<pre>
+class News < E
+    map :news, :headlines
+
+    def index
+        # ...
+    end
+end
+</pre>
+
+
+<p>To find out either current URL is a canonical URL use <code>canonical?</code><br/>
+It will return <code>nil</code> for base URLs and a string for canonial ones.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/', '/cms'
+
+    def page
+
+        # on /page         canonical? == nil
+        # on /cms/page     canonical? == "/page"
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='actions'><a href='#actions'>Actions</a></h2>
+
+<p>Defining Espresso actions is as simple as defining Ruby methods,<br/>
+cause Espresso actions actually are pure Ruby methods.</p>
+
+<p><strong>Example:</strong> - Defining 2 actions - :index and :edit</p>
+
+<pre>
+class App < E
+    map '/'
+
+    def index
+      # ...
+    end
+
+    def edit
+      # ...
+    end
+end
+</pre>
+
+
+<p>Now <code>App</code> will serve:
+*   /
+*   /index
+*   /edit</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='actions-mapping'><a href='#actions-mapping'>Actions Mapping</a></h2>
+
+<p>Usually actions should also contain non-alphanumeric chars.<br/>
+Most common - hyphens, dots and slashes.</p>
+
+<p>To address this, Espresso uses a map to translate action names into HTTP paths.</p>
+
+<p>The default map looks like this:</p>
+
+<pre>
+"____"    => "."
+"___"     => "-"
+"__"      => "/"
+</pre>
+
+
+<p><strong>Example:</strong></p>
+
+<pre>
+def read____html   # 4 underscores
+    # ...
+end
+# will serve read.html
+
+def latest___news  # 3 underscores
+    # ...
+end
+# will serve latest-news
+
+def users__online  # 2 underscores
+    # ...
+end
+# will serve users/online
+</pre>
+
+
+<p><em>Worth to note</em> that you can define your own rules by using <code>path_rule</code> at class level.</p>
+
+<p><strong>Example:</strong> - Convert bang methods into .html suffixed paths</p>
+
+<pre>
+class App < E
+    map '/'
+
+    path_rule "!", ".html"
+
+    def news!
+        # ...
+    end
+end
+
+# `news!` will serve /news.html
+</pre>
+
+
+<p><strong>Example:</strong> - Convert methods starting with j_ into .json suffixed paths</p>
+
+<pre>
+class App < E
+    map '/'
+
+    path_rule /\Aj_/, ".json"
+
+    def j_news
+      # ...
+    end
+end
+# `j_news` will serve /news.json
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='parametrization'><a href='#parametrization'>Parametrization</a></h2>
+
+<p>Espresso will split URL by slashes and feed obtained array to the Ruby method that backing current action.</p>
+
+<p>Let's suppose we have an action like this:</p>
+
+<pre>
+class App < E
+    map '/'
+
+    def read type, status
+        # ...
+    end
+end
+</pre>
+
+
+<p>If we do an request like this - "/read/news/latest", it will be decomposed as follow:</p>
+
+<ul>
+<li>action - read</li>
+<li>params - news/latest</li>
+</ul>
+
+
+<p>Now Espresso will split params and call action:</p>
+
+<pre>
+read "news", "latest"
+</pre>
+
+
+<p>Current example will work just well, cause <code>read</code> receives as many arguments as expected.</p>
+
+<p>Now let's suppose we do an request like: "/read/news"</p>
+
+<p>This wont work, cause <code>read</code> receives 1 argument instead of 2 expected.</p>
+
+<pre>
+read "news"
+</pre>
+
+
+<p>And "/read/news/articles/latest" wont work either, cause <code>read</code> receives too many arguments.</p>
+
+<pre>
+read "news", "articles", "latest"
+</pre>
+
+
+<p>However, as we know, Ruby is powerful enough.</p>
+
+<p>And Espresso uses this power in full.</p>
+
+<p>So, when we need <code>read</code> method to accept 1 or 2 args,
+we simply give the last param a default value:</p>
+
+<pre>
+class App < E
+    map '/'
+
+    def read type, status = 'latest'
+        # ...
+    end
+end
+</pre>
+
+
+<p>Now <code>read</code> action will serve "/read/news" as well as
+"/read/news/latest", "/read/news/archived", "/read/news/anything!"</p>
+
+<p>Also we can make "/read/news/articles/latest" to work.</p>
+
+<pre>
+class App < E
+    map '/'
+
+    def read *types, status
+        # ...
+    end
+end
+</pre>
+
+
+<p>That's it! Now when calling "/read/news/articles/latest",
+<code>types</code> will be an array like ["news", "articles"] and  status will be equal to "latest".</p>
+
+<p>In a word, if Ruby method works with given params, HTTP action will work too.<br/>
+Otherwise, HTTP action will return "404 NotFound" error.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='format'><a href='#format'>Format</a></h2>
+
+<p><code>format</code> allow to manipulate routing by instructing actions to respond to various extensions.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/'
+    format :xml
+
+    def article
+        # ...
+    end
+end
+</pre>
+
+
+<p>In the example above, article action will respond to both "/article" and "/article.xml" URLs.</p>
+
+<p><code>format</code> accepts any number of arguments. Each argument is a new extension action(s) will respond to.</p>
+
+<p>The second meaning of <code>format</code> is to automatically set Content-Type header.</p>
+
+<p>Content type are extracted from <code>Rack::Mime::MIME_TYPES</code> map.<br/>
+Ex: <code>format :txt</code> will return the content type extracted via <code>Rack::Mime::MIME_TYPES.fetch('.txt')</code></p>
+
+<p>To set format(s) only for some actions, use <code>setup</code>.</p>
+
+<p><strong>Example:</strong> - only <code>:pages</code> and <code>:news</code> actions will respond to URLs ending in .html and .xml</p>
+
+<pre>
+class App < E
+    map '/'
+
+    setup :pages, :news do
+        format :xml, :html
+    end
+
+    def read
+        # ...
+    end
+
+    def pages
+        # ...
+    end
+
+    def news
+        # ...
+    end
+
+    # ...
+end
+</pre>
+
+
+<p>Voila, now App will respond to any of "/pages", "/pages.html", "/pages.xml", "/news", "/news.html", "/news.xml",
+but not to "/read.html" nor to "/read.xml", cause <code>format</code> was set for <code>pages</code> and <code>news</code> only.</p>
+
+<p>But wait, actions usually are called with params, and an URL like "/read.html/100" looks really bad!</p>
+
+<p>No problem! Espresso takes care about this, and "/read/100.html" will work exactly as "/read.html/100"</p>
+
+<p>Even more! Espresso will get rid of format passed in last param, so you get clean params without remove format manually.<br/>
+Meant that when "/news/100.html" requested, you get "100" param inside <code>news</code> action, rather than "100.html"</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    format :xml
+
+    def read item = nil
+        # on /read             item == nil
+        # on /read.xml         item == nil
+        # on /read.xml/book    item == "book"
+        # on /read/book        item == "book"
+        # on /read/book.xml    item == "book"
+        # on /read/100.xml     item == "100"
+        # on /read/blah.xml    item == "blah"
+        # on /read/blah.json   item == "blah.json"
+    end
+end
+</pre>
+
+
+<p></pre>
+/read.xml                will return XML Content-Type
+/read/book.xml           will return XML Content-Type too
+/read/100.xml            will return XML Content-Type as well
+/read/anything-here.xml  will return XML Content-Type either
+/read                    instead will return default Content-Type
+/read/book               will return default Content-Type too
+</pre></p>
+
+<p><strong>Worth to Note</strong> - if both action and last param has format, action format is used.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    format :xml, :json
+
+    def read item = nil
+        # ...
+    end
+end
+</pre>
+
+
+
+
+<pre>
+/read/book.json          will return JSON Content-Type
+/read.xml/book.json      will return XML Content-Type instead
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='restful-actions'><a href='#restful-actions'>RESTful Actions</a></h2>
+
+<p>By default, verbless actions will respond to any request method.</p>
+
+<p><strong>Example:</strong> - <code>index</code> action responding to any request method</p>
+
+<pre>
+class App < E
+
+    def index
+    end
+end
+</pre>
+
+
+<p>To make an action to respond only to a specific request method,
+simply prepend desired request method verb to action name.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    def post_news  # will serve POST /news
+        # ...
+    end
+
+    def put_news   # will serve PUT /news
+        # ...
+    end
+
+    # etc.
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='aliases'><a href='#aliases'>Aliases</a></h2>
+
+<p>As we already noted, any app can serve multiple paths.</p>
+
+<p>But what if we need an action to be available by multiple paths?</p>
+
+<p>It's easy - add an standard Ruby alias.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/'
+
+    def news
+        # ...
+    end
+    alias news____html news
+    alias headlines__recent____html news
+
+end
+</pre>
+
+
+<p>Now <code>news</code> action will serve any of:</p>
+
+<ul>
+<li>/news</li>
+<li>/news.html</li>
+<li>/headlines/recent.html</li>
+</ul>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='rewriter'><a href='#rewriter'>Rewriter</a></h2>
+
+<p>Espresso uses a really flexible rewrite engine,
+which allows to redirect the browser to new address
+as well as pass control to arbitrary app(without redirect)
+or just send response to browser(without redirect as well).</p>
+
+<p>A rewrite rule consist of regular expression and a block that receives matches as params.</p>
+
+<p><code>redirect</code> and <code>permanent_redirect</code> will redirect browser to new address with 302 and 301 codes respectivelly.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    rewrite /\A\/(.*)\.php\Z/ do |title|
+        redirect route(:index, title)
+    end
+
+    # ...
+end
+</pre>
+
+
+<p><code>pass</code> will pass control to an arbitrary action or even app, without redirect.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class Articles < E
+
+    def read title
+        # ...
+    end
+end
+
+class Pages < E
+
+    # pass old pages to archive action
+    rewrite /\A\/(.*)\.php\Z/ do |title|
+        pass :archive, title
+    end
+
+    # pages ending in html are actually articles, so passing control to Articles app
+    rewrite /\A\/(.*)\.html\Z/ do |title|
+        pass Articles, :read, title
+    end
+
+end
+
+</pre>
+
+
+<p><code>halt</code> will send response to browser and stop any code execution, without redirect.</p>
+
+<p>It accepts from 0 to 3 arguments.<br/>
+If argument is a hash, it is added to headers.<br/>
+If argument is a Integer, it is treated as Status-Code.<br/>
+Any other arguments are treated as body.</p>
+
+<p>If a single argument given and it is an Array, it is treated as a bare Rack response and instantly sent to browser.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    rewrite /\A\/archived\/(.*)\.html\Z/ do |title|
+
+        page = Model::Page.first(:url => title) || halt(404, 'page not found')
+
+        halt page.content, 'Last-Modified' => page.last_modified.to_rfc2822
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h2 id='intro'><a href='#intro'>Intro</a></h2>
+
+<p><code>crudify</code> method will automatically create CRUD actions that will map HTTP requests to corresponding methods on given Resource.</p>
+
+<pre>
+<b>Request                        Resource</b>
+GET     /id                    #get(id)
+POST    /   with POST data     #create(params)
+PUT     /id with POST data     #get(id).update(params)
+PATCH   /id with POST data     #get(id).update(params)
+DELETE  /id                    #get(id).delete OR #delete(id)
+HEAD    /id                    #get(id)
+OPTIONS /                      returns actions available to client
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='resource'><a href='#resource'>Resource</a></h2>
+
+<p>First argument is required and should provide the CRUDified resource.<br/>
+Resource should respond to <code>get</code> and <code>create</code> methods.<br/>
+Objects that will be created/returned by resource should respond to <code>update</code> and <code>delete</code> methods.</p>
+
+<p>Additionally, your resource may respond to <code>delete</code> method.<br/>
+If it does, <code>delete</code> action will rely on it when deleting objects.<br/>
+Otherwise, it will fetch the object by given ID and call <code>delete</code> on it.</p>
+
+<p>If your resource/objects behaves differently, you can map its methods by passing them as options.<br/>
+Let's suppose you are CRUDifying a DataMapper model.<br/>
+To delete an DataMapper object you should call <code>destroy</code> on it,
+so we simply mapping <code>delete</code> action to <code>destroy</code> method:</p>
+
+<pre>
+crudify ModelName, :delete => :destroy
+</pre>
+
+
+<p>If your resource creating records by <code>new</code> instead of <code>create</code>,
+simply map <code>post</code> action to <code>new</code> method:</p>
+
+<pre>
+crudify ModelName, :post => :new
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='excluded-params'><a href='#excluded-params'>Excluded Params</a></h2>
+
+<p>By default all params will be sent to resource.</p>
+
+<p>Good enough, however sometimes you need to exclude some params.</p>
+
+<p>This is easily accomplished by using :exclude option.</p>
+
+<p>To exclude a single param, pass it as a string.</p>
+
+<pre>
+crudify Resource, :exclude => '__stream_uuid__'
+</pre>
+
+
+<p>To exclude multiple params, pass them as an array.</p>
+
+<pre>
+crudify Resource, :exclude => ['__stream_uuid__', 'user']
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='root'><a href='#root'>Root</a></h2>
+
+<p>By default, <code>crudify</code> will create actions that respond to controllers root path.</p>
+
+<pre>
+class App < E
+    map '/'
+
+    crudify SomeModel
+end
+</pre>
+
+
+<p>This will create following actions:</p>
+
+<pre><code>- get_index
+- head_index
+- post_index
+- put_index
+- patch_index
+- delete_index
+- options_index
+</code></pre>
+
+<p>Each action will respond to corresponding request method.</p>
+
+<p>To route CRUD actions to a different path, simply pass the path as second argument:</p>
+
+<pre>
+class App < E
+    map '/'
+
+    crudify UsersModel, :users
+end
+</pre>
+
+
+<p>This will create following actions:</p>
+
+<pre><code>- get_users
+- head_users
+- post_users
+- put_users
+- patch_users
+- delete_users
+- options_users
+</code></pre>
+
+<p><em>IMPORTANT!</em> The common pitfall here is to define a method that will override
+the actions created by crudifier.</p>
+
+<pre>
+class App < E
+    map '/'
+
+    crudify SomeModel
+
+    def index
+        # Bad Idea!
+    end
+end
+</pre>
+
+
+<p>The <code>index</code> method here will override all actions created by <code>crudify SomeModel</code>,
+thus CRUD WONT WORK on this controller!</p>
+
+<p>Why so?</p>
+
+<p>Cause actions defined without a verb will listen on all request methods.</p>
+
+<p>So if we define <code>index</code> or just <code>whatever</code> without <code>get_</code>, <code>post_</code> etc. prefix,
+it will override any actions previously defined with an explicit verb.</p>
+
+<pre>
+def get_index
+    # ...
+end
+
+def post_index
+    # ...
+end
+
+def index
+    # this will OVERRIDE `get_index` and `post_index`
+end
+
+def get_read
+    # ...
+end
+
+def post_read
+    # ...
+end
+
+def read
+    # this will OVERRIDE `get_read` and `post_read`
+end
+</pre>
+
+
+<p>In case of CRUD actions, when you need to override some action, define the method with a verb.</p>
+
+<p>For ex. you want "GET /index" requests to be served by your <code>index</code> method,
+not by one created by crudifier.</p>
+
+<p>Then you simply define <code>get_index</code> method:</p>
+
+<pre>
+class App < E
+    map '/'
+
+    crudify SomeModel
+
+    def get_index
+        # Good Idea!
+    end
+end
+</pre>
+
+
+<p><em>Please Note</em> that you'll have to name your template "get_index.ext" instead of just "index.ext"</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='response'><a href='#response'>Response</a></h2>
+
+<p>Crudifier will try to return the value of primary key of extracted/created/updated object.</p>
+
+<p>By default <code>:id</code> is used as primary key.</p>
+
+<p>To use a custom primary key, pass it via <code>:pkey</code> option:</p>
+
+<pre>
+crudify Resource, :pkey => 'prodID'
+</pre>
+
+
+<p>If objects created by your resource does respond to <code>:[]</code> and does contain the pkey column, the value of <code>object[pkey column]</code> will be returned.</p>
+
+<p>Otherwise if objects created by your resource does respond to pkey column
+the value of <code>object.pkey_column</code> will be returned.</p>
+
+<p>Otherwise the object itself will be returned.</p>
+
+<p>However, if you have a custom logic rather than simply return primary key, use a block.</p>
+
+<p>The block will receive the object as first argument:</p>
+
+<pre>
+crudify UsersModel do |obj|
+    case
+        when post?, put?, patch?
+            obj.id
+        when head?
+            last_modified obj.last_modified
+        else
+            content_type '.json'
+            obj.to_json
+    end
+end
+</pre>
+
+
+<p>This will return object ID on POST, PUT, and PATCH requests.<br/></p>
+
+<p>On HEAD requests, the framework is always sending an empty body,
+so we only update the headers.<br/>
+This way the client may decide when to fetch the object.</p>
+
+<p>On GET requests it will convert object to JSON before it is sent to client.<br/>
+Also <code>content_type</code> is used to set proper content type.</p>
+
+<p>DELETE action does not need a handler cause it ever returns an empty string.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='error-handler'><a href='#error-handler'>Error Handler</a></h2>
+
+<p>If your objects responds to <code>:errors</code> method,
+crudifier will try to extract and format errors accordingly.</p>
+
+<p>In case of errors, crudifier will behave depending on given options and proc.</p>
+
+<p>If a proc given, crudifier will NOT halt the request.<br/>
+It will pass error to given proc via second argument instead.</p>
+
+<p>To halt the request when a proc given, set <code>:halt_on_errors</code> to true.</p>
+
+<p>If no proc given, request will be halted unconditionally.</p>
+
+<p>By default the 500 status code will be used when halting.</p>
+
+<p>To use a custom status code pass it via <code>:halt_with</code> option.</p>
+
+<h2 id='access-restriction'><a href='#access-restriction'>Access Restriction</a></h2>
+
+<p>Using <code>auth</code> will instruct client to require authorization.<br/>
+Access can be restricted to some or all actions.</p>
+
+<p>In example below we will restrict access to Create, Update and Delete actions:</p>
+
+<pre>
+class App < E
+    # ...
+
+    auth :post_index, :put_index, :patch_index, :delete_index do |user, pass|
+        [user, pass] = ['admin', 'someReally?secretPass']
+    end
+
+    crudify ModelName
+end
+</pre>
+
+
+<p>Now, when an client will want to POST, PUT, PATCH, DELETE,
+it will be asked for authorization.</p>
+
+<p>And an OPTIONS request will return all actions for authorized clients and
+only GET, HEAD, OPTIONS for non-authorized clients.</p>
+
+<p>If an root given, <code>crudify</code> will create actions that responds to that root,
+thus actions name will contain given root.</p>
+
+<p>In example below, <code>crudify</code> will create actions like <code>get_users</code>, <code>post_users</code>, <code>put_users</code> etc.<br/>
+That's why we should specify proper action name in <code>auth</code> for authorization to work:</p>
+
+<pre>
+class App < E
+    # ...
+
+    auth :post_users, :put_users, :patch_users, :delete_users do |user, pass|
+        [user, pass] = ['admin', 'someReally?secretPass']
+    end
+
+    crudify UsersModel, :users
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<section>
+
+  <div class="row">
+
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="Intro.html#actions">
+          Actions</a>
+        </h1>
+<pre>
+def index
+  "Hello World!"
+end
+</pre>
+<pre>
+def edit id
+  item = Model[id]
+end
+</pre>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="Intro.html#controllers">
+          Controllers</a>
+        </h1>
+<pre>
+class App &lt; E
+  map '/'
+
+  # actions goes here
+end
+App.run
+</pre>
+<pre>
+class Cms &lt; E
+  map 'pages'
+
+  # actions goes here
+end
+Cms.run
+</pre>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="Intro.html#slices">
+          Slices</a>
+        </h1>
+<pre>
+class App
+  class Blog &lt; E
+    # no map defined, will serve /blog
+
+    # actions goes here
+  end
+
+  class Forum &lt; E
+    map 'forums'
+    
+    # actions goes here
+  end
+end
+App.run
+</pre>
+      </div>
+    </div>
+
+</section>
+<section>
+
+  <div class="row">
+
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="Setup.html">
+          Setup</a>
+        </h1>
+<pre>
+class App &lt; E
+
+  # setups applied to all actions
+  charset 'UTF-8'
+  ...
+  
+  # setup by full action name
+  setup :api do
+    content_type '.json'
+    ...
+  end
+
+  # setup by regex
+  setup /red/ do
+    layout :red
+    ...
+  end
+
+  # setup by format
+  setup '.xml' do
+    engine :Nokogiri
+  end
+
+end
+</pre>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="Routing.html#restful-actions">
+          REST</a>
+        </h1>
+<pre>
+class App &lt; E
+
+  def index # will serve any REQUEST TYPE
+    ...
+  end
+
+  def post_news  # will serve POST /news
+    ...
+  end
+
+  def put_news   # will serve PUT /news
+    ...
+  end
+
+end
+</pre>
+      </div>
+    </div>
+
+
+    <div class="span4">
+      <div class="">
+        <h1>
+          <a href="CRUD.html">
+          CRUD</a>
+        </h1>
+<pre>
+class App &lt; E
+  
+  crudify ResourceName
+
+end
+</pre>
+      </div>
+    </div>
+
+</section>

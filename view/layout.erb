@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      <%
+      {
+        "Intro" => %w[ Actions Controllers Slices MVC? Models? ],
+        "Routing" => [  
+          'Base URL',
+          'Canonicals',
+          'Actions',
+          'Actions Mapping',
+          'Parametrization',
+          'Format',
+          'RESTful Actions',
+          'Aliases',
+          'Rewriter',
+        ],
+        "Setup" => [
+          'Global Setup',
+          'Setup by Name',
+          'Setup by Format',
+          'Remote Setup',
+        ],
+        "Workflow" => [
+          'Route',
+          'Params',
+          'Passing Control',
+          'Fetching Body',
+          'Halt',
+          'Redirect',
+          'Reload',
+          'Error Handlers',
+          'Hooks',
+          'Authorization',
+          'Sessions',
+          'Flash',
+          'Cookies',
+          'Content Type',
+          'Charset',
+          'Cache Control',
+          'Expires',
+          'Last Modified',
+          'Accepted Content Type',
+          'Cache Manager',
+          'Send File',
+          'Send Files',
+          'Attachment',
+          'Headers',
+        ],
+        "View API" => [
+          'Engine',
+          'Extension',
+          'Templates Path',
+          'Layouts Path',
+          'Layout',
+          'Rendering Templates',
+          'Rendering Layouts',
+          'Ad hoc Rendering',
+          'Path Resolver',
+          'Templates Compilation',
+        ],
+        'Streaming' => [
+          'Server-Sent Events',
+          'WebSockets',
+          'Chunked Responses'
+        ],
+        "Assets" => [
+          'Intro',
+          'Mapper',
+          'Server',
+          'Helpers',
+          'Loader',
+        ],
+        "CRUD" => [
+          'Intro',
+          'Resource',
+          'Excluded Params',
+          'Root',
+          'Response',
+          'Error Handler',
+          'Access Restriction',
+        ],
+        "Deploy" => [
+          'Controllers',
+          'Slices',
+          'Roots',
+          'Run',
+          'config.ru',
+        ]
+
+      }.each_pair do |nav, items| 
+        page_url = nav.gsub(/\s+/, '') + '.html' %>
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="<%= page_url %>" class="btn">
+            <%= nav %></a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            <% items.each do |item| %>
+              <li>
+                <a href="<%= page_url %>#<%= item.downcase.gsub(/\W/, '-') %>">
+                  <%= item %></a>
+              </li>
+            <% end %>
+            </ul>
+
+        </div>
+      <% end %>
+      
+    </div>
+    </div>
+    <hr/>
+    <%= yield %>
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>

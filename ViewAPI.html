@@ -1,0 +1,1202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Espresso Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="javascripts/jquery.js" type="text/javascript"></script>
+  
+  <link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="javascripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  <script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <link href="javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script src="javascripts/google-code-prettify/prettify.js" type="text/javascript"></script>
+
+  <link href="stylesheets/master.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="span2">
+        <a href="index.html">
+          <img src="images/logo.png" class="pull-right logo" /></a>
+      </div>
+
+      <div class="span6">
+        <h1>
+          <a href="index.html">
+          Espresso Framework</a>
+        </h1>
+        <h4>
+          Scalable Web Framework aimed at Speed and Simplicity 
+        </h4>
+      </div>
+
+      <div class="span pull-right">
+        <div class="row">
+          <div class="span">
+            <h4>
+              <a href="presentation.html">
+                Official Presentation</a>
+            </h4>
+          </div>
+          <div class="span">
+            <a href="presentation.html">
+              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div class="row" style="text-align: center;">
+    <div class="btn-toolbar">
+      
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Intro.html" class="btn">
+            Intro</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Intro.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#mvc-">
+                  MVC?</a>
+              </li>
+            
+              <li>
+                <a href="Intro.html#models-">
+                  Models?</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Routing.html" class="btn">
+            Routing</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Routing.html#base-url">
+                  Base URL</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#canonicals">
+                  Canonicals</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions">
+                  Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#actions-mapping">
+                  Actions Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#parametrization">
+                  Parametrization</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#format">
+                  Format</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#restful-actions">
+                  RESTful Actions</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#aliases">
+                  Aliases</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#rewriter">
+                  Rewriter</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Setup.html" class="btn">
+            Setup</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Setup.html#global-setup">
+                  Global Setup</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-name">
+                  Setup by Name</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#setup-by-format">
+                  Setup by Format</a>
+              </li>
+            
+              <li>
+                <a href="Setup.html#remote-setup">
+                  Remote Setup</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Workflow.html" class="btn">
+            Workflow</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Workflow.html#route">
+                  Route</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#params">
+                  Params</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#passing-control">
+                  Passing Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#fetching-body">
+                  Fetching Body</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#halt">
+                  Halt</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#redirect">
+                  Redirect</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#reload">
+                  Reload</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#error-handlers">
+                  Error Handlers</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#hooks">
+                  Hooks</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#authorization">
+                  Authorization</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#sessions">
+                  Sessions</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#flash">
+                  Flash</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cookies">
+                  Cookies</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#content-type">
+                  Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#charset">
+                  Charset</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-control">
+                  Cache Control</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#expires">
+                  Expires</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#last-modified">
+                  Last Modified</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#accepted-content-type">
+                  Accepted Content Type</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#cache-manager">
+                  Cache Manager</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-file">
+                  Send File</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#send-files">
+                  Send Files</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#attachment">
+                  Attachment</a>
+              </li>
+            
+              <li>
+                <a href="Workflow.html#headers">
+                  Headers</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="ViewAPI.html" class="btn">
+            View API</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="ViewAPI.html#engine">
+                  Engine</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#extension">
+                  Extension</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-path">
+                  Templates Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layouts-path">
+                  Layouts Path</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#layout">
+                  Layout</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-templates">
+                  Rendering Templates</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#rendering-layouts">
+                  Rendering Layouts</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#ad-hoc-rendering">
+                  Ad hoc Rendering</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#path-resolver">
+                  Path Resolver</a>
+              </li>
+            
+              <li>
+                <a href="ViewAPI.html#templates-compilation">
+                  Templates Compilation</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Streaming.html" class="btn">
+            Streaming</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Streaming.html#server-sent-events">
+                  Server-Sent Events</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#websockets">
+                  WebSockets</a>
+              </li>
+            
+              <li>
+                <a href="Streaming.html#chunked-responses">
+                  Chunked Responses</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Assets.html" class="btn">
+            Assets</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Assets.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#mapper">
+                  Mapper</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#server">
+                  Server</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#helpers">
+                  Helpers</a>
+              </li>
+            
+              <li>
+                <a href="Assets.html#loader">
+                  Loader</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="CRUD.html" class="btn">
+            CRUD</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="CRUD.html#intro">
+                  Intro</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#resource">
+                  Resource</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#excluded-params">
+                  Excluded Params</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#root">
+                  Root</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#response">
+                  Response</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#error-handler">
+                  Error Handler</a>
+              </li>
+            
+              <li>
+                <a href="CRUD.html#access-restriction">
+                  Access Restriction</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+        <div class="btn-group" style="text-align: left; margin: 5px;">
+          <a href="Deploy.html" class="btn">
+            Deploy</a>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+            
+              <li>
+                <a href="Deploy.html#controllers">
+                  Controllers</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#slices">
+                  Slices</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#roots">
+                  Roots</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#run">
+                  Run</a>
+              </li>
+            
+              <li>
+                <a href="Deploy.html#config-ru">
+                  config.ru</a>
+              </li>
+            
+            </ul>
+
+        </div>
+      
+      
+    </div>
+    </div>
+    <hr/>
+    <h1 id='setup'><a href='#setup'>Setup</a></h1>
+
+<h2 id='engine'><a href='#engine'>Engine</a></h2>
+
+<p>Template engine can be set globally, at class level, then inside actions you simply call <code>render</code> and counterparts.</p>
+
+<p>This way you can change your engine for an entire app with minimal impact, without refactoring a single action.</p>
+
+<p>By default Espresso uses ERB template engine.</p>
+
+<p><strong>Example:</strong> - Set :Erubis for current controller</p>
+
+<pre>
+class App < E
+    # ...
+    engine :Erubis
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Set :Haml for an entire slice</p>
+
+<pre>
+module App
+    class News < E
+        # ...
+    end
+
+    class Articles < E
+        # ...
+    end
+end
+
+app = App.mount do
+    engine :Haml
+end
+app.run
+</pre>
+
+
+<p>If engine requires some arguments/options, simple pass them as consequent params.</p>
+
+<p>Just like</p>
+
+<pre>
+engine :SomeEngine, :some_arg, :some => :option
+</pre>
+
+
+<p><strong>Example:</strong> - Set default encoding</p>
+
+<pre>
+engine :Erubis, default_encoding: Encoding.default_external
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='extension'><a href='#extension'>Extension</a></h2>
+
+<p>Espresso will use the default extension of current engine.</p>
+
+<p>To set a custom extension, use <code>engine_ext</code>.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    # ...
+
+    engine :Erubis
+    engine_ext :xhtml
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='templates-path'><a href='#templates-path'>Templates path</a></h2>
+
+<p>By default, Espresso will look for templates in "view/" folder, inside your app root.</p>
+
+<p>If that's not your case, use <code>view_path</code> to inform Espresso about correct path.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+    map '/cms'
+
+    view_path 'base/view'
+
+    def index
+        # ...
+        render # this will render base/view/cms/index.erb
+    end
+
+    def books__free
+        # ...
+        render # this will render base/view/cms/books/free.erb
+    end
+end
+</pre>
+
+
+<p>For cases when your templates are placed out of app root,
+provide an absolute path to templates, i.e., a path starting with a slash.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class News < E
+
+    view_path File.expand_path '../../../shared-templates', __FILE__
+    # ...
+end
+</pre>
+
+
+<p>If app deployed on a non-Unix-like system, you should use <code>view_fullpath</code> instead.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class News < E
+
+    view_fullpath File.expand_path '../../../shared-templates', __FILE__
+    # ...
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='layouts-path'><a href='#layouts-path'>Layouts path</a></h2>
+
+<p>By default, Espresso will look for layouts in same folder as templates, i.e., in "view/"</p>
+
+<p>Use <code>layouts_path</code> to set a custom path to layouts.<br/>
+The path should be relative to templates path.</p>
+
+<p><strong>Example:</strong> - Search layouts in "view/layouts/"</p>
+
+<pre>
+class App < Ruby
+    # ...
+    layouts_path 'layouts/'
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='layout'><a href='#layout'>Layout</a></h2>
+
+<p>By default no layouts will be searched/rendered.</p>
+
+<p>You can instruct Espresso to render a layout by using <code>layout</code></p>
+
+<p><strong>Example:</strong> - All actions will use :master layout</p>
+
+<pre>
+class App < Ruby
+    # ...
+    layout :master
+end
+</pre>
+
+
+<p><strong>Example:</strong> - Only :signin and :signup actions will use :member layout</p>
+
+<pre>
+class App < Ruby
+    # ...
+    setup :signin, :signup do
+        layout :member
+    end
+end
+</pre>
+
+
+<p>To make some action ignore layout rendering, use <code>layout false</code></p>
+
+<p><strong>Example:</strong> - All actions, but :rss, will use layout</p>
+
+<pre>
+class App < Ruby
+    # ...
+    layout :master
+    setup :rss do
+        layout false
+    end
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h1 id='render'><a href='#render'>Render</a></h1>
+
+<h2 id='rendering-templates'><a href='#rendering-templates'>Rendering Templates</a></h2>
+
+<p>To <em>render the template of current action</em>, simply call <code>render</code> or <code>render_partial</code> without arguments.</p>
+
+<pre>
+class App < E
+  
+  map 'news'
+  view_path 'base/views'
+  layout :master
+  engine :Haml
+
+  def some_action
+      # ...
+      render  # will render base/views/news/some_action.haml, using :master layout
+  end
+
+  def some__another_action
+      # ...
+      render_partial  # will render base/views/news/some__another_action.haml, without layout
+  end
+
+end
+</pre>
+
+
+<p><strong>=== Important ===</strong> Template name should exactly match the name of current action, including REST verb, if any.</p>
+
+<pre>
+def get_latest
+  render # will try to render base/views/news/get_latest.haml
+end
+
+def post_latest
+  render # will try to render base/views/news/post_latest.haml
+end
+</pre>
+
+
+<p>Also, if current action called with a specific format, template name should contain it.</p>
+
+<pre>
+class App < E
+  
+  map '/'
+  format :xml, :html
+
+  def post_latest
+    render  # on /latest      it will render view/post_latest.erb
+            # on /latest.xml  it will render view/post_latest.xml.erb
+            # on /latest.html it will render view/post_latest.html.erb
+  end
+end
+</pre>
+
+
+<p>To <em>render a template by name</em>, pass it as first argument.</p>
+
+<pre>
+render :some__another_action      # will render base/views/news/some__another_action.haml
+
+render_partial 'some_action.xml'  # will render base/views/news/some_action.xml.haml
+
+render 'some-template'            # will render base/views/news/some-template.haml
+
+render_p 'some-template.html'     # will render base/views/news/some-template.html.haml
+</pre>
+
+
+<p>To render a template located higher than your current action, use <code>../</code>:</p>
+
+<pre>
+class App < E
+  map :pages
+
+  view_path 'templates'
+  
+  def some_meth
+    render                   # will render templates/pages/some_meth
+    render '../some-file'    # will render templates/some-file
+  end
+end
+</pre>
+
+
+<p>To <em>render a template of inner controller</em>, pass controller as first argument and the template as second.</p>
+
+<pre>
+class Articles < E
+  
+  view_path 'templates'
+  engine :Slim
+  # ...
+end
+
+render Articles, :most_popular         # will render templates/articles/most_popular.slim
+render Articles, 'some-template.xml'   # will render templates/articles/some-template.xml.slim
+</pre>
+
+
+<p><em>Scope</em> and <em>Locals</em> can be passed as consequent arguments, orderlessly.<br/>
+The scope is defaulted to the current controller and locals to an empty Hash.</p>
+
+<p>As <em>extension</em> will be used the explicitly defined extension(at class level)
+or the default extension of used engine.</p>
+
+<p><strong>Layout</strong></p>
+
+<ul>
+<li>If current action rendered, layout of current action will be used, if any.</li>
+<li>If custom action rendered, layout of given action will be used, if any.</li>
+<li>If an arbitrary template rendered, layout of current action will be used, if any.</li>
+</ul>
+
+
+<p><strong>Engine</strong></p>
+
+<p>As engine will be used the effective engine for current context.<br/>
+Meant engine defined for current or given action,
+or engine defined for all actions,
+or default engine - ERB.</p>
+
+<p><strong>Inline rendering</strong></p>
+
+<p>If block given, the template will not be searched/rendered.<br/>
+Instead, the string returned by the block will be rendered.<br/>
+This way you'll can render data from DB directly, without saving it to a file.</p>
+
+<p><strong>=== Important ===</strong> If custom controller given, rendering methods will use the path, engine and layout set by given controller.</p>
+
+<p><strong>=== Important ===</strong> Espresso wont support custom file extensions!</p>
+
+<p>So you can not render a template like this: <code>render "template.haml"</code>.</p>
+
+<p>Instead use <code>render "template"</code> and the extension will be added automatically,
+based on extension given or computed at class level.</p>
+
+<p>Espresso will guess extension by used engine, like '.haml' for Haml, '.erb' for Erubis etc.<br/>
+If your templates uses a custom extension, set it via <code>engine_ext</code>.</p>
+
+<p>However, if you have a file with a extension that is not typical for used engine
+nor match the extension given via <code>engine_ext</code>, please consider to rename the file.</p>
+
+<p>Computing file extensions would add extra unneeded overhead.<br/>
+The probability of custom extensions are ephemeral
+and it is quite irrational to slow down an entire framework
+just to handle such a negligible probability.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='rendering-layouts'><a href='#rendering-layouts'>Rendering Layouts</a></h2>
+
+<p><code>render_layout</code> will render the layout of current(or given) action or an arbitrary layout file.</p>
+
+<p><em>Render the layout of current action</em></p>
+
+<pre>
+render_layout { 'some string' }
+</pre>
+
+
+<p><em>Render the layout of current action within custom scope</em></p>
+
+<pre>
+render_layout Object.new do
+    'some string'
+end
+</pre>
+
+
+<p><em>Render the layout of current action within custom scope and locals</em></p>
+
+<pre>
+render_layout Object.new, :some_var => "some val" do
+    'some string'
+end
+</pre>
+
+
+<p><em>Render the layout of :news action</em></p>
+
+<pre>
+render_layout :news do
+    'some string'
+end
+</pre>
+
+
+<p><em>Render the .html layout of :news action</em></p>
+
+<pre>
+render_layout 'news.html' do
+    'some string'
+end
+</pre>
+
+
+<p><em>Render layout of :latest action of News controller</em></p>
+
+<pre>
+render_layout News, :latest do
+    'some string'
+end
+</pre>
+
+
+<p><em>Render an arbitrary file as layout</em></p>
+
+<pre>
+render_layout 'layouts/master' do
+    'some string'
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='ad-hoc-rendering'><a href='#ad-hoc-rendering'>Ad hoc rendering</a></h2>
+
+<p>Any of <code>render</code>, <code>render_partial</code> and <code>render_layout</code> methods has ad hoc counterparts,
+like <code>render_haml</code>, <code>render_erb_partial</code>, <code>render_liquid_layout</code> and so on.</p>
+
+<p>Works exactly as common rendering methods except they are using a custom engine and extension.</p>
+
+<p>Used when you need to "quickly" render a template, without any previous class-level setups.</p>
+
+<pre>
+render_haml        # will render the template and layout of current action using Haml engine
+
+render_haml_p      # will render only the template of current action using Haml engine
+
+render_haml_l      # will render only the layout of current action using Haml engine
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='path-resolver'><a href='#path-resolver'>Path Resolver</a></h2>
+
+<p>Espresso looking for templates in the following way:</p>
+
+<p><code>
+view path / controller's base URL / action name or given template
+</code></p>
+
+<p>Sample Example:</p>
+
+<pre>
+class Index < E
+  map '/'
+
+  def index
+    render_partial 'layouts/_header'
+    # will render ./templates/layouts/_header.erb as path is built like:
+    # templates(view path) + /(controller's base URL) + layouts/_header(given path)
+  end
+end
+
+class Products < E
+  map 'products'
+
+  def index
+    render_partial 'layouts/_header'
+    # will try to render ./templates/products/layouts/_header.erb and fail cause path is built like:
+    # templates(view path) + products(controller's base URL) + layouts/_header(given path)
+  end
+end
+
+app = EApp.new :automount
+app.setup do |ctrl|
+  view_path 'templates'
+  layouts_path 'layouts'
+  layout :base
+end
+</pre>
+
+
+<p>There are 2 reasons why <code>Products#render_partial</code> is failing:</p>
+
+<ul>
+<li>real - template not found</li>
+<li>conceptual - using strings repeatedly is a Unacceptable bad practice</li>
+</ul>
+
+
+<p>Just imagine what happens if you want to change <code>layouts_path</code> from <code>layouts</code> to something else.</p>
+
+<p>You then have to search/replace all related paths in your templates!</p>
+
+<p>To sort this out, Espresso offers 2 instance methods: <code>view_path</code> and <code>layouts_path</code>
+that will return path to templates ignoring controller's base URL,
+that's it, full path to templates without controller's base URL.</p>
+
+<p>So to make previous <code>Products#render_partial</code> to work we do like this:</p>
+
+<pre>
+class Products < E
+  map 'products'
+
+  def index
+    render_partial layouts_path('_header')
+    # will render ./templates/layouts/_header.erb cause path is built like:
+    # templates(view path) + layouts(layouts path) + _header(given path)
+  end
+end
+</pre>
+
+
+<p><strong>Worth to note:</strong> both methods accept multiple arguments that will be joined and appended to returned path:</p>
+
+<pre>
+view_path 'some', 'path', 'to', 'some-file' # view/some/path/to/some-file
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='templates-compilation'><a href='#templates-compilation'>Templates Compilation</a></h2>
+
+<p>For most web sites, most time are spent at templates rendering.<br/>
+When rendering templates, most time are spent at files reading and templates compilation.</p>
+
+<p>You can skip these expensive operations by using built-in compiler.</p>
+
+<p>It will simply store compiled templates in memory and on consequent requests will just render them,
+avoiding filesystem calls for reading and CPU time for compiling templates.</p>
+
+<p>To use compiler you should simply pass a key/value pair to locals.<br/>
+The key should be an empty string and the value an unique ID or simply true.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+render '' => true
+
+render_partial :some_action, '' => true
+
+render_partial :some_action, '' => :some_action, :foo => :bar
+
+render_file 'some/file', Object.new, '' => true
+
+render_haml "path/to/file", '' => "path/to/file"
+</pre>
+
+
+<p>To clear compiled templates call <code>clear_compiler!</code>.<br/>
+If called without arguments, it will clear all templates.<br/>
+To clear only some templates, pass their unique IDs as arguments.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+class App < E
+
+    def index
+        @banners = render_view :banners, '' => :banners
+        @ads = render_view :ads, '' => :ads
+        render '' => true
+    end
+
+    before do
+        if 'some condition occurred'
+            # updating only @banners and @ads
+            clear_compiler! :banners, :ads
+        end
+        if 'some another condition occurred'
+            # clear all templates
+            clear_compiler!
+        end
+    end
+end
+</pre>
+
+
+<p>By using <code>clear_compiler_like!</code> you can clear only keys that match a given regexp or even array.</p>
+
+<pre>
+def index
+    @procedures = render :procedures,      '' => [user, :procedures]
+    @actions    = render :actions,         '' => [user, :actions]
+    @banners    = render_partial :banners, '' => :user_banners
+    render
+end
+
+private
+def clear_compiled_templates
+
+    # clearing [user, :procedures] and [user, :actions]
+    clear_compiler_like! [user]
+
+    # clearing any templates starting with 'user'
+    clear_compiler_like! /\Auser_/
+
+end
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+    <hr/>
+
+    <footer class="footer well">
+
+      <div class="row">
+        <div class="span4">
+          <p>
+            License: MIT
+          </p>
+          <p>
+            Author: Silviu Rusu
+          </p>
+          <p>
+            Source Code:
+            <a href="https://github.com/slivu/espresso">
+                https://github.com/slivu/espresso</a>
+          </p>
+        </div>
+      
+      
+        <div class="span6 pull-right">
+          <p>
+            Issues/Bugs:
+            <a href="https://github.com/slivu/espresso/issues">
+                https://github.com/slivu/espresso/issues</a>
+            </p>
+            <p>
+              <strong>Contributors are very Welcome!</strong>
+            </p>
+            <p>
+              IRC channel: #espressorb on irc.freenode.net
+            </p>
+        </div>
+      </div>
+      
+    </footer>
+
+  </div>
+  
+  <a href="https://github.com/slivu/espresso"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  <script type="text/javascript">
+    $(function() {
+        $('pre').addClass('prettyprint lang-ruby');
+        prettyPrint();
+    });
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27879048-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
+</html>
