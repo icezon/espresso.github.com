@@ -532,11 +532,11 @@
 
 <p>Use <code>route</code> at class or instance level to get the URL of given action.</p>
 
-<p>Returned URL will consist of app's base URL and the action's path.</p>
+<p>Returned URL will consist of controller's base URL and the action's path.</p>
 
-<p>If app does not respond to given action, it will simply use it as part of URL.</p>
+<p>If controller does not respond to given action, it will simply use it as part of URL.</p>
 
-<p>If called without arguments it will return app's base URL.</p>
+<p>If called without arguments it will return controller's base URL.</p>
 
 <p><strong>Example:</strong></p>
 
@@ -558,6 +558,32 @@ App.route #=> /
 App.route :read  #=> /books/read
 
 App.route :blah  #=> /books/blah
+</pre>
+
+
+<p><strong>Worth to note</strong> that <code>route</code> are RESTful friendly,
+meant you can pass action name without REST verb:</p>
+
+<pre>
+class App < E
+  map '/'
+
+  def post_edit
+    route(:post_edit)   #=> /edit
+    route(:edit)        #=> /edit
+  end
+
+  def put_edit
+    route(:put_edit)    #=> /edit
+    route(:edit)        #=> /edit
+  end
+end
+
+App.route(:post_edit)   #=> /edit
+App.route(:edit)        #=> /edit
+  
+App.route(:put_edit)    #=> /edit
+App.route(:edit)        #=> /edit
 </pre>
 
 
