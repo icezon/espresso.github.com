@@ -10,7 +10,7 @@ File.open 'index.html', 'w' do |fh|
   end
 end
 
-Dir['../espresso/**/*.md'].each do |file|
+(Dir['../espresso/**/*.md'] + Dir['./pages/*.md']).each do |file|
 
   md = File.read(file).
     gsub(/```(\w+)/, "<pre>").

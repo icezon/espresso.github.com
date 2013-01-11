@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -555,8 +542,8 @@
 
 <pre>
 class App < E
-    # ...
-    engine :Erubis
+  # ...
+  engine :Erubis
 end
 </pre>
 
@@ -565,17 +552,17 @@ end
 
 <pre>
 module App
-    class News < E
-        # ...
-    end
+  class News < E
+    # ...
+  end
 
-    class Articles < E
-        # ...
-    end
+  class Articles < E
+    # ...
+  end
 end
 
 app = App.mount do
-    engine :Haml
+  engine :Haml
 end
 app.run
 </pre>
@@ -583,7 +570,7 @@ app.run
 
 <p>If engine requires some arguments/options, simple pass them as consequent params.</p>
 
-<p>Just like</p>
+<p>Just like:</p>
 
 <pre>
 engine :SomeEngine, :some_arg, :some => :option
@@ -593,7 +580,7 @@ engine :SomeEngine, :some_arg, :some => :option
 <p><strong>Example:</strong> - Set default encoding</p>
 
 <pre>
-engine :Erubis, default_encoding: Encoding.default_external
+engine :Erubis, :default_encoding => Encoding.default_external
 </pre>
 
 
@@ -601,7 +588,7 @@ engine :Erubis, default_encoding: Encoding.default_external
 
 <h2 id='extension'><a href='#extension'>Extension</a></h2>
 
-<p>Espresso will use the default extension of current engine.</p>
+<p>Espresso will use the default file extension of current engine(.haml for Haml, .erb for ERB etc)</p>
 
 <p>To set a custom extension, use <code>engine_ext</code>.</p>
 
@@ -609,10 +596,10 @@ engine :Erubis, default_encoding: Encoding.default_external
 
 <pre>
 class App < E
-    # ...
+  # ...
 
-    engine :Erubis
-    engine_ext :xhtml
+  engine :Erubis
+  engine_ext :xhtml
 end
 </pre>
 
@@ -629,46 +616,31 @@ end
 
 <pre>
 class App < E
-    map '/cms'
+  map '/cms'
 
-    view_path 'base/view'
+  view_path 'base/view'
 
-    def index
-        # ...
-        render # this will render base/view/cms/index.erb
-    end
+  def index
+    # ...
+    render # this will render base/view/cms/index.erb
+  end
 
-    def books__free
-        # ...
-        render # this will render base/view/cms/books/free.erb
-    end
+  def books__free
+    # ...
+    render # this will render base/view/cms/books/free.erb
+  end
 end
 </pre>
 
 
-<p>For cases when your templates are placed out of app root,
-provide an absolute path to templates, i.e., a path starting with a slash.</p>
-
-<p><strong>Example:</strong></p>
+<p>For cases when your templates are placed out of app root
+you should provide absolute path to templates by using <code>view_fullpath</code>:</p>
 
 <pre>
 class News < E
 
-    view_path File.expand_path '../../../shared-templates', __FILE__
-    # ...
-end
-</pre>
-
-
-<p>If app deployed on a non-Unix-like system, you should use <code>view_fullpath</code> instead.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre>
-class News < E
-
-    view_fullpath File.expand_path '../../../shared-templates', __FILE__
-    # ...
+  view_fullpath File.expand_path('../../../shared-templates', __FILE__)
+  # ...
 end
 </pre>
 
@@ -686,8 +658,8 @@ The path should be relative to templates path.</p>
 
 <pre>
 class App < Ruby
-    # ...
-    layouts_path 'layouts/'
+  # ...
+  layouts_path 'layouts/'
 end
 </pre>
 
@@ -704,8 +676,8 @@ end
 
 <pre>
 class App < Ruby
-    # ...
-    layout :master
+  # ...
+  layout :master
 end
 </pre>
 
@@ -714,10 +686,10 @@ end
 
 <pre>
 class App < Ruby
-    # ...
-    setup :signin, :signup do
-        layout :member
-    end
+  # ...
+  setup :signin, :signup do
+    layout :member
+  end
 end
 </pre>
 
@@ -728,11 +700,12 @@ end
 
 <pre>
 class App < Ruby
-    # ...
-    layout :master
-    setup :rss do
-        layout false
-    end
+  
+  layout :master
+
+  setup :rss do
+    layout false
+  end
 end
 </pre>
 
@@ -754,13 +727,13 @@ class App < E
   engine :Haml
 
   def some_action
-      # ...
-      render  # will render base/views/news/some_action.haml, using :master layout
+    # ...
+    render  # will render base/views/news/some_action.haml, using :master layout
   end
 
   def some__another_action
-      # ...
-      render_partial  # will render base/views/news/some__another_action.haml, without layout
+    # ...
+    render_partial  # will render base/views/news/some__another_action.haml, without layout
   end
 
 end
@@ -786,7 +759,7 @@ end
 class App < E
   
   map '/'
-  format :xml, :html
+  format '.xml', '.html'
 
   def post_latest
     render  # on /latest      it will render view/post_latest.erb
@@ -800,100 +773,72 @@ end
 <p>To <em>render a template by name</em>, pass it as first argument.</p>
 
 <pre>
-render :some__another_action      # will render base/views/news/some__another_action.haml
-
-render_partial 'some_action.xml'  # will render base/views/news/some_action.xml.haml
-
-render 'some-template'            # will render base/views/news/some-template.haml
-
-render_p 'some-template.html'     # will render base/views/news/some-template.html.haml
-</pre>
-
-
-<p>To render a template located higher than your current action, use <code>../</code>:</p>
-
-<pre>
 class App < E
-  map :pages
+  engine :Haml
 
-  view_path 'templates'
-  
-  def some_meth
-    render                   # will render templates/pages/some_meth
-    render '../some-file'    # will render templates/some-file
+  def index
+    render_partial 'some_action.xml'  # will render base/views/news/some_action.xml.haml
+   
+    render :some__another_action      # will render base/views/news/some__another_action.haml
+
+    render 'some-template'            # will render base/views/news/some-template.haml
+
+    render_p 'some-template.html'     # will render base/views/news/some-template.html.haml
   end
 end
 </pre>
 
 
-<p>To <em>render a template of inner controller</em>, pass controller as first argument and the template as second.</p>
+<p><em>Scope</em> and <em>Locals</em> can be passed as arguments.<br/>
+The scope is defaulted to the current controller and locals to an empty Hash.</p>
+
+<p><strong>Example:</strong></p>
 
 <pre>
-class Articles < E
+class App < E
   
-  view_path 'templates'
-  engine :Slim
-  # ...
-end
+  def some_action
+    
+    render Sandbox.new(params)  # will render template within custom scope
+    
+    render :foo => :bar         # will add `foo` for local variables inside template
+    
+    render Sandbox.new(params), :foo => :bar # custom scope with additional local variables
 
-render Articles, :most_popular         # will render templates/articles/most_popular.slim
-render Articles, 'some-template.xml'   # will render templates/articles/some-template.xml.slim
+    # render given template within custom scope with additional local variables
+    render 'template-name', Sandbox.new(params), :foo => :bar
+    
+  end
+end
 </pre>
 
 
-<p><em>Scope</em> and <em>Locals</em> can be passed as consequent arguments, orderlessly.<br/>
-The scope is defaulted to the current controller and locals to an empty Hash.</p>
-
-<p>As <em>extension</em> will be used the explicitly defined extension(at class level)
+<p>As <em>extension</em> will be used the explicitly defined extension
 or the default extension of used engine.</p>
 
 <p><strong>Layout</strong></p>
 
 <ul>
 <li>If current action rendered, layout of current action will be used, if any.</li>
-<li>If custom action rendered, layout of given action will be used, if any.</li>
 <li>If an arbitrary template rendered, layout of current action will be used, if any.</li>
 </ul>
 
 
 <p><strong>Engine</strong></p>
 
-<p>As engine will be used the effective engine for current context.<br/>
-Meant engine defined for current or given action,
-or engine defined for all actions,
-or default engine - ERB.</p>
+<p>As engine will be used the effective engine for current action.</p>
 
 <p><strong>Inline rendering</strong></p>
 
-<p>If block given, the template will not be searched/rendered.<br/>
+<p>If block given, template will not be searched.<br/>
 Instead, the string returned by the block will be rendered.<br/>
 This way you'll can render data from DB directly, without saving it to a file.</p>
-
-<p><strong>=== Important ===</strong> If custom controller given, rendering methods will use the path, engine and layout set by given controller.</p>
-
-<p><strong>=== Important ===</strong> Espresso wont support custom file extensions!</p>
-
-<p>So you can not render a template like this: <code>render "template.haml"</code>.</p>
-
-<p>Instead use <code>render "template"</code> and the extension will be added automatically,
-based on extension given or computed at class level.</p>
-
-<p>Espresso will guess extension by used engine, like '.haml' for Haml, '.erb' for Erubis etc.<br/>
-If your templates uses a custom extension, set it via <code>engine_ext</code>.</p>
-
-<p>However, if you have a file with a extension that is not typical for used engine
-nor match the extension given via <code>engine_ext</code>, please consider to rename the file.</p>
-
-<p>Computing file extensions would add extra unneeded overhead.<br/>
-The probability of custom extensions are ephemeral
-and it is quite irrational to slow down an entire framework
-just to handle such a negligible probability.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='rendering-layouts'><a href='#rendering-layouts'>Rendering Layouts</a></h2>
 
-<p><code>render_layout</code> will render the layout of current(or given) action or an arbitrary layout file.</p>
+<p><code>render_layout</code> will render the layout of current action or an arbitrary layout file.</p>
 
 <p><em>Render the layout of current action</em></p>
 
@@ -906,7 +851,7 @@ render_layout { 'some string' }
 
 <pre>
 render_layout Object.new do
-    'some string'
+  'some string'
 end
 </pre>
 
@@ -915,34 +860,7 @@ end
 
 <pre>
 render_layout Object.new, :some_var => "some val" do
-    'some string'
-end
-</pre>
-
-
-<p><em>Render the layout of :news action</em></p>
-
-<pre>
-render_layout :news do
-    'some string'
-end
-</pre>
-
-
-<p><em>Render the .html layout of :news action</em></p>
-
-<pre>
-render_layout 'news.html' do
-    'some string'
-end
-</pre>
-
-
-<p><em>Render layout of :latest action of News controller</em></p>
-
-<pre>
-render_layout News, :latest do
-    'some string'
+  'some string'
 end
 </pre>
 
@@ -951,7 +869,7 @@ end
 
 <pre>
 render_layout 'layouts/master' do
-    'some string'
+  'some string'
 end
 </pre>
 
@@ -963,9 +881,9 @@ end
 <p>Any of <code>render</code>, <code>render_partial</code> and <code>render_layout</code> methods has ad hoc counterparts,
 like <code>render_haml</code>, <code>render_erb_partial</code>, <code>render_liquid_layout</code> and so on.</p>
 
-<p>Works exactly as common rendering methods except they are using a custom engine and extension.</p>
+<p>Works exactly as other rendering methods except they are using a custom engine and extension.</p>
 
-<p>Used when you need to "quickly" render a template, without any previous class-level setups.</p>
+<p>Used when you need to "quickly" render a template, without any previous setups.</p>
 
 <pre>
 render_haml        # will render the template and layout of current action using Haml engine
@@ -980,79 +898,55 @@ render_haml_l      # will render only the layout of current action using Haml en
 
 <h2 id='path-resolver'><a href='#path-resolver'>Path Resolver</a></h2>
 
-<p>Espresso looking for templates in the following way:</p>
+<p>Espresso is building the path to templates as follow:</p>
 
 <p><code>
 view path / controller's base URL / action name or given template
 </code></p>
-
-<p>Sample Example:</p>
 
 <pre>
 class Index < E
   map '/'
 
   def index
-    render_partial 'layouts/_header'
-    # will render ./templates/layouts/_header.erb as path is built like:
-    # templates(view path) + /(controller's base URL) + layouts/_header(given path)
+    render
+    # will render ./view/index.erb
   end
-end
 
-class Products < E
-  map 'products'
-
-  def index
+  def header
     render_partial 'layouts/_header'
-    # will try to render ./templates/products/layouts/_header.erb and fail cause path is built like:
-    # templates(view path) + products(controller's base URL) + layouts/_header(given path)
-  end
-end
-
-app = EApp.new :automount
-app.setup do |ctrl|
-  view_path 'templates'
-  layouts_path 'layouts'
-  layout :base
-end
-</pre>
-
-
-<p>There are 2 reasons why <code>Products#render_partial</code> is failing:</p>
-
-<ul>
-<li>real - template not found</li>
-<li>conceptual - using strings repeatedly is a Unacceptable bad practice</li>
-</ul>
-
-
-<p>Just imagine what happens if you want to change <code>layouts_path</code> from <code>layouts</code> to something else.</p>
-
-<p>You then have to search/replace all related paths in your templates!</p>
-
-<p>To sort this out, Espresso offers 2 instance methods: <code>view_path</code> and <code>layouts_path</code>
-that will return path to templates ignoring controller's base URL,
-that's it, full path to templates without controller's base URL.</p>
-
-<p>So to make previous <code>Products#render_partial</code> to work we do like this:</p>
-
-<pre>
-class Products < E
-  map 'products'
-
-  def index
-    render_partial layouts_path('_header')
-    # will render ./templates/layouts/_header.erb cause path is built like:
-    # templates(view path) + layouts(layouts path) + _header(given path)
+    # will render ./view/layouts/_header.erb
   end
 end
 </pre>
 
 
-<p><strong>Worth to note:</strong> both methods accept multiple arguments that will be joined and appended to returned path:</p>
+<p>As you can see, Espresso will automatically add file extension,
+based on value defined via <code>engine_ext</code> or engine's default extension.</p>
+
+<p>To render a template by full name, use <code>render_file</code>:</p>
 
 <pre>
-view_path 'some', 'path', 'to', 'some-file' # view/some/path/to/some-file
+class Index < E
+  map '/'
+
+  def index
+    render_file 'banners/top.xhtml' # will render ./view/banners/top.xhtml
+  end
+
+end
+</pre>
+
+
+<p>Please note that <code>render_file</code> renders templates without layout.</p>
+
+<p>It is also possible to render layouts by full name:</p>
+
+<pre>
+render_layout_file 'layouts/_header.html.haml' do
+  some content
+end
+# will render ./view/layouts/_header.html.haml
 </pre>
 
 
@@ -1068,75 +962,23 @@ When rendering templates, most time are spent at files reading and templates com
 <p>It will simply store compiled templates in memory and on consequent requests will just render them,
 avoiding filesystem calls for reading and CPU time for compiling templates.</p>
 
-<p>To use compiler you should simply pass a key/value pair to locals.<br/>
-The key should be an empty string and the value an unique ID or simply true.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre>
-render '' => true
-
-render_partial :some_action, '' => true
-
-render_partial :some_action, '' => :some_action, :foo => :bar
-
-render_file 'some/file', Object.new, '' => true
-
-render_haml "path/to/file", '' => "path/to/file"
-</pre>
-
-
-<p>To clear compiled templates call <code>clear_compiler!</code>.<br/>
-If called without arguments, it will clear all templates.<br/>
-To clear only some templates, pass their unique IDs as arguments.</p>
-
-<p><strong>Example:</strong></p>
+<p>To use compiler you should simply set <code>compiler_pool</code> at app level:</p>
 
 <pre>
 class App < E
 
-    def index
-        @banners = render_view :banners, '' => :banners
-        @ads = render_view :ads, '' => :ads
-        render '' => true
-    end
-
-    before do
-        if 'some condition occurred'
-            # updating only @banners and @ads
-            clear_compiler! :banners, :ads
-        end
-        if 'some another condition occurred'
-            # clear all templates
-            clear_compiler!
-        end
-    end
+  # actions here will use view compiler
 end
+
+app = EApp.new do
+  compiler_pool Hash.new
+  mount App
+end
+app.run
 </pre>
 
 
-<p>By using <code>clear_compiler_like!</code> you can clear only keys that match a given regexp or even array.</p>
-
-<pre>
-def index
-    @procedures = render :procedures,      '' => [user, :procedures]
-    @actions    = render :actions,         '' => [user, :actions]
-    @banners    = render_partial :banners, '' => :user_banners
-    render
-end
-
-private
-def clear_compiled_templates
-
-    # clearing [user, :procedures] and [user, :actions]
-    clear_compiler_like! [user]
-
-    # clearing any templates starting with 'user'
-    clear_compiler_like! /\Auser_/
-
-end
-</pre>
-
+<p>To clear compiled templates call <code>clear_compiler!</code>.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 

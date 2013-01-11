@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -573,7 +560,7 @@ class App < E
   map '/'
 
   def index
-    # ...
+  # ...
   end
 end
 </pre>
@@ -584,13 +571,6 @@ end
 <pre>
 App.run
 </pre>
-
-
-<h3 id='espresso-in-the-wild-'><a href='#espresso-in-the-wild-'>Espresso in the wild?</a></h3>
-
-<p><a href="http://cibox.org">CIBox</a> service are entirely built on Espresso Framework.</p>
-
-<hr/>
 
 
 <h1 id='tutorial'><a href='#tutorial'>Tutorial</a></h1>
@@ -608,11 +588,11 @@ App.run
 <p><a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#base-url">Base URL</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#canonicals">Canonicals</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#actions">Actions</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#actions-mapping">Actions Mapping</a> |
+<a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#action-mapping">Action Mapping</a> |
+<a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#action-aliases">Action Aliases</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#parametrization">Parametrization</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#format">Format</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#restful-actions">RESTful Actions</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#aliases">Aliases</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#rewriter">Rewriter</a></p>
 
 <h3 id='setup'><a href='#setup'>Setup</a></h3>
@@ -655,7 +635,7 @@ App.run
 <a href="https://github.com/espresso/espresso/blob/master/docs/ViewAPI.md#extension">Extension</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/ViewAPI.md#templates-path">Templates Path</a> |
 <a href="https://github.com/espresso/espresso/blob/master/docs/ViewAPI.md#layouts-path">Layouts Path</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/ViewAPI.md#layout">Layout</a> |</p>
+<a href="https://github.com/espresso/espresso/blob/master/docs/ViewAPI.md#layout">Layout</a></p>
 
 <br>
 
@@ -676,11 +656,9 @@ App.run
 
 <h3 id='assets'><a href='#assets'>Assets</a></h3>
 
-<p><a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#intro">Intro</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#mapper">Mapper</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#server">Server</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#helpers">Helpers</a> |
-<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#loader">Loader</a></p>
+<p><a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md">Intro</a> |
+<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#tag-helpers">Helpers</a> |
+<a href="https://github.com/espresso/espresso/blob/master/docs/Assets.md#assets-mapper">Mapper</a></p>
 
 <h3 id='crud'><a href='#crud'>CRUD</a></h3>
 
@@ -703,6 +681,13 @@ App.run
 <hr/>
 
 
+<h1 id='espresso-in-the-wild-'><a href='#espresso-in-the-wild-'>Espresso in the wild?</a></h1>
+
+<p><a href="http://cibox.org">CIBox</a> service are entirely built on Espresso Framework.</p>
+
+<hr/>
+
+
 <h1 id='highlights---motivation'><a href='#highlights---motivation'>Highlights / Motivation</a></h1>
 
 <h2 id='performance'><a href='#performance'>Performance</a></h2>
@@ -715,11 +700,11 @@ App.run
 
 <p>The overhead are calculated by dividing 1000 milliseconds to <strong>framework’s standard speed</strong>.</p>
 
-<p>The <strong>framework’s standard speed</strong> are the speed of HelloWorld app running on top of given framework.</p>
+<p>The <strong>framework’s standard speed</strong> are the speed of a "HelloWorld" app running on top of given framework.</p>
 
 <p>The <strong>framework’s standard speed</strong> means nothing by itself. It is only used to calculate the framework’s overhead.</p>
 
-<p>Tested apps will run on Thin web server and will return a trivial "Hello World!" response.</p>
+<p>Tested apps will run on <code>Thin</code> web server and will return a trivial "Hello World!" response.</p>
 
 <p>Hardware used:</p>
 
@@ -735,10 +720,10 @@ Memory: 8 GB
 <p>Test results:</p>
 
 <pre><code>---
-            Speed  Overhead  1ms-app  5ms-app  10ms-app  20ms-app  50ms-app  100ms-app
-  espresso  5518   0.18ms    847      193      98        49        19        9
-   sinatra  3629   0.28ms    783      189      97        49        19        9
-     rails  792    1.26ms    442      159      88        47        19        9
+      Speed  Overhead  1ms-app  5ms-app  10ms-app  20ms-app  50ms-app  100ms-app
+  espresso  5518   0.18ms  847    193    98    49    19    9
+   sinatra  3629   0.28ms  783    189    97    49    19    9
+   rails  792  1.26ms  442    159    88    47    19    9
 ---
 </code></pre>
 
@@ -788,7 +773,7 @@ And when i want to change a param name i have to change it in both files?</p>
 
 <pre>
 get '/book/:id' do
-    params[:id]
+  params[:id]
 end
 </pre>
 
@@ -809,7 +794,7 @@ How do i find out the currently running action?</p>
 
 <p>And why should i remember so many non-natural stuff?</p>
 
-<p>Is not Ruby powerfull enough? I guess it is:</p>
+<p>Is not Ruby powerful enough? I guess it is:</p>
 
 <pre>
 def book id
@@ -818,11 +803,11 @@ end
 </pre>
 
 
-<p>That's a regular <strong>Ruby method</strong> and a regular <strong>Espresso action</strong>.<br>
-That's also an Espresso route. Yes, the app will respond to "/book/100"<br>
+<p>That's a regular <strong>Ruby method</strong> and it's regular <strong>Espresso action</strong>.<br>
+That's also an Espresso route. Yes, the app will respond to <strong>"/book/100"</strong><br>
 And of course action params are used naturally, through method arguments(<code>id</code> rather than <code>params[:id]</code>).</p>
 
-<p>And all this offered by Ruby for free! Why to reinvent the wheel?</p>
+<p>All this offered by Ruby for free! Why to reinvent the wheel?</p>
 
 <h2 id='expressive-setup'><a href='#expressive-setup'>Expressive Setup</a></h2>
 
@@ -836,8 +821,8 @@ And of course action params are used naturally, through method arguments(<code>i
 
 <pre>
 class App < E
-    content_type :json
-    # ...
+  content_type '.json'
+  # ...
 end
 </pre>
 
@@ -851,15 +836,15 @@ end
 <pre>
 class App < E
 
-    setup :rss, :feed do
-        content_type :xml
-    end
-    # ...
+  setup :rss, :feed do
+    content_type :xml
+  end
+  # ...
 end
 </pre>
 
 
-<p>Well, what if i need some setup for some 10 actions ad another setup for another 20 actions?
+<p>Well, what if i need to setup for some 10 actions and another setup for another 20 actions?
 Should i pass 30 arguments to <code>setup</code>? I do not want to buy a new keyboard every month...</p>
 
 <p>That's simple too. Use regular expressions.</p>
@@ -869,10 +854,10 @@ Should i pass 30 arguments to <code>setup</code>? I do not want to buy a new key
 <pre>
 class App < E
 
-    setup /news/ do
-        # some setup
-    end
-    # ...
+  setup /news/ do
+    # some setup
+  end
+  # ...
 end
 </pre>
 
@@ -894,28 +879,31 @@ end
 <p>And of course when mounting, you can give a mount point.</p>
 
 <pre>
+require 'e'
+require 'e-ext' # needed for `Cms.run` and `Cms.mount` to work
+
 module Cms
 
-    class Articles < E
-        # ...
-    end
+  class Articles < E
+    # ...
+  end
 
-    class News < E
-        # ...
-    end
+  class News < E
+    # ...
+  end
 
-    class Pages < E
-        # ...
-    end
+  class Pages < E
+    # ...
+  end
 end
 
 app = Cms.mount do
-    # some setup that will run inside each controller
+  # some setup that will run inside each controller
 end
 
 # or
 app = Cms.mount do |ctrl|
-    # some setup that will run inside controllers that match `ctrl` param
+  # some setup that will run inside controllers that match `ctrl` param
 end
 
 app.run
@@ -932,22 +920,22 @@ simply prepend the corresponding verb to the action name.</p>
 <pre>
 # will respond to any request type
 def book
-    # ...
+  # ...
 end
 
 # GET
 def get_book
-    # ...
+  # ...
 end
 
 # POST
 def post_book
-    # ...
+  # ...
 end
 
 # PUT
 def put_book
-    # ...
+  # ...
 end
 
 # etc.
@@ -969,7 +957,7 @@ When rendering templates, most time are spent at reading and compiling.</p>
 <p>Espresso allow to easily skip these expensive operations by keeping compiled templates in memory
 and just render them on consequent requests.</p>
 
-<h2 id='cache'><a href='#cache'>Cache</a></h2>
+<h2 id='cache-manager'><a href='#cache-manager'>Cache Manager</a></h2>
 
 <p>If you have some expensive operations that basically return static data,
 simply put them inside <code>cache</code> block.</p>

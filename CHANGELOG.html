@@ -528,248 +528,30 @@
     </div>
     </div>
     <hr/>
-    <h2 id='global-setup'><a href='#global-setup'>Global Setup</a></h2>
+    <ul>
+<li><p>0.4 [not released yet] - First Stable Release</p>
+
+<ul>
+<li>Removing Appetite dependency</li>
+<li>Writing a new router crafted for specific Espresso needs. Also it tends to be faster than Rack::URLMap</li>
+<li>Rewriter is now tightly integrated into router</li>
+<li>Splitting codebase into <code>e-core</code> and <code>e-more</code></li>
+<li>Moved monkey-patches to e-ext</li>
+<li><code>format</code> now accepts only formats, not action names.</li>
+<li>Added <code>format_for</code> to define formats for specific action.</li>
+<li>Added <code>disable_format_for</code> to disable formats for specific action.</li>
+<li>Sprockets support</li>
+<li><code>assets_loader</code> renamed to <code>assets_mapper</code></li>
+<li>Added tag helpers like <code>js_tag</code>, <code>css_tag</code>, <code>png_tag</code> etc.</li>
+<li>Slim engine are now automatically registered without errors</li>
+<li>Dropped support for inter-controller rendering</li>
+<li>Added <code>render_file</code> method</li>
+<li>Fixed Crudifier to work well with ActiveRecord models</li>
+<li>Considerable code cleanup and refactoring. Special thanks to @mindreframer.</li>
+</ul>
+</li>
+</ul>
 
-<p>The main idea behind actions setup is to easily manipulate the action's behavior
-without touching the actions at all.</p>
-
-<p>That's allow to "remotely" control any number of actions with just few lines of code
-and manipulate their behavior without actions refactoring.</p>
-
-<p>To illustrate an example, let's suppose that all actions should return "UTF-8" charset.</p>
-
-<pre>
-class App < E
-
-  charset 'UTF-8'
-
-  # ...
-end
-</pre>
-
-
-<p>Now you can define any number of actions without bothering to add the charset inside each one.</p>
-
-<p>And when you need to change the charset returned by your actions
-simply change a single line of code at class level.</p>
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='setup-by-name'><a href='#setup-by-name'>Setup by Name</a></h2>
-
-<p>Global setup is just good for mostly trivial apps.</p>
-
-<p>But when it comes to develop more compelling apps, we need more control.</p>
-
-<p>And Espresso kindly offering it.</p>
-
-<p><strong># 1</strong> - Actions can be configured by name</p>
-
-<p><strong>Example:</strong> - all actions, but <code>:api</code> and <code>:json</code>, should return "text/plain" content type.
-<code>:api</code> and <code>:json</code> instead should return  "application/json"</p>
-
-<pre>
-class App < E
-
-  content_type '.txt'
-
-  setup :api, :json do
-    content_type '.json'
-  end
-
-  # ...
-end
-</pre>
-
-
-<p><strong># 2</strong> - Actions can also be configured by regular expressions</p>
-
-<p><strong>Example:</strong> - all actions containing "<em>js</em>" will return "application/javascript" content type</p>
-
-<pre>
-class App < E
-
-  setup /_js_/ do
-      content_type '.js'
-  end
-
-  # ...
-end
-</pre>
-
-
-<h2 id='setup-by-format'><a href='#setup-by-format'>Setup by Format</a></h2>
-
-<p><a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#format">Format</a> is a part of routing mechanism
-but it is also hugely used when it comes to setup actions.</p>
-
-<p>It turns out that setting up actions by name and regular expressions are not enough.</p>
-
-<p>We need even more control.</p>
-
-<p>Cause "/book.html" and "/book.xml" definitely may behave differently, even if they are backed by same action.</p>
-
-<p>How for ex. to tell <code>book</code> action to return some charset on "/book.html" URL
-and another one on "/book.xml" URL without touching the action itself?</p>
-
-<p>Here is where format comes in action.</p>
-
-<p><strong># 1</strong> - To add some setup only for specific format, provide action name as a string, suffixed by desired format.</p>
-
-<p><strong>Example:</strong> - make /book.xml to use <code>Nokogiri</code> engine and /book.html <code>Slim</code> engine</p>
-
-<pre>
-class App < E
-  format '.xml', '.html'
-
-  setup 'book.xml' do
-    engine :Nokogiri
-  end
-  setup 'book.html' do
-    engine :Slim
-  end
-
-  # or
-  setup :book do
-    engine :Nokogiri if xml?
-    engine :Slim     if html?
-  end
-
-  def book
-    # ...
-  end
-end
-</pre>
-
-
-<p>That's great, but useless when we have N actions to setup, cause we will have to define a setup for each action.</p>
-
-<p>That's weird.</p>
-
-<p>And here is where the format comes in action for the second time.</p>
-
-<p><strong># 2</strong> - To setup all actions that respond to some format, simply provide format without action name.</p>
-
-<p><strong>Example:</strong> - use different Cache-Control header for different formats</p>
-
-<pre>
-class App < E
-  format '.html', '.xml'
-
-  setup '.html' do
-    cache_control :public, :must_revalidate, :max_age => 600
-  end
-
-  setup '.xml' do
-      cache_control :private, :must_revalidate, :max_age => 60
-  end
-
-  # ...
-end
-</pre>
-
-
-<p>It is also possible to use format helpers to determine current format.</p>
-
-<p><strong>Example:</strong> - set engine for <code>:book</code> action depending on format:</p>
-
-<pre>
-class App < E
-  format '.html', '.xml'  # this will generate `html?` and `xml?` helpers
-
-  setup :book do
-    if html?
-      engine :Slim
-    end
-    if xml?
-      engine :Nokogiri
-    end
-    # Disclaimer: this coding style are used just for docs readability
-  end
-end
-</pre>
-
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='remote-setup'><a href='#remote-setup'>Remote Setup</a></h2>
-
-<p>Any Espresso controller or slice can be packed as a gem and then installed on any server.<br/>
-Very useful when you need distributed apps.</p>
-
-<p>And it becomes even more useful with Remote Setup.</p>
-
-<p>Say you need the same app to run some setup on Server A and another setup on Server B,
-without touching/refactor the app at all.</p>
-
-<p>Easy!</p>
-
-<p>Let's say we have a Forum app that serves /Forums base URL and returns content of ISO-8859-1 charset.</p>
-
-<p>That's ok for Server A.</p>
-
-<p>But for Server B we need it to serve /forum base URL and return UTF-8 charset.</p>
-
-<p><strong>Example:</strong> - deploying Forum app on Server B</p>
-
-<pre>
-require 'my-mega-forum-gem'
-
-run Forum.mount '/forum' {
-  charset 'UTF-8'
-}
-</pre>
-
-
-<p>That's it.</p>
-
-<p>However, passing setup proc at mount is not the only way to setup controllers.</p>
-
-<p>You can setup them all at once by using <code>app#global_setup</code> method.</p>
-
-<pre>
-module App
-  class Pages < E
-    # ...
-  end
-
-  class News < E
-    # ...
-  end
-
-  class Articles < E
-    # ...
-  end
-end
-
-app = EApp.new
-app.global_setup do
-  # here setup will run inside all controllers
-end
-app.mount App
-app.run
-</pre>
-
-
-<p>Or you can setup controllers selectively - controller name are passed as first argument:</p>
-
-<pre>
-app = EApp.new
-app.setup do |ctrl|
-  if ctrl == App::Pages
-    # here setup will run ONLY inside Pages controller
-  end
-  # here setup will run inside all controllers
-end
-app.mount App
-app.run
-</pre>
-
-
-<p>Please note that <strong>#mount should always go after #global_setup</strong>,
-otherwise global setup will have no effect.</p>
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
     <hr/>
 

@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -547,18 +534,22 @@
 
 <pre>
 class App < E
-    # ...
+  # ...
 end
 
 App.run
 
 # or
-app = App.mount
+app = App.mount do
+  # some setup
+end
 app.run
 
 # or create a new app and mount controller
 app = EApp.new
-app.mount App
+app.mount App do
+  # some setup
+end
 app.run
 </pre>
 
@@ -571,7 +562,7 @@ meant they are not under same namespace.</p>
 <p>Name can be provided as a string, symbol or regex.</p>
 
 <pre>
-app = EApp.new false
+app = EApp.new
 app.mount 'SomeController'
 app.mount 'SomeAnotherController'
 app.mount :NotAnotherController
@@ -585,27 +576,33 @@ app.run
 
 <h2 id='slices'><a href='#slices'>Slices</a></h2>
 
-<p>Wrap the app into a slice(module) and run:</p>
+<p>It is possible to wrap the app into a slice(module) and run it:</p>
 
 <pre>
+require 'e-ext' # needed for SliceName.run and SliceName.mount to work
+
 module Forum
-    class Users < E
-        # ...
-    end
-    class Posts < E
-        # ...
-    end
+  class Users < E
+    # ...
+  end
+  class Posts < E
+    # ...
+  end
 end
 
 Forum.run
 
 # or
-app = Forum.mount
+app = Forum.mount do
+  # some setup
+end
 app.run
 
 # or create an app and mount the slice
 app = EApp.new
-app.mount Forum
+app.mount Forum do
+  # some setup
+end
 app.run
 </pre>
 
@@ -618,12 +615,12 @@ app.run
 
 <pre>
 module Forum
-    class Users < E
-        # ...
-    end
-    class Posts < E
-        # ...
-    end
+  class Users < E
+    # ...
+  end
+  class Posts < E
+    # ...
+  end
 end
 
 app = Forum.mount '/forum'
@@ -651,63 +648,11 @@ app.run
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-<h2 id='inner-apps'><a href='#inner-apps'>Inner Apps</a></h2>
-
-<p>As of version 0.3.3 Espresso supports mounting of any Rack app.</p>
-
-<p>Just mount it as a regular Espresso controller.</p>
-
-<p><strong>Example:</strong> Mounting a Sinatra app:</p>
-
-<pre>
-require 'sinatra/base'
-require 'e'
-
-class Cms < Sinatra::Base
-
-  get('/') { 
-    # ...
-  }
-
-  # ...
-
-end
-
-class App < E
-  map '/'
-
-  def index
-    # ...
-  end
-
-  # ...
-end
-
-app = EApp.new do
-  
-  mount App          # this will mount App into /
-  mount Cms, '/cms'  # this will mount Sinatra app into /cms
-end
-app.run
-</pre>
-
-
-<p>And of course inner apps supports canonical mounts, just like native controllers does:</p>
-
-<pre>
-app = EApp.new do
-  
-  # ...
-  mount Cms, '/cms', '/pages'  # this will mount Sinatra app into /cms and /pages
-end
-</pre>
-
-
 <h2 id='run'><a href='#run'>Run</a></h2>
 
-<p>By default Espresso will use WEBrick server and default WEBrick port.</p>
+<p>By default Espresso will run <code>WEBrick</code> server <code>5252</code> port.</p>
 
-<p>To use another server, pass <code>:server</code> option.</p>
+<p>To run another server/port, use <code>:server</code>/<code>:port</code> options.</p>
 
 <p>If given server requires some options, pass them next to <code>:server</code> option.</p>
 
@@ -721,7 +666,7 @@ app.run :server => :Thin
 <p><strong>Example:</strong> Use EventedMongrel server with custom options</p>
 
 <pre>
-app.run :server => :EventedMongrel, :Port => 9090, :num_processors => 100
+app.run :server => :EventedMongrel, :port => 9090, :num_processors => 100
 </pre>
 
 

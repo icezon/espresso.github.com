@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -541,439 +528,184 @@
     </div>
     </div>
     <hr/>
-    <h2 id='intro'><a href='#intro'>Intro</a></h2>
+    <p>Starting with version 0.4, Espresso is using Sprockets to serve assets.</p>
 
-<p>Espresso allows you to load and serve assets with easy.</p>
-
-<p>To load a script you simply do:</p>
+<p>To enable and use this feature, simply call <code>assets_url</code> at app level:</p>
 
 <pre>
-script_tag 'script.js'
+app = EApp.new
+app.assets_url '/assets'
+app.assets.append_path 'assets'
+app.run
 </pre>
 
 
-<p>or via assets loader:</p>
+<p><strong>Note:</strong> make sure you have Sprockets installed. Espresso will require and load it automatically.</p>
+
+<p><strong>Note:</strong> Espresso will NOT add any path to Sprockets environment, so it is up to you to do this by using <code>assets.append_path</code> or <code>assets.prepend_path</code>.</p>
+
+<p><strong>Note:</strong> Sprockets environment will use app root(set via <code>root</code> at app level)
+as base path, so folders containing assets should reside in your app root.</p>
 
 <pre>
-js 'script'
-</pre>
-
-
-<p>Same for stylesheets and images:</p>
-
-<pre>
-style_tag 'style.css'
-
-img_tag 'image.png'
-</pre>
-
-
-<p>or via assets loader:</p>
-
-<pre>
-css 'style'
-
-png 'image'
-</pre>
-
-
-<p>By default assets will be loaded from current folder, that's it, <code>src</code>/<code>href</code>
-will look like <code>src="script.js"</code> / <code>href="style.css"</code></p>
-
-<p>To have them mapped to some URL, use assets mapper.</p>
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='mapper'><a href='#mapper'>Mapper</a></h2>
-
-<p><code>assets_map</code> is a method of dual meaning:</p>
-
-<ul>
-<li>it defines a baseurl for assets loader</li>
-<li>and it may instruct your app to act as an assets server</li>
-</ul>
-
-
-<p>As said above, by default assets will be loaded from current folder.</p>
-
-<p>To define a baseurl to load assets from, use <code>assets_map</code>(or <code>assets_url</code> alias) at app level:</p>
-
-<pre>
-class App &lt; E
-  map '/'
-  ...
-end
-
 app = EApp.new do
-  
-  mount App
+  assets_url '/assets'
+  assets.append_path 'assets'
+  assets.append_path 'public'
+end
+app.run
+</pre>
 
-  assets_map :assets
+
+<p><code>assets</code> method can be used to fully setup Sprockets environment:</p>
+
+<pre>
+app = EApp.new do
+  assets_url '/assets'
+  assets.compile = true
+  assets.compress = false
+  assets.js_compressor = :uglifier
+  # etc.
 end
 
 app.run
 </pre>
 
 
-<p>Now your assets will load from '/assets' baseurl.</p>
-
-<p>Example:</p>
+<p>To access assets inside controllers/templates, use <code>assets</code> method:</p>
 
 <pre>
-script_tag 'script.js'
-# or
-js 'script'
-</pre>
+class App < E
+  # ...
 
+  def some_action
+    assets['application.js'] #=> #&lt;Sprockets::BundledAsset ...&gt;
+  end
 
-<p>both will return <code>&lt;script src="/assets/script.js" ...</code></p>
-
-<p>Same for stylesheets and images:</p>
-
-<pre>
-style_tag 'style.css'
-# or
-css 'style'
-</pre>
-
-
-<p>both will return <code>&lt;link href="/assets/style.css" ...</code></p>
-
-<pre>
-img_tag 'image.png'
-# or
-png 'image'
-</pre>
-
-
-<p>both will return <code>&lt;img src="/assets/image.png" ...</code></p>
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='server'><a href='#server'>Server</a></h2>
-
-<p>The second meaning of assets mapper is to instruct your app to act as an assets server, that's it, your app will serve static files.</p>
-
-<p>For this to work simply set second argument of <code>assets_map</code> to any positive value:</p>
-
-<pre>
-app = EApp.new do
-  ...
-
-  assets_map :assets, :assets_server
 end
-</pre>
-
-
-<p>Now your app will serve files found under <code>public/</code> folder inside app root.</p>
-
-<p>So <code>&lt;script src="/assets/script.js" ...</code> will serve <code>public/script.js</code></p>
-
-<p>If your files are located under another folder inside app root,
-use <code>assets_path</code> to inform assets server about custom location:</p>
-
-<pre>
-app = EApp.new do
-  ...
-
-  assets_map :assets, :assets_server
-
-  assets_path :static
-end
-</pre>
-
-
-<p>Now your app will serve files found under <code>static/</code> folder inside app root.</p>
-
-<p>So <code>&lt;script src="/assets/script.js" ...</code> will serve <code>static/script.js</code></p>
-
-<p>If your files are located out of app root, use <code>assets_fullpath</code>:</p>
-
-<pre>
-app = EApp.new do
-  ...
-
-  assets_map :assets, :assets_server
-
-  assets_fullpath '/full/path/to/Shared-assets'
-end
-</pre>
-
-
-<p>Now your app will serve files found under <code>/full/path/to/Shared-assets/</code> folder.</p>
-
-<p>So <code>&lt;script src="/assets/script.js" ...</code> will serve <code>/full/path/to/Shared-assets/script.js</code></p>
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='helpers'><a href='#helpers'>Helpers</a></h2>
-
-<p>For now, Espresso offers 3 helper methods:</p>
-
-<ul>
-<li><code>script_tag</code></li>
-<li><code>style_tag</code></li>
-<li><code>img_tag</code></li>
-</ul>
-
-
-<p>All accepts from 1 to 2 arguments.</p>
-
-<p>Usually first argument is the file to be loaded and the second the options to be added to the tag:</p>
-
-<pre>
-script_tag 'some-file.js', :async => true, :charset => 'UTF-8'
-#=&gt; &lt;script src="some-file.js" async="true" charset="UTF-8" ...
-</pre>
-
-
-<p>You can also omit the first argument and pass file via <code>:src</code> option.</p>
-
-<p>This is useful when you need to skip assets mapper setup and load file directly.</p>
-
-<p>Let's suppose assets mapper is set to load files from <code>/assets</code> baseurl
-but we need to load a script from our CDN:</p>
-
-<pre>
-script_tag :src => 'http://some.cdn/script.js'
-#=&gt; &lt;script src="http://some.cdn/script.js" ...
-
-# without :src option
-
-script_tag 'script.js'
-#=&gt; &lt;script src="/assets/script.js" ...
-</pre>
-
-
-<p>Same for rooted URLs inside your app.</p>
-
-<p>Let's suppose baseurl is set to <code>/vendor</code> but we need to load a stylesheet from root:</p>
-
-<pre>
-style_tag :src => '/themes/black.css'
-#=&gt; &lt;link href="/themes/black.css" ...
-
-# without :src option
-
-style_tag 'bootstrap/bootstrap.css'
-#=&gt; &lt;link href="/vendor/bootstrap/bootstrap.css" ...
-</pre>
-
-
-<p>Same when you need to load a file from current folder.</p>
-
-<p>Let's suppose baseurl is set to <code>/static</code> but we need to load a image from current folder:</p>
-
-<pre>
-img_tag :src => 'banner.png'
-#=&gt; &lt;img src="banner.png" ...
-
-# without :src option
-
-img_tag 'banner.png'
-#=&gt; &lt;img src="/static/banner.png" ...
 </pre>
 
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-<h2 id='loader'><a href='#loader'>Loader</a></h2>
+<h2 id='tag-helpers'><a href='#tag-helpers'>Tag Helpers</a></h2>
 
-<p>Assets loader allow to save time and space
-by avoiding repetitive and redundant path typing.</p>
-
-<p>It is like a mapper for a local set of assets.</p>
-
-<p>Let's suppose we need to load N files from <code>/assets/vendor</code>
-and another M files from <code>/assets/app</code></p>
-
-<p>Then we set baseurl to <code>/assets</code> via <code>assets_map</code> and loading files from <code>vendor/</code> and <code>app/</code>:</p>
+<p>Espresso offers some useful helpers aimed to easily create HTML tags:</p>
 
 <pre>
-app = EApp.new
-  ...
+js_tag :application
+#=> &lt;script src="/assets/application.js" ...
 
-  assets_map :assets
+css_tag :application
+#=> &lt;link href="/assets/application.css" ...
+</pre>
+
+
+<p>Also helpers for images provided:</p>
+
+<pre><code>- jpg_tag
+- jpeg_tag
+- png_tag
+- gif_tag
+- tif_tag
+- tiff_tag
+- bmp_tag
+- svg_tag
+- ico_tag
+- xpm_tag
+- icon_tag
+</code></pre>
+
+<p>Tag helpers will use assets URL as prefix:</p>
+
+<pre>
+# --- app.rb ---
+class App < E
+  # ...
+
+  def index
+    render
+  end
 end
 
-# in templates:
-
-script_tag 'vendor/jquery.js'
-script_tag 'vendor/bootstrap/js/bootstrap.js'
-style_tag  'vendor/bootstrap/css/bootstrap.css'
-
-script_tag 'vendor/html5-boilerplate/js/main.js'
-style_tag  'vendor/html5-boilerplate/css/main.css'
-
-script_tag 'app/js/boot.js'
-script_tag 'app/js/setup.js'
-script_tag 'app/js/app.js'
-style_tag  'app/css/theme.css'
-</pre>
-
-
-<p>This will work well, but it is cumbersome.</p>
-
-<p>Assets loader will let us do the same with much less code:</p>
-
-<pre>
-asl = assets_loader :vendor
-
-asl.js 'jquery'
-
-asl.cd  :bootstrap
-asl.js  'js/bootstrap'
-asl.css 'css/bootstrap'
-
-asl.cd  '../html5-boilerplate'
-asl.js  'js/main'
-asl.css 'css/main'
-
-
-asl = assets_loader :app
-
-asl.cd 'js'
-asl.js 'boot'
-asl.js 'setup'
-asl.js 'app'
-
-asl.cd  '../css'
-asl.css 'theme'
-</pre>
-
-
-<p>Or even shorter with blocks:</p>
-
-<pre>
-assets_loader :vendor do
-
-  js 'jquery'
-
-  cd  :bootstrap
-  js  'js/bootstrap'
-  css 'css/bootstrap'
-
-  cd  '../html5-boilerplate'
-  js  'js/main'
-  css 'css/main'
+app = EApp.new do
+  assets_url '/public'
 end
+app.run
 
-assets_loader :app do
+# --- view/index.erb ---
 
-  cd 'js'
-  js 'boot'
-  js 'setup'
-  js 'app'
+js_tag :ui
+# =&gt; &lt;script src="/public/ui.js" ...
 
-  cd  '../css'
-  css 'theme'
-end
+png_tag 'images/header'
+# =&gt; &lt;img src="/public/images/header.png"
 </pre>
 
 
-<p>You can also pass multiple files as arguments:</p>
+<p>If you need to load some asset directly, without assets URL prefix, use <code>:src</code> option:</p>
 
 <pre>
-assets_loader :app do
+js_tag :src =&gt; "/jquery"
+# =&gt; &lt;script src="/jquery.js" ...
 
-  cd 'js'
-  js :boot, :setup, :app
-end
-#=&gt; &lt;script src="/app/js/boot.js" ...
-#=&gt; &lt;script src="/app/js/setup.js" ...
-#=&gt; &lt;script src="/app/js/app.js" ...
+css_tag :src =&gt; "http://my.cdn/theme"
+#=> &lt;link href="http://my.cdn/theme.css" ...
 </pre>
 
 
-<p>Blocks will automatically return a string containing generated tags.</p>
+<p><strong>Worth to note</strong> that assets mapping can be used without assets being served by Sprockets.</p>
 
-<p>Each tag ending in <code>\n</code> character.</p>
-
-<p>If you need tags returned as an array, without <code>\n</code> character at the end, send <code>to_a</code> to the block:</p>
-
-<pre>
-tags = assets_loader :app do
-
-  cd 'js'
-
-  js :boot, :setup, :app
-end.to_a
-
-# joining and displaying tags
-
-tags.join("\n  \n")
-</pre>
-
-
-<p><strong>Worth to note</strong> that assets loader can skip assets mapper setup,
-that's it, you can load assets from any location.</p>
-
-<p>This will basically work for locations starting with:</p>
-
-<ul>
-<li>a protocol: <code>http://</code> <code>https://</code>  etc.</li>
-<li>a slash: <code>/</code></li>
-<li>a dot slash notation: <code>./</code> meant to load assets from current folder</li>
-</ul>
-
-
-<p><strong>Example:</strong> load assets from <code>http://my.cdn</code>, regardless assets mapper setup:</p>
-
-<pre>
-assets_loader 'http://my.cdn' do
-
-  js 'jquery'
-
-  cd  :bootstrap
-  js  'js/bootstrap'
-  css 'css/bootstrap'
-
-  cd  '../html5-boilerplate'
-  js  'js/main'
-  css 'css/main'
-end
-</pre>
-
-
-<p><strong>Example:</strong> load assets from current folder, regardless assets mapper setup:</p>
-
-<pre>
-assets_loader './app' do
-
-  cd 'js'
-  js 'boot'
-  js 'setup'
-  js 'app'
-
-  cd  '../css'
-  css 'theme'
-end
-</pre>
-
-
-<p><strong>And that's not all.</strong></p>
-
-<p>You can skip both assets mapper and assets loader setup if you need.</p>
-
-<p>For this simply pass <code>:src</code> option to any of <code>js</code>, <code>css</code>, <code>img</code> methods.</p>
+<p>So, when you need to map assets to some URL, so tag helpers will be
+automatically prefixed, but you do not need Sprockets,<br>simply set second
+argument to <code>false</code> when using <code>assets_url</code>, or its alias - <code>assets_map</code>:</p>
 
 <pre>
 app = EApp.new do
-  ...
-
-  assets_map '/assets'
+  assets_url '/assets', false
 end
+</pre>
 
-# in templates:
 
-assets_loader '/vendor' do
+<p>Now assets are mapped to "/assets" and you can use tag helpers without
+being bothered with Sprockets installation/configuration.</p>
 
-  js 'jquery'
-  #=&gt; &lt;script src="/assets/vendor/jquery.js" ...
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-  js :src => '/master'
-  #=&gt; &lt;script src="/master.js" ...
-end
+<h2 id='assets-mapper'><a href='#assets-mapper'>Assets Mapper</a></h2>
+
+<p>Sprockets is doing a great job at loading requirements.</p>
+
+<p>But sometimes you need to load assets from templates rather from Sprockets.</p>
+
+<p><code>assets_mapper</code> allow to avoid repetitive path using when loading assets.</p>
+
+<p><strong>Example:</strong> - long way:</p>
+
+<pre>
+js_tag  'vendor/jquery'
+
+js_tag  'vendor/bootstrap/js/bootstrap'
+css_tag 'vendor/bootstrap/css/bootstrap'
+
+js_tag  'vendor/select2/select2.min'
+css_tag 'vendor/select2/select2'
+</pre>
+
+
+<p><strong>Example:</strong> - using <code>assets_mapper</code></p>
+
+<pre>
+assets_mapper :vendor do
+  js_tag  'jquery'
+  
+  cd 'bootstrap'
+  js_tag  'js/bootstrap'
+  css_tag 'css/bootstrap'
+  
+  cd '../select2'
+  js_tag  'select2.min'
+  css_tag 'select2'
 </pre>
 
 

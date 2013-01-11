@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -551,7 +538,7 @@
 
 <pre>
 def hello
-    "Hello World!"
+  "Hello World!"
 end
 </pre>
 
@@ -576,26 +563,26 @@ Action names can also be given as regular expressions.</p>
 <pre>
 class Pages < E
 
-    # setup for all actions
-    charset 'UTF-8'
+  # setup for all actions
+  charset 'UTF-8'
 
-    # setup for `rss` action
-    setup :rss do
-        content_type '.rss'
-    end
+  # setup for `rss` action
+  setup :rss do
+    content_type '.rss'
+  end
 
-    def latest
-        # ...
-    end
+  def latest
+    # ...
+  end
 
-    def rss
-        # ...
-    end
+  def rss
+    # ...
+  end
 end
 </pre>
 
 
-<p>That's it, controllers are usual Ruby classes with inheritance from Espresso class.</p>
+<p>That's it, controllers are usual Ruby classes with inheritance from <code>E</code> class.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -605,7 +592,7 @@ end
 
 <p>The basic setup is, again, base URL. It is used by all controllers.</p>
 
-<p>Other setups are controller-specific and ban be set for N or all controllers.</p>
+<p>Other setups are controller-specific and can be set for N or all controllers.</p>
 
 <p>A slice is a usual Ruby module containing Espresso controllers.<br/>
 It can be mounted under any path that will serve as base URL for all controllers inside.</p>
@@ -615,20 +602,23 @@ It can be mounted under any path that will serve as base URL for all controllers
 <pre>
 module Cms
 
-    class Articles < E
-        # ...
-    end
+  class Articles < E
+    # ...
+  end
 
-    class News < E
-        # ...
-    end
+  class News < E
+    # ...
+  end
 
-    class Pages < E
-        # ...
-    end
+  class Pages < E
+    # ...
+  end
 end
 
 app = Cms.mount '/cms'
+# or just `Cms.mount` to mount the slice into / and serve
+# "/articles", "/news" and "/pages" URLs
+
 app.run
 </pre>
 
@@ -639,74 +629,49 @@ app.run
 Then we simply do like this:</p>
 
 <pre>
-app = Cms.mount '/cms' do
-    engine :Haml
+app = MySlice.mount do
+  engine :Haml
 end
 app.run
 </pre>
 
 
-<p><strong>Worth to Note</strong> - when some controller has own setup, the slice will NOT implicitly override it.</p>
-
-<p><strong>Example:</strong> - <code>News</code> and <code>Pages</code> will use Haml engine, <code>Articles</code> will use Erubis instead</p>
-
-<pre>
-module Cms
-
-    class Articles < E
-        engine :Erubis
-        # ...
-    end
-
-    class News < E
-        # ...
-    end
-
-    class Pages < E
-        # ...
-    end
-end
-
-app = Cms.mount '/cms' do
-    engine :Haml
-end
-
-app.run
-</pre>
-
-
-<p>To override some setup for some controller, use bang methods.<br/>
-This will explicitly instruct slice to override controller's setup.</p>
-
-<p>Refering to the example above, we can override engine for <code>Articles</code> controller by this:</p>
+<p>When you need to setup only a specific controller,
+use the mount block with a single param that will be set to the controller
+actually being configured.</p>
 
 <pre>
-app = Cms.mount '/cms' do
-    engine! :Haml
-end
-</pre>
-
-
-<p>When you need to setup only some specific controller,
-use the mount block with a single param that will be set to the controller actually being configured.</p>
-
-<pre>
-app = Cms.mount '/cms' do |ctrl|
-    engine! :ERB if ctrl == Cms::Articles
+app = MySlice.mount do |ctrl|
+  engine :ERB if ctrl == Articles
 end
 </pre>
 
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
+<h2 id='applications'><a href='#applications'>Applications</a></h2>
+
+<p>Applications are meant to bundle, setup and run controllers and slices.</p>
+
+<p>To create a new Espresso application use <code>EApp</code> class:</p>
+
+<pre>
+class MyController < E
+  # ...
+end
+
+app = EApp.new
+app.mount MyController
+app.run
+</pre>
+
+
 <h2 id='mvc-'><a href='#mvc-'>MVC?</a></h2>
 
-<p>Though you can create pure MVC applications by using Espresso Framework,
+<p>Though you can create MVC applications by using Espresso Framework,
 it does not actually impose any design patterns.</p>
 
 <p>You are the creator and you are free to choose how to develop your app.</p>
-
-<p>The "Controller" term in Espresso Framework does not necessarily refers to the "Controller" term in MVC.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -715,13 +680,6 @@ it does not actually impose any design patterns.</p>
 <p>Espresso by itself does not deal with models, migrations etc.</p>
 
 <p>It is the responsibility of the ORM you choose to use.</p>
-
-<p>The only way Espresso interacts with models is through the <code>CRUD</code> helper.<br/>
-It will automatically map HTTP requests to corresponding methods in given model so items are created/updated/deleted seamlessly. <a href="http://espresso.github.com/CRUD.html">Details here</a></p>
-
-<p>Also it is planned to create a gem apart that will generate a generic Espresso project.</p>
-
-<p>The project will presumably contain rake/thor tasks for creating/migrating models.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 

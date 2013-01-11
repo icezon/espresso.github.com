@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -555,26 +542,22 @@
 
 <pre>
 class App < E
-    map '/books'
+  map '/books'
 
-    def read
-        # ...
-    end
+  def read
+    # ...
+  end
 
-    def test
-        route :read
-        #=> /books/read
-    end
+  def test
+    route :read #=> /books/read
+  end
 end
 
-App.route
-#=> /
+App.route #=> /
 
-App.route :read
-#=> /books/read
+App.route :read  #=> /books/read
 
-App.route :blah
-#=> /books/blah
+App.route :blah  #=> /books/blah
 </pre>
 
 
@@ -585,23 +568,20 @@ App.route :blah
 <pre>
 class News < E
 
-    def index
-        route :latest___items, 100
-        #=> /news/latest-items/100
-    end
+  def index
+    route :latest___items, 100 #=> /news/latest-items/100
+  end
 
-    def latest___items ipp = 10, order = 'asc'
-    end
+  def latest___items ipp = 10, order = 'asc'
+    # ...
+  end
 end
 
-News.route
-#=> /news
+News.route #=> /news
 
-News.route :latest___items
-#=> /news/latest-items
+News.route :latest___items #=> /news/latest-items
 
-News.route :latest___items, 20, :desc
-#=> /news/latest-items/20/desc
+News.route :latest___items, 20, :desc #=> /news/latest-items/20/desc
 </pre>
 
 
@@ -610,12 +590,10 @@ News.route :latest___items, 20, :desc
 <p><strong>Example:</strong></p>
 
 <pre>
-route :read, :var => 'val'
-#=> /read?var=val
+route :read, :var => 'val' #=> /read?var=val
 
 # nested params
-route :view, :var => ['1', '2', '3']
-#=> /view?var[]=1&var[]=2&var[]=3
+route :view, :var => ['1', '2', '3'] #=> /view?var[]=1&var[]=2&var[]=3
 
 route :open, :vars => {:var1 => '1', :var2 => '2'}
 #=> /open?vars[var1]=1&vars[var2]=2
@@ -629,12 +607,12 @@ If action does not support given format, it will simply be used as a part of URL
 
 <pre>
 class Rss < E
-    map :reader
-    format :html, :xml
+  map :reader
+  format :html, :xml
 
-    def mini___news
-        # ...
-    end
+  def mini___news
+    # ...
+  end
 end
 
 Rss.route :mini___news
@@ -662,17 +640,16 @@ so you do not need to remove format manually.</p>
 
 <pre>
 class App < E
-    map '/'
-    format :html
+  map '/'
+  format :html
 
-    def read item = nil
-        # on /read                item == nil
-        # on /read/news           item == "news"
-        # on /read/book.html      item == "book"
-        # on /read/100.html       item == "100"
-        # on /read/etc.html       item == "etc"
-        # on /read/blah.xml       item == "blah.xml"
-    end
+  def read item = nil
+    # on /read              item == nil
+    # on /read/news         item == "news"
+    # on /read/book.html    item == "book", not "book.html"
+    # on /read/100.html     item == "100", not "100.html"
+    # on /read/blah.xml     item == "blah.xml", cause ".xml" format not served
+  end
 end
 
 App.route :read, 'book.html'
@@ -697,31 +674,31 @@ App.route :read, 'blah.xml'
 
 <pre>
 class Index < E
-    map :cms
-    format :html
+  map :cms
+  format :html
 
-    def read
-    end
+  def read
+  end
 
-    def quick___reader
-    end
+  def quick___reader
+  end
 
-    def test
-        self[:read]
-        #=> /cms/read
+  def test
+    self[:read]
+    #=> /cms/read
 
-        self[:quick___reader]
-        #=> /cms/quick-reader
+    self[:quick___reader]
+    #=> /cms/quick-reader
 
-        self['quick___reader.html']
-        #=> /cms/quick-reader.html
+    self['quick___reader.html']
+    #=> /cms/quick-reader.html
 
-        self['quick___reader.json']
-        #=> nil
+    self['quick___reader.json']
+    #=> nil
 
-        self[:blah]
-        #=> nil
-    end
+    self[:blah]
+    #=> nil
+  end
 end
 
 Index[:read]
@@ -751,12 +728,12 @@ Index[:blah]
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    def test
-        # on /test?foo=bar  params[:foo] == "bar"
-        # ...
-    end
+  def test
+    # on /test?foo=bar  params[:foo] == "bar"
+    # ...
+  end
 end
 </pre>
 
@@ -765,32 +742,34 @@ end
 
 <h2 id='passing-control'><a href='#passing-control'>Passing Control</a></h2>
 
-<p>To pass control to another action or even app, use <code>pass</code></p>
+<p>To pass control to another action or controller, use <code>pass</code>.</p>
 
-<p><strong>Example:</strong> - Pass controll to :archived action if page id is less than 100_000</p>
+<p><strong>Example:</strong> - Pass control to :archived action if page id is less than 100_000</p>
 
 <pre>
 class App < E
 
-    def index id
-        id = id.to_i
-        pass :archived if id < 100_000
-        # ...
-    end
+  def index id
+    id = id.to_i
+    pass :archived if id < 100_000
+    #
+    # code here will be executed only when id > 100_000
+    #
+  end
 end
 </pre>
 
 
-<p><strong>Example:</strong> - Pass controll to :json action if browser accepts JSON.
+<p><strong>Example:</strong> - Pass control to :json action if browser accepts JSON.
 If some params given, they will be passed as arguments to destination action.</p>
 
 <pre>
 class App < E
 
-    def index
-        pass(:json, params[:type], params[:id]) if accept?(/json/)
-        # ...
-    end
+  def index
+    pass(:json, params[:type], params[:id]) if accept?(/json/)
+    # ...
+  end
 
 end
 </pre>
@@ -800,7 +779,7 @@ end
 
 <pre>
 def index
-    pass :some_action, :some_arg, :foo => :bar
+  pass :some_action, :some_arg, :foo => :bar
 end
 </pre>
 
@@ -812,19 +791,30 @@ end
 <pre>
 class News < E
 
-    def index id, page = 1
-        # ...
-    end
+  def index id, page = 1
+    # ...
+  end
 end
 
 class Index < E
-    map '/'
+  map '/'
 
-    def index
-        pass News, :index if params[:type] == 'news'
-        # ...
-    end
+  def index
+    pass News, :index if params[:type] == 'news'
+    # ...
+  end
 end
+</pre>
+
+
+<p>By default, a GET request will be issued.</p>
+
+<p>To use another request method, append it to the used method.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+pass_via_post :some_action
 </pre>
 
 
@@ -836,44 +826,51 @@ end
 
 <p>This is easily done by using <code>fetch</code>.</p>
 
-<p>Basically, this same as <code>pass</code> except it returns the body instead of halting request processing.</p>
+<p>Basically, this is same as <code>pass</code> except it returns the body instead of halting request processing.</p>
 
-<p><code>fetch</code> will execute the given action or block inside current or given app and returning the body.<br>
-If block given, it will be executed instead of given action.<br>
-Please note that the action is required even when block given.</p>
+<p><code>fetch</code> will execute some action inside current or given controller and returning the body.</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
 class Store < E
 
-    def products
-        @latest_blog_posts = fetch(Blog, :latest)
-        # ...
-    end
+  def products
+    @latest_blog_posts = fetch(Blog, :latest)
+    # ...
+  end
 
-    def featured_products
-        # ...
-    end
+  def featured_products
+    # ...
+  end
 end
 
 class Blog < E
 
-    def index
-        @featured_products = fetch(Store, :featured_products)
-        # ...
-    end
+  def index
+    @featured_products = fetch(Store, :featured_products)
+    # ...
+  end
 end
 </pre>
 
 
 <p>If you need status code and/or headers, use <code>invoke</code> instead, which will return a Rack response Array.</p>
 
+<p>It is also possible to use a request method other than default GET.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre>
+fetch_via_post :some_action
+</pre>
+
+
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='halt'><a href='#halt'>Halt</a></h2>
 
-<p><code>halt</code> will interrupt any process and send an arbitrary resopnse to browser.</p>
+<p><code>halt</code> will interrupt any process and send an arbitrary response to browser.</p>
 
 <p>It accepts from 0 to 3 arguments.<br>
 If argument is a hash, it is added to headers.<br>
@@ -886,8 +883,8 @@ Any other arguments are treated as body.</p>
 
 <pre>
 def index
-    halt 'Hit the Road Jack' if SomeHelper.malicious_params?(env)
-    # ...
+  halt 'Hit the Road Jack' if SomeHelper.malicious_params?(env)
+  # ...
 end
 </pre>
 
@@ -896,11 +893,11 @@ end
 
 <pre>
 def index
-    begin
-        # some logic
-    rescue => e
-        halt 500, exception_to_human_error(e)
-    end
+  begin
+    # some logic
+  rescue => e
+    halt 500, exception_to_human_error(e)
+  end
 end
 </pre>
 
@@ -909,9 +906,9 @@ end
 
 <pre>
 def news
-    if params['return-rss']
-        halt rssify(@items), 'Content-Type' => mime_type('.rss')
-    end
+  if params['return-rss']
+    halt rssify(@items), 'Content-Type' => mime_type('.rss')
+  end
 end
 </pre>
 
@@ -920,7 +917,7 @@ end
 
 <pre>
 def download
-    halt [200, {'Content-Disposition' => "attachment; filename=some-file"}, some_IO_instance]
+  halt [200, {'Content-Disposition' => "attachment; filename=some-file"}, some_IO_instance]
 end
 </pre>
 
@@ -933,13 +930,13 @@ end
 
 <p>To redirect with status code 301 use <code>permanent_redirect</code>.</p>
 
-<p>To wait untill request processed use <code>delayed_redirect</code> or <code>deferred_redirect</code>.</p>
+<p>To wait until request processed, use <code>delayed_redirect</code> or <code>deferred_redirect</code>.</p>
 
-<p>If an exisitng action passed as first argument, it will use the route of given action for location.</p>
+<p>If an existing action passed as first argument, it will use the route of given action for location.</p>
 
-<p>If first argument is a valid Espresso controller, it will use given app's setup to build path.</p>
+<p>If first argument is a valid Espresso controller, it will used setup to build the path.</p>
 
-<p><strong>Example:</strong> - Basic redirect with hardcoded location(bad practice way in most cases)</p>
+<p><strong>Example:</strong> - Basic redirect with hardcoded location(bad practice in most cases)</p>
 
 <pre>
 redirect '/some/path'
@@ -951,15 +948,15 @@ redirect '/some/path'
 <pre>
 class Articles < E
 
-    def index
-        redirect route                 # => /articles
-        redirect :read, 100            # => /articles/read/100
-        redirect News                  # => /news
-        redirect News, :read, 100      # => /news/read/100
-    end
+  def index
+    redirect route         # => /articles
+    redirect :read, 100      # => /articles/read/100
+    redirect News          # => /news
+    redirect News, :read, 100    # => /news/read/100
+  end
 
-    def read id
-    end
+  def read id
+  end
 end
 </pre>
 
@@ -974,8 +971,8 @@ end
 
 <pre>
 def index
-    # ...
-    reload
+  # ...
+  reload
 end
 </pre>
 
@@ -984,8 +981,8 @@ end
 
 <pre>
 def index
-    # ...
-    reload :some => 'param', :some_another => 'param'
+  # ...
+  reload :some => 'param', :some_another => 'param'
 end
 </pre>
 
@@ -996,28 +993,28 @@ end
 
 <p>Espresso allow to set error handlers that can be used to throw errors with desired status code and body.</p>
 
-<p>When setting error handler, you should provide status code and the proc that will generate the body.<br>
+<p>When setting error handler, you should provide status code and a proc that will generate the body.<br>
 The proc may accept an argument. That will be the error message.</p>
 
 <p>When using handler, the only required argument is status code.<br>
-If error message given as 2nd argument, it will be passed to error handler proc as first argument.</p>
+If error message given as 2nd argument, it will be passed to the error handler proc as first argument.</p>
 
 <p><strong>Example:</strong> - Setting and using 404 error handler</p>
 
 <pre>
 class News < E
 
-    error 404 do |message|
-        "Some Error Occurred: #{ message }"
-    end
+  error 404 do |message|
+    "Some Error Occurred: #{ message }"
+  end
 
-    def index id
-      @page = PageModel.first(:id => id)
-      @page || error(404, "Page Not Found, sad...")
-               # will return 404 status code with body
-               # "Some Error Occurred: Page Not Found, sad..."
-      # ...
-    end
+  def index id
+    @page = PageModel.first(:id => id)
+    @page || error(404, "Page Not Found, sad...")
+         # will return 404 status code with body
+         # "Some Error Occurred: Page Not Found, sad..."
+    # ...
+  end
 end
 </pre>
 
@@ -1027,17 +1024,17 @@ end
 <pre>
 class News < E
 
-    error 500 do | exception |
-        "Fatal Error Occurred: #{ exception }"
-    end
-    # now if you actions(or hooks) raise an exception, 
-    # it will be rescued and passed to your error handler.
+  error 500 do |exception|
+    "Fatal Error Occurred: #{ exception }"
+  end
+  # now if yous actions(or hooks) raise an exception,
+  # it will be rescued and passed to your error handler.
 
-    def index id
-        some risky code here
-    end
-    # will return 500 status code with body
-    # "Fatal Error Occurred: undefined local variable or method `here'"
+  def index id
+    some risky code here
+  end
+  # will return 500 status code with body
+  # "Fatal Error Occurred: undefined local variable or method `here'"
 end
 </pre>
 
@@ -1047,14 +1044,14 @@ end
 <pre>
 class App < E
 
-    error 404 do
-        "Ouch... something weird happened or you just hitted a wrong URL..."
-    end
+  error 404 do
+    "Ouch... something weird happened or you just visited a wrong URL..."
+  end
 
-    def page id
-        error(404) unless @page = PageModel.first(:id => id)
-        # ...
-    end
+  def page id
+    error(404) unless @page = PageModel.first(:id => id)
+    # ...
+  end
 end
 </pre>
 
@@ -1070,57 +1067,57 @@ end
 <pre>
 class App < E
 
-    before do
-        @started_at = Time.now.to_f
-    end
+  before do
+    @started_at = Time.now.to_f
+  end
 
-    after do
-        puts " - #{ action } consumed #{ Time.now.to_f - @started_at } milliseconds"
-    end
+  after do
+    puts " - #{ action } consumed #{ Time.now.to_f - @started_at } milliseconds"
+  end
 
-    # ...
+  # ...
 end
 </pre>
 
 
-<p>To set callbacks only for specific actions, use <code>before</code>/<code>after</code> inside <code>setup</code>.</p>
+<p>To set callbacks only for specific actions, use actions names as arguments(matchers).</p>
 
 <p><strong>Example:</strong> - Extract item from db only before :edit, :update and :delete actions</p>
 
 <pre>
 class App < E
 
-    setup :edit, :update, :delete do
-        before { @item = Model.first(:id => action_params[:id].to_i) }
-    end
+  before :edit, :update, :delete do
+    @item = Model.first(:id => action_params[:id].to_i)
+  end
 
-    def edit id
-        # ...
-    end
+  def edit id
+    # ...
+  end
 
-    def update id
-        # ...
-    end
+  def update id
+    # ...
+  end
 
-    def delete id
-        # ...
-    end
+  def delete id
+    # ...
+  end
 end
 </pre>
 
 
-<p>Callbacks will be executed in the order was added.<br>
-To change the calling order, use :priority option.<br>
-The callback with highest priority will run first.</p>
+<p>Also regular expressions can be used as arguments(matchers).</p>
 
-<p> <strong>Example:</strong> - Making sure this will run before any other hooks by setting priority to 1000(with condition there are no hooks with higher priority)</p>
+<p><strong>Example:</strong> - any action containing "<em>js</em>" in its name will respond with "application/javascript" Content-Type</p>
 
 <pre>
-    before :priority => 1000 do
-        # ...
-    end
+before /_js_/ do
+  content_type '.js'
+end
 </pre>
 
+
+<p><strong>Please Note</strong> that <code>before</code> is just an alias for <code>setup</code>.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -1134,16 +1131,14 @@ The callback with highest priority will run first.</p>
 </ul>
 
 
-<p>To require authorization only for specific actions, use <code>auth</code> inside <code>setup</code>.</p>
-
-<p><strong>Example:</strong> - All actions under Admin controller will require(Basic) authorization</p>
+<p><strong>Example:</strong> - All actions under Admin controller will require Basic authorization</p>
 
 <pre>
 class Admin < E
 
-    auth do |user, pass|
-        [user, pass] == ['admin', 'somePasswd']
-    end
+  auth do |user, pass|
+    [user, pass] == ['admin', 'somePasswd']
+  end
 end
 </pre>
 
@@ -1153,15 +1148,15 @@ end
 <pre>
 class MyBlog < E
 
-    setup :my_bikini_photos do
-        auth :my_bikini_photos do |user, pass|
-            user == "admin" && pass == "super-secret-password"
-        end
+  setup :my_bikini_photos do
+    auth :my_bikini_photos do |user, pass|
+      user == "admin" && pass == "super-secret-password"
     end
+  end
 
-    def my_bikini_photos
-        # HTML containing top secret photos
-    end
+  def my_bikini_photos
+    # HTML containing top secret photos
+  end
 end
 </pre>
 
@@ -1170,19 +1165,19 @@ end
 
 <pre>
 module Admin
-    class Products < E
-        # ...
-    end
-    class Orders < E
-        # ...
-    end
+  class Products < E
+    # ...
+  end
+  class Orders < E
+    # ...
+  end
 end
 
 app = Admin.mount do
-    digest_auth do |user|
-        users = { 'admin' => 'password' }
-        users[user]
-    end
+  digest_auth do |user|
+    users = { 'admin' => 'password' }
+    users[user]
+  end
 end
 app.run
 </pre>
@@ -1196,13 +1191,13 @@ app.run
 
 <p>Sessions are enabled at app level and by default can be stored in memory, cookies or memcache.</p>
 
-<p>You can of course use any Rack session adapter, for example rack-session-mongo.</p>
+<p>You can of course use any Rack session adapter, for example <code>rack-session-mongo</code>.</p>
 
 <p><strong>Example:</strong> - Keeping sessions in memory</p>
 
 <pre>
 class App < E
-    # ...
+  # ...
 end
 app = App.mount
 app.session :memory
@@ -1214,7 +1209,7 @@ app.run
 
 <pre>
 class App < E
-    # ...
+  # ...
 end
 app = App.mount
 app.session :cookies
@@ -1226,7 +1221,7 @@ app.run
 
 <pre>
 class App < E
-    # ...
+  # ...
 end
 app = App.mount
 app.session :memcache
@@ -1247,7 +1242,7 @@ $ gem install rack-session-mongo
 
 <pre>
 class App < E
-    # ...
+  # ...
 end
 
 require 'rack/session/mongo'
@@ -1335,16 +1330,14 @@ cookies.delete 'cookie-name'
 
 <h2 id='content-type'><a href='#content-type'>Content Type</a></h2>
 
-<p>Can be set at class and/or instance level.</p>
-
 <p><strong>Example:</strong> - Setting RSS content type at class level, for all actions</p>
 
 <pre>
 class Rss < E
 
-    content_type '.rss'
+  content_type '.rss'
 
-    # ...
+  # ...
 end
 </pre>
 
@@ -1354,25 +1347,22 @@ end
 <pre>
 class Rss < E
 
-    setup :feed, :read do
-        content_type '.rss'
-    end
+  setup :feed, :read do
+    content_type '.rss'
+  end
 end
 </pre>
 
 
-<p>To set content type at instance level, you should always use <code>content_type!</code>,
-cause <code>content_type</code> will only return the content type of current request.</p>
-
-<p><strong>Example:</strong> Setting content type at instance level</p>
+<p><strong>Example:</strong> Setting content type inside action</p>
 
 <pre>
 class App < E
 
-    def users
-        content_type!('.json') if accept?(/json/)
-        # ...
-    end
+  def users
+    content_type('.json') if accept?(/json/)
+    # ...
+  end
 end
 </pre>
 
@@ -1381,21 +1371,22 @@ end
 
 <h2 id='charset'><a href='#charset'>Charset</a></h2>
 
-<p>Updating Content-Type header by adding specified charset.</p>
+<p>Updating <code>Content-Type</code> header by adding specified charset.</p>
 
 <p>Can be set exactly as Content-Type, at class and/or instance level.</p>
 
-<p><strong>Important:</strong> - <code>charset</code> will update only the header, so make sure that returned body is of same charset as header, if that needed at all.</p>
+<p><strong>Important:</strong> - <code>charset</code> will update only the header,
+so make sure that returned body is of same charset as header, if that needed at all.</p>
 
 <pre>
 class App < E
-    charset 'UTF-8'
+  charset 'UTF-8'
 
-    setup /_jp\Z/ do    # setting JIS charset for actions ending in _jp
-        charset 'Shift_JIS-2004'
-    end
+  setup /_jp\Z/ do  # setting JIS charset for actions ending in _jp
+    charset 'Shift_JIS-2004'
+  end
 
-    # ...
+  # ...
 end
 </pre>
 
@@ -1435,9 +1426,9 @@ end
 
 <pre>
 class App < E
-    cache_control :private, :max_age => 60
+  cache_control :private, :max_age => 60
 
-    # ...
+  # ...
 end
 </pre>
 
@@ -1447,29 +1438,29 @@ end
 <pre>
 def some_action
 
-    cache_control! :public, :must_revalidate, :max_age => 60
-    # Cache-Control header will be set to "Cache-Control: public, must-revalidate, max-age=60"
+  cache_control :public, :must_revalidate, :max_age => 60
+  # Cache-Control header will be set to
+  # Cache-Control: public, must-revalidate, max-age=60
 
-    # ...
+  # ...
 end
 
 def another_action
 
-    cache_control! :public, :must_revalidate, :proxy_revalidate, :max_age => 500
-    # Cache-Control header will be set to "Cache-Control: public, must-revalidate, proxy-revalidate, max-age=500"
+  cache_control :public, :must_revalidate, :proxy_revalidate, :max_age => 500
+  # Cache-Control header will be set to 
+  # Cache-Control: public, must-revalidate, proxy-revalidate, max-age=500
 
-    # ...
+  # ...
 end
 </pre>
 
-
-<p><em>Please note</em> that at instance level bang method should be used.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='expires'><a href='#expires'>Expires</a></h2>
 
-<p>Set Expires header and update Cache-Control by adding directives and setting max-age value.</p>
+<p>Set <code>Expires</code> header and update <code>Cache-Control</code> by adding directives and setting max-age value.</p>
 
 <p>First argument is the value to be added to max-age value.</p>
 
@@ -1484,9 +1475,9 @@ when the response should be considered "stale".</p>
 
 <pre>
 def some_action
-    expires! 500, :public, :must_revalidate
-    # Cache-Control: public, must-revalidate, max-age=500
-    # Expires: Tue, 17 Jul 2012 11:26:58 GMT
+  expires 500, :public, :must_revalidate
+  # Cache-Control: public, must-revalidate, max-age=500
+  # Expires: Tue, 17 Jul 2012 11:26:58 GMT
 end
 </pre>
 
@@ -1503,13 +1494,11 @@ the processing will be halted with an "304 Not Modified" response.</p>
 <p>Also, if the current request includes an "If-Unmodified-Since" header that is less than "Last-Modified",
 the processing will be halted with an "412 Precondition Failed" response.</p>
 
-<p>Can be set only at instance level, only by using bang method.</p>
-
 <p><strong>Example:</strong></p>
 
 <pre>
 def some_action
-    last_modified! Time.now - 600
+  last_modified Time.now - 600
 end
 </pre>
 
@@ -1518,11 +1507,11 @@ end
 
 <h2 id='accepted-content-type'><a href='#accepted-content-type'>Accepted Content Type</a></h2>
 
-<p>Usually the browser inform the app about accepted content type via HTTP_ACCEPT header.</p>
+<p>Usually the browser informs the app about accepted content type via <code>HTTP_ACCEPT</code> header.</p>
 
 <p><code>accept?</code> is a helper allowing to disclose what content type are actually accepted/expected by the browser.</p>
 
-<p>It accepts a string or a regular expression as first argument and will compare it to HTTP_ACCEPT header.</p>
+<p>It accepts a string or a regular expression as first argument and will compare it to <code>HTTP_ACCEPT</code> header.</p>
 
 <p>If you make a request via XHR, aka Ajax, and request JSON content type,
 <code>accept?</code> will return a string containing "application/json".</p>
@@ -1534,11 +1523,11 @@ end
 <pre>
 class App < E
 
-    def some_action
-        if accept? /json/
-            content_type! '.json'
-        end
+  def some_action
+    if accept? /json/
+      content_type '.json'
     end
+  end
 end
 </pre>
 
@@ -1546,10 +1535,10 @@ end
 <p>Other browser expectations:</p>
 
 <ul>
-<li> accept_charset?</li>
-<li> accept_encoding?</li>
-<li> accept_language?</li>
-<li> accept_ranges?</li>
+<li>accept_charset?</li>
+<li>accept_encoding?</li>
+<li>accept_language?</li>
+<li>accept_ranges?</li>
 </ul>
 
 
@@ -1588,71 +1577,41 @@ accept_ranges? 'bytes'
 <pre>
 class App < E
 
-    def index
-        @db_items = cache :db_items do
-            # fetching items
-        end
-        @banners = cache :banners do
-            # render banners partial
-        end
-        # ...
+  def index
+    @db_items = cache :db_items do
+      # fetching items
     end
+    @banners = cache :banners do
+      # render banners partial
+    end
+    # ...
+  end
 
-    def products
-        cache do
-            # fetch and render products
-        end
+  def products
+    cache do
+      # fetch and render products
     end
+  end
 
   after do
-      if 'some condition occurred'
-          # clearing cache only for @banners and @db_items
-          clear_cache! :banners, :db_items
-      end
-      if 'some another condition occurred'
-          # clearing all cache
-          clear_cache!
-      end
+    if 'some condition occurred'
+      # clearing cache only for @banners and @db_items
+      clear_cache! :banners, :db_items
+    end
+    if 'some another condition occurred'
+      # clearing all cache
+      clear_cache!
+    end
   end
 end
 </pre>
 
 
-<p>By using <code>clear_cache_like!</code> is also possible to clear only keys that match a regexp or an array.</p>
-
-<pre>
-def index
-    # ...
-    @procedures = cache [user, :procedures] do
-      # ...
-    end
-    @actions = cache [user, :actions] do
-      # ...
-    end
-    @banners = cache :user_banners do
-      # ...
-    end
-    render
-end
-
-private
-def clear_user_cache
-
-    # clearing [user, :procedures] and [user, :actions] cache
-    clear_cache_like! [user]
-
-    # clearing any cache starting with 'user'
-    clear_cache_like! /\Auser_/
-
-end
-</pre>
-
-
-<p>By default the cache will be kept in memory.<br>
+<p>By default, the cache will be kept in memory.<br>
 If you want to use a different pool, set it by using <code>cache_pool</code> at app level.</p>
 
 <p>Just make sure your pool behaves like a Hash,
-Meant it should respond to <code>[]=</code>, <code>[]</code>, <code>delete</code> and <code>clear</code></p>
+Meant it should respond to <code>[]=</code>, <code>[]</code>, <code>delete</code> and <code>clear</code>.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -1660,13 +1619,13 @@ Meant it should respond to <code>[]=</code>, <code>[]</code>, <code>delete</code
 
 <p><code>send_file</code> will send file content to browser, inline.</p>
 
-<p>The only required argument is full path to file.</p>
+<p>The only required argument is the full path to file.</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
 def theme____css
-    send_file File.expand_path '../../public/theme.css', __FILE__
+  send_file File.expand_path('../../public/theme.css', __FILE__)
 end
 </pre>
 
@@ -1690,13 +1649,13 @@ send_file '/path/to/file', :cache_control => 'max-age=3600, public, must-revalid
 
 
 <p>Recommended to use only with small files.<br>
-Or setup your web server to make use of X-Sendfile and use Rack::Sendfile.</p>
+Or setup your web server to make use of X-Sendfile and use <code>Rack::Sendfile</code>.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='send-files'><a href='#send-files'>Send Files</a></h2>
 
-<p><code>send_files</code> allow to serve static files from a given directory.</p>
+<p><code>send_files</code> allow to serve all files from a given directory.</p>
 
 <p><strong>Example:</strong></p>
 
@@ -1709,7 +1668,7 @@ send_files '/path/to/dir'
 
 <h2 id='attachment'><a href='#attachment'>Attachment</a></h2>
 
-<p><code>attachment</code> works as <code>send_file</code> except it will instruct browser to display Save dialog.</p>
+<p><code>attachment</code> works as <code>send_file</code> except it will instruct browser to display "Save" dialog.</p>
 
 <p><strong>Example:</strong></p>
 

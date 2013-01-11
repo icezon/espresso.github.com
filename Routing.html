@@ -35,7 +35,7 @@
           Espresso Framework</a>
         </h1>
         <h4>
-          Scalable Web Framework aimed at Speed and Simplicity 
+          Scalable Web Framework aimed at Speed and Simplicity
         </h4>
       </div>
 
@@ -45,11 +45,13 @@
             <h4>
               <a href="presentation.html">
                 Official Presentation</a>
+              </h4>
+              <h4 style="white-space: nowrap;">
+                <a href="Events.html">
+                  Events</a> |
+                <a href="CHANGELOG.html">
+                  Change Log</a> 
             </h4>
-          </div>
-          <div class="span">
-            <a href="presentation.html">
-              <img src="icons/elementary/64/Apps-background-icon.png" /></a>
           </div>
         </div>
       </div>
@@ -123,8 +125,13 @@
               </li>
             
               <li>
-                <a href="Routing.html#actions-mapping">
-                  Actions Mapping</a>
+                <a href="Routing.html#action-mapping">
+                  Action Mapping</a>
+              </li>
+            
+              <li>
+                <a href="Routing.html#action-aliases">
+                  Action Aliases</a>
               </li>
             
               <li>
@@ -140,11 +147,6 @@
               <li>
                 <a href="Routing.html#restful-actions">
                   RESTful Actions</a>
-              </li>
-            
-              <li>
-                <a href="Routing.html#aliases">
-                  Aliases</a>
               </li>
             
               <li>
@@ -423,28 +425,13 @@
             <ul class="dropdown-menu">
             
               <li>
-                <a href="Assets.html#intro">
-                  Intro</a>
+                <a href="Assets.html#tag-helpers">
+                  Tag Helpers</a>
               </li>
             
               <li>
-                <a href="Assets.html#mapper">
-                  Mapper</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#server">
-                  Server</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#helpers">
-                  Helpers</a>
-              </li>
-            
-              <li>
-                <a href="Assets.html#loader">
-                  Loader</a>
+                <a href="Assets.html#assets-mapper">
+                  Assets Mapper</a>
               </li>
             
             </ul>
@@ -553,26 +540,10 @@
 
 <pre>
 class Book < E
-    map '/books'
+  map '/books'
 
-    def index
-        # ...
-    end
-
-    def edit
-        # ...
-    end
+  # ...
 end
-</pre>
-
-
-
-
-<pre>
-Now `Book` will serve:
-    /books         - backed by Book#index
-    /books/index   - backed by Book#index
-    /books/edit    - backed by Book#edit
 </pre>
 
 
@@ -580,39 +551,39 @@ Now `Book` will serve:
 
 <h2 id='canonicals'><a href='#canonicals'>Canonicals</a></h2>
 
-<p>Lets say you need your <code>News</code> app to serve both "/news" and "/headlines" base URLs.<br/>
-It is easily done by using <code>map</code> with multiple params.<br/>
+<p>Lets say you need your <code>News</code> app to serve both "/news" and "/headlines" base URLs.<br>
+It is easily done by using <code>map</code> with multiple params.<br>
 First param will be treated as base URL, any other consequent params - as canonical ones.</p>
 
 <p><strong>Example:</strong> - <code>News</code> should serve both "/news" and "/headlines" paths.</p>
 
 <pre>
 class News < E
-    map :news, :headlines
+  map :news, :headlines
 
-    def index
-        # ...
-    end
+  def index
+    # ...
+  end
 end
 </pre>
 
 
-<p>To find out either current URL is a canonical URL use <code>canonical?</code><br/>
+<p>To find out either current URL is a canonical URL use <code>canonical?</code><br>
 It will return <code>nil</code> for base URLs and a string for canonial ones.</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
 class App < E
-    map '/', '/cms'
+  map '/', '/cms'
 
-    def page
+  def page
 
-        # on /page         canonical? == nil
-        # on /cms/page     canonical? == "/page"
-    end
+    # on /page         canonical? == nil
+    # on /cms/page     canonical? == "/page"
+  end
 
-    # ...
+  # ...
 end
 </pre>
 
@@ -621,36 +592,35 @@ end
 
 <h2 id='actions'><a href='#actions'>Actions</a></h2>
 
-<p>Defining Espresso actions is as simple as defining Ruby methods,<br/>
+<p>Defining Espresso actions is as simple as defining Ruby methods,<br>
 cause Espresso actions actually are pure Ruby methods.</p>
 
 <p><strong>Example:</strong> - Defining 2 actions - :index and :edit</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    def index
-      # ...
-    end
+  def index
+    # ...
+  end
 
-    def edit
-      # ...
-    end
+  def edit
+    # ...
+  end
 end
+
+# Now `App` will now serve:
+#  -   /      # backed by `:index` action
+#  -   /edit  # backed by `:edit`  action
 </pre>
 
 
-<p>Now <code>App</code> will serve:
-*   /
-*   /index
-*   /edit</p>
-
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-<h2 id='actions-mapping'><a href='#actions-mapping'>Actions Mapping</a></h2>
+<h2 id='action-mapping'><a href='#action-mapping'>Action Mapping</a></h2>
 
-<p>Usually actions should also contain non-alphanumeric chars.<br/>
+<p>Usually actions should also contain non-alphanumeric chars.<br>
 Most common - hyphens, dots and slashes.</p>
 
 <p>To address this, Espresso uses a map to translate action names into HTTP paths.</p>
@@ -658,66 +628,133 @@ Most common - hyphens, dots and slashes.</p>
 <p>The default map looks like this:</p>
 
 <pre>
-"____"    => "."
-"___"     => "-"
-"__"      => "/"
+"__"    => "/"
+"___"   => "-"
+"____"  => "."
 </pre>
 
 
 <p><strong>Example:</strong></p>
 
 <pre>
-def read____html   # 4 underscores
-    # ...
+def users__online  # 2 underscores
+  # ...
 end
-# will serve read.html
+# will serve users/online
 
 def latest___news  # 3 underscores
-    # ...
+  # ...
 end
 # will serve latest-news
 
-def users__online  # 2 underscores
-    # ...
+def read____html   # 4 underscores
+  # ...
 end
-# will serve users/online
+# will serve read.html
 </pre>
 
 
-<p><em>Worth to note</em> that you can define your own rules by using <code>path_rule</code> at class level.</p>
+<p>You can <strong>define your own rules</strong> by using <code>path_rule</code> at class level.</p>
 
 <p><strong>Example:</strong> - Convert bang methods into .html suffixed paths</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    path_rule "!", ".html"
+  path_rule "!", ".html"
 
-    def news!
-        # ...
-    end
+  def news!
+    # ...
+  end
 end
 
-# `news!` will serve /news.html
+# :news! action will serve /news.html path
 </pre>
 
 
-<p><strong>Example:</strong> - Convert methods starting with j_ into .json suffixed paths</p>
+<p><strong>Example:</strong> - Convert methods ending in "_j" into .json suffixed paths</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    path_rule /\Aj_/, ".json"
+  path_rule /_j$/, ".json"
 
-    def j_news
-      # ...
-    end
+  def j_news
+    # ...
+  end
 end
-# `j_news` will serve /news.json
+# :news_j action will serve /news.json path
 </pre>
 
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='action-aliases'><a href='#action-aliases'>Action Aliases</a></h2>
+
+<p>Though path rules are useful enough, you can bypass them and set routes directly.</p>
+
+<p><strong>Example:</strong> make <code>bar</code> method to serve <code>/bar</code>, <code>/some/url</code> and <code>/some/another/url</code></p>
+
+<pre>
+def bar
+  # ...
+end
+
+action_alias 'some/url', :bar
+action_alias 'some/another/url', :bar
+</pre>
+
+
+<p><strong>Example:</strong> make <code>foo</code> method to serve <code>/foo</code> and <code>/some/url</code> via any request method</p>
+
+<pre>
+def foo
+  # ...
+end
+action_alias 'some/url', :foo
+</pre>
+
+
+<p><strong>Example:</strong> <code>get_foo</code> method will serve <code>/foo</code> and <code>/some/url</code> only via <code>GET</code> request method</p>
+
+<pre>
+def get_foo
+  # ...
+end
+action_alias 'some/url', :get_foo
+</pre>
+
+
+<p>Also standard Ruby <code>alias</code> can be used:</p>
+
+<pre>
+class App < E
+  map '/'
+
+  def news
+      # ...
+  end
+  alias news____html news
+  alias headlines__recent____html news
+end
+</pre>
+
+
+<p>Now <code>news</code> action will serve any of:</p>
+
+<ul>
+<li>/news</li>
+<li>/news.html</li>
+<li>/headlines/recent.html</li>
+</ul>
+
+
+<p><strong>NOTE:</strong> Private and protected methods usually are not publicly available via HTTP.<br>
+However, if you add an action alias to such a method, <strong>it becomes public</strong>.<br>
+To alias a private/protected method and keep it private,<br>
+use  a  standard ruby alias rather than an action alias.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -729,16 +766,16 @@ end
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    def read type, status
-        # ...
-    end
+  def read type, status
+    # ...
+  end
 end
 </pre>
 
 
-<p>If we do an request like this - "/read/news/latest", it will be decomposed as follow:</p>
+<p>If we do a request like this - "/read/news/latest", it will be decomposed as follow:</p>
 
 <ul>
 <li>action - read</li>
@@ -780,11 +817,11 @@ we simply give the last param a default value:</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    def read type, status = 'latest'
-        # ...
-    end
+  def read type, status = 'latest'
+    # ...
+  end
 end
 </pre>
 
@@ -808,7 +845,7 @@ end
 <p>That's it! Now when calling "/read/news/articles/latest",
 <code>types</code> will be an array like ["news", "articles"] and  status will be equal to "latest".</p>
 
-<p>In a word, if Ruby method works with given params, HTTP action will work too.<br/>
+<p>In a word, if Ruby method works with given params, HTTP action will work too.<br>
 Otherwise, HTTP action will return "404 NotFound" error.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
@@ -817,84 +854,94 @@ Otherwise, HTTP action will return "404 NotFound" error.</p>
 
 <p><code>format</code> allow to manipulate routing by instructing actions to respond to various extensions.</p>
 
+<p>Also it is aimed to automatically set <code>Content-Type</code> header based on used extension.</p>
+
 <p><strong>Example:</strong></p>
 
 <pre>
 class App < E
-    map '/'
-    format :xml
+  map '/'
+  format '.xml'
 
-    def article
-        # ...
-    end
+  def article
+    # ...
+  end
 end
 </pre>
 
 
 <p>In the example above, article action will respond to both "/article" and "/article.xml" URLs.</p>
 
-<p><code>format</code> accepts any number of arguments. Each argument is a new extension action(s) will respond to.</p>
+<p><code>format</code> accepts any number of extensions.</p>
 
 <p>The second meaning of <code>format</code> is to automatically set Content-Type header.</p>
 
-<p>Content type are extracted from <code>Rack::Mime::MIME_TYPES</code> map.<br/>
-Ex: <code>format :txt</code> will return the content type extracted via <code>Rack::Mime::MIME_TYPES.fetch('.txt')</code></p>
+<p>Content type are extracted from <code>Rack::Mime::MIME_TYPES</code> map.<br>
+Ex: <code>format '.txt'</code> will return the content type extracted via <code>Rack::Mime::MIME_TYPES.fetch('.txt')</code></p>
 
-<p>To set format(s) only for some actions, use <code>setup</code>.</p>
+<p><strong>Worth to note</strong> that <code>format</code> will act on all actions.</p>
 
-<p><strong>Example:</strong> - only <code>:pages</code> and <code>:news</code> actions will respond to URLs ending in .html and .xml</p>
+<p>To set format(s) only for specific actions, use <code>format_for</code>.</p>
+
+<p><strong>Example:</strong> - only <code>pages</code> action will respond to URLs ending in .html and .xml</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    setup :pages, :news do
-        format :xml, :html
-    end
+  format_for :pages, '.xml', '.html'
 
-    def read
-        # ...
-    end
-
-    def pages
-        # ...
-    end
-
-    def news
-        # ...
-    end
-
+  def pages
     # ...
+  end
+
+  def news
+    # ...
+  end
+
+  # ...
 end
 </pre>
 
 
-<p>Voila, now App will respond to any of "/pages", "/pages.html", "/pages.xml", "/news", "/news.html", "/news.xml",
-but not to "/read.html" nor to "/read.xml", cause <code>format</code> was set for <code>pages</code> and <code>news</code> only.</p>
+<p>Voila, now App will respond to any of "/pages", "/pages.html" and "/pages.xml"<br>
+but not "/news.html" nor "/news.xml", cause <code>format</code> was set for <code>pages</code> action only.</p>
 
-<p>But wait, actions usually are called with params, and an URL like "/read.html/100" looks really bad!</p>
+<p>It is also possible to disable format for specific actions by using <code>disable_format_for</code>:</p>
 
-<p>No problem! Espresso takes care about this, and "/read/100.html" will work exactly as "/read.html/100"</p>
+<pre>
+class App < E
+  map '/'
 
-<p>Even more! Espresso will get rid of format passed in last param, so you get clean params without remove format manually.<br/>
+  format '.xml' # this will enable .xml format for all actions
+  
+  disable_format_for :news, :pages # disabling format for :pages and :news actions
+
+  # ...
+end
+</pre>
+
+
+<p><strong>Worth to note</strong> that Espresso will get rid of extension passed with last param,
+so you get clean params without manually remove format.<br>
 Meant that when "/news/100.html" requested, you get "100" param inside <code>news</code> action, rather than "100.html"</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
 class App < E
-    format :xml
+  format '.xml'
 
-    def read item = nil
-        # on /read             item == nil
-        # on /read.xml         item == nil
-        # on /read.xml/book    item == "book"
-        # on /read/book        item == "book"
-        # on /read/book.xml    item == "book"
-        # on /read/100.xml     item == "100"
-        # on /read/blah.xml    item == "blah"
-        # on /read/blah.json   item == "blah.json"
-    end
+  def read item = nil
+    # on /read             item == nil
+    # on /read.xml         item == nil
+    # on /read.xml/book    404 NotFound
+    # on /read/book        item == "book"
+    # on /read/book.xml    item == "book"
+    # on /read/100.xml     item == "100"
+    # on /read/blah.xml    item == "blah"
+    # on /read/blah.json   item == "blah.json"
+  end
 end
 </pre>
 
@@ -908,29 +955,6 @@ end
 /read/book               will return default Content-Type too
 </pre></p>
 
-<p><strong>Worth to Note</strong> - if both action and last param has format, action format is used.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre>
-class App < E
-    format :xml, :json
-
-    def read item = nil
-        # ...
-    end
-end
-</pre>
-
-
-
-
-<pre>
-/read/book.json          will return JSON Content-Type
-/read.xml/book.json      will return XML Content-Type instead
-</pre>
-
-
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='restful-actions'><a href='#restful-actions'>RESTful Actions</a></h2>
@@ -942,8 +966,8 @@ end
 <pre>
 class App < E
 
-    def index
-    end
+  def index
+  end
 end
 </pre>
 
@@ -956,52 +980,17 @@ simply prepend desired request method verb to action name.</p>
 <pre>
 class App < E
 
-    def post_news  # will serve POST /news
-        # ...
-    end
+  def post_news  # will serve POST /news
+    # ...
+  end
 
-    def put_news   # will serve PUT /news
-        # ...
-    end
+  def put_news   # will serve PUT /news
+    # ...
+  end
 
-    # etc.
+  # etc.
 end
 </pre>
-
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='aliases'><a href='#aliases'>Aliases</a></h2>
-
-<p>As we already noted, any app can serve multiple paths.</p>
-
-<p>But what if we need an action to be available by multiple paths?</p>
-
-<p>It's easy - add an standard Ruby alias.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre>
-class App < E
-    map '/'
-
-    def news
-        # ...
-    end
-    alias news____html news
-    alias headlines__recent____html news
-
-end
-</pre>
-
-
-<p>Now <code>news</code> action will serve any of:</p>
-
-<ul>
-<li>/news</li>
-<li>/news.html</li>
-<li>/headlines/recent.html</li>
-</ul>
 
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
@@ -1010,61 +999,67 @@ end
 
 <p>Espresso uses a really flexible rewrite engine,
 which allows to redirect the browser to new address
-as well as pass control to arbitrary app(without redirect)
-or just send response to browser(without redirect as well).</p>
+as well as pass control to arbitrary controller(without redirect)
+or just send a custom response to browser(without redirect as well).</p>
 
-<p>A rewrite rule consist of regular expression and a block that receives matches as params.</p>
+<p>A rewrite rule consist of a regular expression and a block that receives matches as params.</p>
 
-<p><code>redirect</code> and <code>permanent_redirect</code> will redirect browser to new address with 302 and 301 codes respectivelly.</p>
+<p><code>redirect</code> and <code>permanent_redirect</code> will redirect browser to new address with 302 and 301 codes respectively.</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
-class App < E
+app = EApp.new do
 
-    rewrite /\A\/(.*)\.php\Z/ do |title|
-        redirect route(:index, title)
-    end
+  rewrite /\A\/(.*)\.php\Z/ do |title|
+    redirect Cms.route(:index, title)
+  end
 
-    # ...
+  # ...
 end
 </pre>
 
 
-<p><code>pass</code> will pass control to an arbitrary action or even app, without redirect.</p>
+<p><code>pass</code> will pass control to an arbitrary controller, without redirect.</p>
 
 <p><strong>Example:</strong></p>
 
 <pre>
 class Articles < E
 
-    def read title
-        # ...
-    end
+  def read title
+    # ...
+  end
 end
 
 class Pages < E
-
-    # pass old pages to archive action
-    rewrite /\A\/(.*)\.php\Z/ do |title|
-        pass :archive, title
-    end
-
-    # pages ending in html are actually articles, so passing control to Articles app
-    rewrite /\A\/(.*)\.html\Z/ do |title|
-        pass Articles, :read, title
-    end
-
+  
+  def archive title
+    # ...
+  end
 end
 
+app = EApp.new do
+
+  # pass old pages to archive action
+  rewrite /\A\/(.*)\.php\Z/ do |title|
+    pass Pages, :archive, title
+  end
+
+  # pages ending in html are in fact articles, so passing control to Articles controller
+  rewrite /\A\/(.*)\.html\Z/ do |title|
+    pass Articles, :read, title
+  end
+
+end
 </pre>
 
 
 <p><code>halt</code> will send response to browser and stop any code execution, without redirect.</p>
 
-<p>It accepts from 0 to 3 arguments.<br/>
-If argument is a hash, it is added to headers.<br/>
-If argument is a Integer, it is treated as Status-Code.<br/>
+<p>It accepts from 0 to 3 arguments.<br>
+If argument is a hash, it is added to headers.<br>
+If argument is a Integer, it is treated as Status-Code.<br>
 Any other arguments are treated as body.</p>
 
 <p>If a single argument given and it is an Array, it is treated as a bare Rack response and instantly sent to browser.</p>
@@ -1072,14 +1067,16 @@ Any other arguments are treated as body.</p>
 <p><strong>Example:</strong></p>
 
 <pre>
-class App < E
+app = EApp.new do
 
-    rewrite /\A\/archived\/(.*)\.html\Z/ do |title|
+  rewrite /\A\/archived\/(.*)\.html\Z/ do |title|
 
-        page = Model::Page.first(:url => title) || halt(404, 'page not found')
-
-        halt page.content, 'Last-Modified' => page.last_modified.to_rfc2822
+    unless page = Model::Page.first(:url => title)
+      halt 404, 'page not found'
     end
+
+    halt page.content, 'Last-Modified' => page.last_modified.to_rfc2822
+  end
 end
 </pre>
 
