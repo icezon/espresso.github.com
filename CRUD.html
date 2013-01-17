@@ -533,14 +533,22 @@
 <p><code>crudify</code> method will automatically create CRUD actions that will map HTTP requests to corresponding methods on given Resource.</p>
 
 <pre>
-<b>Request                        Resource</b>
-GET     /id                    #get(id)
-POST    /   with POST data     #create(params)
-PUT     /id with POST data     #get(id).update(params)
-PATCH   /id with POST data     #get(id).update(params)
-DELETE  /id                    #get(id).delete OR #delete(id)
-HEAD    /id                    #get(id)
-OPTIONS /                      returns actions available to client
+<b>Request                      Resource</b>
+GET   /id                    #get(id)
+
+POST    /   with POST data   #create(params)
+
+PUT     /id with POST data   #get(id).update(params) for DataMapper
+                             #get(id).update_attributes(params) for ActiveRecord
+
+PATCH   /id with POST data   #get(id).update(params) for DataMapper
+                             #get(id).update_attributes(params) for ActiveRecord
+
+DELETE  /id                  #get(id).destroy
+
+HEAD    /id                  #get(id)
+
+OPTIONS /                    returns actions available to client
 </pre>
 
 
@@ -548,26 +556,20 @@ OPTIONS /                      returns actions available to client
 
 <h2 id='resource'><a href='#resource'>Resource</a></h2>
 
-<p>First argument is required and should provide the CRUDified resource.<br/>
-Resource should respond to <code>get</code> and <code>create</code> methods.<br/>
-Objects that will be created/returned by resource should respond to <code>update</code> and <code>delete</code> methods.</p>
+<p>First argument is required and should provide the CRUDified resource.<br>
+Resource should respond to <code>get</code> and <code>create</code> methods.<br>
+Objects created/returned by resource should respond to <code>update</code>/<code>update_attributes</code> and <code>destroy</code> methods.</p>
 
-<p>Additionally, your resource may respond to <code>delete</code> method.<br/>
-If it does, <code>delete</code> action will rely on it when deleting objects.<br/>
-Otherwise, it will fetch the object by given ID and call <code>delete</code> on it.</p>
+<p>If your resource/objects behaves differently, you can map its methods by passing them as options.<br></p>
 
-<p>If your resource/objects behaves differently, you can map its methods by passing them as options.<br/>
-Let's suppose you are CRUDifying a DataMapper model.<br/>
-To delete an DataMapper object you should call <code>destroy</code> on it,
-so we simply mapping <code>delete</code> action to <code>destroy</code> method:</p>
+<p><strong>Example:</strong> - Force destroying objects</p>
 
 <pre>
-crudify ModelName, :delete => :destroy
+crudify ModelName, :delete => :destroy!
 </pre>
 
 
-<p>If your resource creating records by <code>new</code> instead of <code>create</code>,
-simply map <code>post</code> action to <code>new</code> method:</p>
+<p><strong>Example:</strong> - Using a resource that creating records by <code>new</code> instead of <code>create</code></p>
 
 <pre>
 crudify ModelName, :post => :new
@@ -580,9 +582,9 @@ crudify ModelName, :post => :new
 
 <p>By default all params will be sent to resource.</p>
 
-<p>Good enough, however sometimes you need to exclude some params.</p>
+<p>Good enough, however sometimes you need to exclude some of them.</p>
 
-<p>This is easily accomplished by using :exclude option.</p>
+<p>This is easily accomplished by using <code>:exclude</code> option.</p>
 
 <p>To exclude a single param, pass it as a string.</p>
 
@@ -606,9 +608,9 @@ crudify Resource, :exclude => ['__stream_uuid__', 'user']
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    crudify SomeModel
+  crudify SomeModel
 end
 </pre>
 
@@ -624,15 +626,13 @@ end
 - options_index
 </code></pre>
 
-<p>Each action will respond to corresponding request method.</p>
-
-<p>To route CRUD actions to a different path, simply pass the path as second argument:</p>
+<p>To route CRUD actions to a different path, simply pass it as second argument:</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    crudify UsersModel, :users
+  crudify UsersModel, :users
 end
 </pre>
 
@@ -648,24 +648,24 @@ end
 - options_users
 </code></pre>
 
-<p><em>IMPORTANT!</em> The common pitfall here is to define a method that will override
+<p><strong>IMPORTANT!</strong> The common pitfall here is to define a method that will override
 the actions created by crudifier.</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    crudify SomeModel
+  crudify SomeModel
 
-    def index
-        # Bad Idea!
-    end
+  def index
+    # Bad Idea! This will override all CRUD actions!
+  end
 end
 </pre>
 
 
 <p>The <code>index</code> method here will override all actions created by <code>crudify SomeModel</code>,
-thus CRUD WONT WORK on this controller!</p>
+thus <strong>CRUD WONT WORK</strong> on this controller!</p>
 
 <p>Why so?</p>
 
@@ -676,27 +676,27 @@ it will override any actions previously defined with an explicit verb.</p>
 
 <pre>
 def get_index
-    # ...
+  # ...
 end
 
 def post_index
-    # ...
+  # ...
 end
 
 def index
-    # this will OVERRIDE `get_index` and `post_index`
+  # this will OVERRIDE `get_index` and `post_index`
 end
 
 def get_read
-    # ...
+  # ...
 end
 
 def post_read
-    # ...
+  # ...
 end
 
 def read
-    # this will OVERRIDE `get_read` and `post_read`
+  # this will OVERRIDE `get_read` and `post_read`
 end
 </pre>
 
@@ -710,13 +710,13 @@ not by one created by crudifier.</p>
 
 <pre>
 class App < E
-    map '/'
+  map '/'
 
-    crudify SomeModel
+  crudify SomeModel
 
-    def get_index
-        # Good Idea!
-    end
+  def get_index
+    # Good Idea!
+  end
 end
 </pre>
 
@@ -740,8 +740,8 @@ crudify Resource, :pkey => 'prodID'
 
 <p>If objects created by your resource does respond to <code>:[]</code> and does contain the pkey column, the value of <code>object[pkey column]</code> will be returned.</p>
 
-<p>Otherwise if objects created by your resource does respond to pkey column
-the value of <code>object.pkey_column</code> will be returned.</p>
+<p>Otherwise if objects created by your resource does respond to a method of same name as <code>pkey</code>,
+the value of <code>object.send(pkey)</code> will be returned.</p>
 
 <p>Otherwise the object itself will be returned.</p>
 
@@ -751,26 +751,26 @@ the value of <code>object.pkey_column</code> will be returned.</p>
 
 <pre>
 crudify UsersModel do |obj|
-    case
-        when post?, put?, patch?
-            obj.id
-        when head?
-            last_modified obj.last_modified
-        else
-            content_type '.json'
-            obj.to_json
-    end
+  case
+    when post?, put?, patch?
+      obj.id
+    when head?
+      last_modified obj.last_modified
+    else
+      content_type '.json'
+      obj.to_json
+  end
 end
 </pre>
 
 
-<p>This will return object ID on POST, PUT, and PATCH requests.<br/></p>
+<p>This will return object ID on POST, PUT, and PATCH requests.<br></p>
 
 <p>On HEAD requests, the framework is always sending an empty body,
-so we only update the headers.<br/>
+so we only update the headers.<br>
 This way the client may decide when to fetch the object.</p>
 
-<p>On GET requests it will convert object to JSON before it is sent to client.<br/>
+<p>On GET requests it will convert the object to JSON before it is sent to client.<br>
 Also <code>content_type</code> is used to set proper content type.</p>
 
 <p>DELETE action does not need a handler cause it ever returns an empty string.</p>
@@ -784,7 +784,7 @@ crudifier will try to extract and format errors accordingly.</p>
 
 <p>In case of errors, crudifier will behave depending on given options and proc.</p>
 
-<p>If a proc given, crudifier will NOT halt the request.<br/>
+<p>If a proc given, crudifier will NOT halt the request.<br>
 It will pass error to given proc via second argument instead.</p>
 
 <p>To halt the request when a proc given, set <code>:halt_on_errors</code> to true.</p>
@@ -797,45 +797,45 @@ It will pass error to given proc via second argument instead.</p>
 
 <h2 id='access-restriction'><a href='#access-restriction'>Access Restriction</a></h2>
 
-<p>Using <code>auth</code> will instruct client to require authorization.<br/>
+<p>Using <code>auth</code> will instruct client to require authorization.<br>
 Access can be restricted to some or all actions.</p>
 
 <p>In example below we will restrict access to Create, Update and Delete actions:</p>
 
 <pre>
 class App < E
-    # ...
+  # ...
 
-    auth :post_index, :put_index, :patch_index, :delete_index do |user, pass|
-        [user, pass] = ['admin', 'someReally?secretPass']
-    end
+  auth :post_index, :put_index, :patch_index, :delete_index do |user, pass|
+    [user, pass] = ['admin', 'someReally?secretPass']
+  end
 
-    crudify ModelName
+  crudify ModelName
 end
 </pre>
 
 
-<p>Now, when an client will want to POST, PUT, PATCH, DELETE,
+<p>Now, when the client will want to POST, PUT, PATCH, DELETE,
 it will be asked for authorization.</p>
 
 <p>And an OPTIONS request will return all actions for authorized clients and
 only GET, HEAD, OPTIONS for non-authorized clients.</p>
 
-<p>If an root given, <code>crudify</code> will create actions that responds to that root,
+<p>If a root path given, <code>crudify</code> will create actions that responds to that root,
 thus actions name will contain given root.</p>
 
-<p>In example below, <code>crudify</code> will create actions like <code>get_users</code>, <code>post_users</code>, <code>put_users</code> etc.<br/>
+<p>In example below, <code>crudify</code> will create actions like <code>get_users</code>, <code>post_users</code>, <code>put_users</code> etc.<br>
 That's why we should specify proper action name in <code>auth</code> for authorization to work:</p>
 
 <pre>
 class App < E
-    # ...
+  # ...
 
-    auth :post_users, :put_users, :patch_users, :delete_users do |user, pass|
-        [user, pass] = ['admin', 'someReally?secretPass']
-    end
+  auth :post_users, :put_users, :patch_users, :delete_users do |user, pass|
+    [user, pass] = ['admin', 'someReally?secretPass']
+  end
 
-    crudify UsersModel, :users
+  crudify UsersModel, :users
 end
 </pre>
 

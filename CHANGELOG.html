@@ -534,7 +534,7 @@
 <ul>
 <li>Removing Appetite dependency</li>
 <li>Writing a new router crafted for specific Espresso needs. Also it tends to be faster than Rack::URLMap</li>
-<li>Rewriter is now tightly integrated into router</li>
+<li>Rewrite rules can now be defined inside controllers</li>
 <li>Splitting codebase into <code>e-core</code> and <code>e-more</code></li>
 <li>Moved monkey-patches to e-ext</li>
 <li><code>format</code> now accepts only formats, not action names.</li>
@@ -549,6 +549,8 @@
 <li>Fixed Crudifier to work well with ActiveRecord models</li>
 <li><code>route</code> are now RESTful friendly</li>
 <li>Allow to include actions from modules</li>
+<li>Accept multiple controllers at mount</li>
+<li><code>invoke</code> and <code>fetch</code> will NOT pass actual params. Only <code>pass</code> will do.</li>
 <li>Considerable code cleanup and refactoring. Special thanks to @mindreframer.</li>
 </ul>
 </li>

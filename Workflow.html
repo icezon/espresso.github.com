@@ -770,6 +770,8 @@ end
 
 <p>To pass control to another action or controller, use <code>pass</code>.</p>
 
+<p><strong>Important:</strong> If no params given, actual params will be passed.</p>
+
 <p><strong>Example:</strong> - Pass control to :archived action if page id is less than 100_000</p>
 
 <pre>
@@ -848,13 +850,15 @@ pass_via_post :some_action
 
 <h2 id='fetching-body'><a href='#fetching-body'>Fetching Body</a></h2>
 
-<p>Sometimes you need to invoke some action or app and get the returned body.</p>
+<p>Sometimes you need to invoke some action(on same or inner controller) and get the returned body.</p>
 
 <p>This is easily done by using <code>fetch</code>.</p>
 
+<p><code>fetch</code> will invoke some action(via HTTP) inside current or given controller and returning the body.</p>
+
 <p>Basically, this is same as <code>pass</code> except it returns the body instead of halting request processing.</p>
 
-<p><code>fetch</code> will execute some action inside current or given controller and returning the body.</p>
+<p>Another <strong>important</strong> difference is that <code>fetch</code> will not pass actual HTTP params.</p>
 
 <p><strong>Example:</strong></p>
 
@@ -889,6 +893,29 @@ end
 
 <pre>
 fetch_via_post :some_action
+
+invoke_via_put :some_action
+# etc.
+</pre>
+
+
+<p>Also an XHR request can be mimed:</p>
+
+<pre>
+xhr_fetch :some_action
+
+xhr_invoke :some_action
+# etc.
+</pre>
+
+
+<p>And of course XHR requests can be issued via any request method:</p>
+
+<pre>
+xhr_fetch_via_post :some_action
+
+xhr_invoke_via_delete :some_action
+# etc.
 </pre>
 
 

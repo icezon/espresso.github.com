@@ -554,19 +554,11 @@ app.run
 </pre>
 
 
-<p>Controllers can be also mounted by given name rather than by class.</p>
-
-<p>This turn to be useful when you do not want or can't wrap controllers into slices,
-meant they are not under same namespace.</p>
-
-<p>Name can be provided as a string, symbol or regex.</p>
+<p>Controllers can be also mounted by using Regexps:</p>
 
 <pre>
 app = EApp.new
-app.mount 'SomeController'
-app.mount 'SomeAnotherController'
-app.mount :NotAnotherController
-app.mount /Controller/
+app.mount /SomeController/
 # etc.
 app.run
 </pre>
@@ -576,10 +568,15 @@ app.run
 
 <h2 id='slices'><a href='#slices'>Slices</a></h2>
 
-<p>It is possible to wrap the app into a slice(module) and run it:</p>
+<p>Slices are used to bundle, setup and run a set of controllers.</p>
+
+<p>A Espresso Slice is nothing more than a Ruby Module.</p>
+
+<p>That's it, to create a slice simply wrap your controllers into a module:</p>
 
 <pre>
-require 'e-ext' # needed for SliceName.run and SliceName.mount to work
+require 'e'
+require 'e-ext' # needed for Forum.run and Forum.mount to work
 
 module Forum
   class Users < E
@@ -590,15 +587,15 @@ module Forum
   end
 end
 
-Forum.run
+Forum.run  # running Forum Slice directly
 
-# or
-app = Forum.mount do
+# creating a new app from Forum Slice
+app = Forum.mount do 
   # some setup
 end
 app.run
 
-# or create an app and mount the slice
+# or create a new app and mount the slice
 app = EApp.new
 app.mount Forum do
   # some setup
@@ -611,7 +608,7 @@ app.run
 
 <h2 id='roots'><a href='#roots'>Roots</a></h2>
 
-<p>To mount a controller/slice into a specific root, pass it as first argument:</p>
+<p>To mount a controller/slice into a specific root, pass it as argument:</p>
 
 <pre>
 module Forum
@@ -650,13 +647,13 @@ app.run
 
 <h2 id='run'><a href='#run'>Run</a></h2>
 
-<p>By default Espresso will run <code>WEBrick</code> server <code>5252</code> port.</p>
+<p>By default Espresso will run <code>WEBrick</code> server on <code>5252</code> port.</p>
 
 <p>To run another server/port, use <code>:server</code>/<code>:port</code> options.</p>
 
 <p>If given server requires some options, pass them next to <code>:server</code> option.</p>
 
-<p><strong>Example:</strong> Use Thin server and its default port</p>
+<p><strong>Example:</strong> Use Thin server on its default port</p>
 
 <pre>
 app.run :server => :Thin
@@ -697,10 +694,10 @@ run MySlice
 <pre>
 require 'your-app-file(s)'
 
-app = App.mount
-# or
-app = EApp.new :automount
-# etc .
+app = MyController.mount
+
+# or create new application using EApp
+app = EApp.new :automount  # will auto-discover all available controllers
 
 run app
 </pre>
