@@ -699,11 +699,12 @@ end
 
 <pre>
 def bar
+  map '/'
   # ...
 end
 
-action_alias 'some/url', :bar
-action_alias 'some/another/url', :bar
+alias_action 'some/url', :bar
+alias_action 'some/another/url', :bar
 </pre>
 
 
@@ -711,9 +712,10 @@ action_alias 'some/another/url', :bar
 
 <pre>
 def foo
+  map '/'
   # ...
 end
-action_alias 'some/url', :foo
+alias_action 'some/url', :foo
 </pre>
 
 
@@ -721,9 +723,10 @@ action_alias 'some/url', :foo
 
 <pre>
 def get_foo
+  map '/'
   # ...
 end
-action_alias 'some/url', :get_foo
+alias_action 'some/url', :get_foo
 </pre>
 
 
@@ -752,9 +755,9 @@ end
 
 
 <p><strong>NOTE:</strong> Private and protected methods usually are not publicly available via HTTP.<br>
-However, if you add an action alias to such a method, <strong>it becomes public</strong>.<br>
+However, if you add an action alias to such a method, <strong>it becomes public</strong> via its alias.<br>
 To alias a private/protected method and keep it private,<br>
-use  a  standard ruby alias rather than an action alias.</p>
+use standard ruby <code>alias</code> or <code>alias_method</code> rather than <code>alias_action</code>.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
@@ -993,6 +996,24 @@ end
 </pre>
 
 
+<p><strong>IMPORTANT: verbified actions has priority over verbless ones, regardless definition order!</strong><br>
+That's it, if you have <code>news</code> and <code>post_news</code> actions, on POST requests <code>post_news</code> will be executed:</p>
+
+<pre>
+class App < E
+
+  def post_news  # will serve POST requests
+    # ...
+  end
+
+  def news  # will serve any requests except POST ones
+    # ...
+  end
+
+end
+</pre>
+
+
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='rewriter'><a href='#rewriter'>Rewriter</a></h2>
@@ -1009,7 +1030,7 @@ or just send a custom response to browser(without redirect as well).</p>
 <p><strong>Example:</strong></p>
 
 <pre>
-app = EApp.new do
+app = EspressoApp.new do
 
   rewrite /\A\/(.*)\.php\Z/ do |title|
     redirect Cms.route(:index, title)
@@ -1039,7 +1060,7 @@ class Pages < E
   end
 end
 
-app = EApp.new do
+app = EspressoApp.new do
 
   # pass old pages to archive action
   rewrite /\A\/(.*)\.php\Z/ do |title|
@@ -1067,7 +1088,7 @@ Any other arguments are treated as body.</p>
 <p><strong>Example:</strong></p>
 
 <pre>
-app = EApp.new do
+app = EspressoApp.new do
 
   rewrite /\A\/archived\/(.*)\.html\Z/ do |title|
 

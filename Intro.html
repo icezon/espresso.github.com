@@ -673,14 +673,14 @@ end
 
 <p>Applications are meant to bundle, setup and run controllers and slices.</p>
 
-<p>To create a new Espresso application use <code>EApp</code> class:</p>
+<p>To create a new Espresso application use <code>EspressoApp</code> class:</p>
 
 <pre>
 class MyController < E
   # ...
 end
 
-app = EApp.new
+app = EspressoApp.new
 app.mount MyController
 app.run
 </pre>
