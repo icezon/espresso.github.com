@@ -539,180 +539,437 @@
       </h4>
     </div>
     <hr/>
-    <h2 id='controllers'><a href='#controllers'>Controllers</a></h2>
+    <p>Espresso features a built-in generator that starts by building a ready-to-use application then allow you to easily create controllers, routes, models and views from command line.</p>
 
-<p>Run a single controller app:</p>
+<p>The generator can be used via <code>e</code> executable followed by <code>g</code> notation and name of the unit to be generated.</p>
+
+<p>Ex: type <code>e g:project ProjectName</code> to generate a project, <code>e g:controller Foo</code> to generate a controller, etc.</p>
+
+<p><strong>Worth to note</strong> that generator allow to use only the first unit letter, ex: <code>e g:p ProjectName</code> to generate a project, <code>e g:c Foo</code> to generate a controller, etc.</p>
+
+<p>Also, any non-alphanumeric(except space) can be used instead of semicolon, ex: <code>e g.p ProjectName</code> to generate a project, <code>e g.c Foo</code> to generate a controller, etc.</p>
+
+<p>Or just omit that symbol, ex: <code>e gp ProjectName</code> to generate a project, <code>e gc Foo</code> to generate a controller, etc.</p>
+
+<h2 id='basic-project-structure'><a href='#basic-project-structure'>Basic project structure</a></h2>
 
 <pre>
-class App < E
-  # ...
-end
+- base/
+  | - controllers/
+  | - helpers/
+  | - models/
+  | - specs/
+  | - views/
+  | - boot.rb
+  | - config.rb
+  ` - database.rb
 
-App.run
+- config/
+  | - config.yml
+  ` - database.yml
 
+- public/
+  | - assets/
+      | - app.css
+      ` - app.js
+
+- tmp/
+
+- var/
+  | - db/
+  | - log/
+  ` - pid/
+
+- Gemfile
+- app.rb
+- config.ru
+</pre>
+
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='generating-projects'><a href='#generating-projects'>Generating Projects</a></h2>
+
+<p>To generate a project simply type:</p>
+
+<pre>
+$ e g:p App
+</pre>
+
+
+<p>This will create <code>./App</code> folder with a ready-to-use application inside.</p>
+
+<p>Generated application will use <code>ERB</code> engine and wont be set to use any <code>ORM</code>.</p>
+
+<p>To generate a project that will use a custom engine, use <code>engine</code> option followed by a semicolon and the full, case sensitive, name of desired engine:</p>
+
+<pre>
+$ e g:p App engine:Slim
+</pre>
+
+
+<p><strong>Worth to note</strong> that generator allow to use only first option letter and require a semicolon between option name and value:</p>
+
+<pre>
+$ e g:p App e:Slim
+</pre>
+
+
+<p>This will update your <code>Gemfile</code> by adding <code>slim</code> gem and also will update <code>config.yml</code> by adding <code>engine: :Slim</code>.</p>
+
+<p>If your project will use an <code>ORM</code>, use <code>orm</code> option followed by a semicolon and the name of desired <code>ORM</code>:</p>
+
+<pre>
+$ e g:p App orm:ActiveRecord
+</pre>
+
+
+<p><strong>Worth to note</strong> that <code>ORM</code> name are case insensitive. You can even use only first letter.</p>
+
+<p><strong>Also</strong> <code>orm</code> option can be shortened to first letter only:</p>
+
+<p>project using ActiveRecord:</p>
+
+<pre>
+$ e g:p App orm:a
 # or
-app = App.mount do
-  # some setup
-end
-app.run
-
-# or create a new app and mount controller
-app = EspressoApp.new
-app.mount App do
-  # some setup
-end
-app.run
+$ e g:p App orm:ar
+# or just
+$ e g:p App o:a
 </pre>
 
 
-<p>Controllers can be also mounted by using Regexps:</p>
+<p>project using DataMapper:</p>
 
 <pre>
-app = EspressoApp.new
-app.mount /SomeController/
-# etc.
-app.run
+$ e g:p App o:dm
+# or just
+$ e g:p App o:d
+</pre>
+
+
+<p>project using Sequel:</p>
+
+<pre>
+$ e g:p App o:sequel
+# or just
+$ e g:p App o:s
+</pre>
+
+
+<p>Generator also allow to specify <a href="Routing.html#format">format</a> to be used by all controllers / actions.</p>
+
+<p>Ex: to make all actions to serve URLs ending in <code>.html</code>, use <code>format:html</code>:</p>
+
+<pre>
+$ e g:p App format:html
+</pre>
+
+
+<p>And of course as per other options, <code>format</code> can be shortened to first letter only:</p>
+
+<pre>
+$ e g:p App f:html
+</pre>
+
+
+<p>And of course you can pass multiple options:</p>
+
+<pre>
+$ e g:p App o:ar e:Slim f:html
 </pre>
 
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-<h2 id='slices'><a href='#slices'>Slices</a></h2>
+<h2 id='generating-controllers'><a href='#generating-controllers'>Generating Controllers</a></h2>
 
-<p>Slices are used to bundle, setup and run a set of controllers.</p>
-
-<p>A Espresso Slice is nothing more than a Ruby Module.</p>
-
-<p>That's it, to create a slice simply wrap your controllers into a module:</p>
+<p>As simple as:</p>
 
 <pre>
-require 'e'
-require 'e-ext' # needed for Forum.run and Forum.mount to work
+$ e g:c Foo
+</pre>
 
-module Forum
-  class Users < E
+
+<p>This will create "base/controllers/foo/" folder and "base/controllers/foo_controller.rb" file.</p>
+
+<p>The file will contain controller's setups and the folder will contain controller's actions.</p>
+
+<h3 id='map'><a href='#map'>Map</a></h3>
+
+<p>By default the controller will be mapped to its underscored name, that's it, "Foo" to "/foo", "FooBar" to "/foo_bar", "Foo::Bar" to "/foo/bar" etc.</p>
+
+<p>To generate a controller mapped to a custom location, use the <code>route</code> option:</p>
+
+<pre>
+$ e g:c Foo route:bar
+# or just
+$ e g:c Foo r:bar
+</pre>
+
+
+<h3 id='setups'><a href='#setups'>Setups</a></h3>
+
+<p>When generating a controller without any setups, it will use project-wide ones(passed at project generation), if any.</p>
+
+<p>To generate a controller with custom setups, pass them as options:</p>
+
+<pre>
+$ e g:c Foo e:Haml
+</pre>
+
+
+<p>This will create a controller that will use <code>Haml</code> engine.</p>
+
+<p>Another option is <a href="Routing.html#format">format</a>:</p>
+
+<pre>
+$ e g:c Foo f:html
+</pre>
+
+
+<h3 id='multiple'><a href='#multiple'>Multiple</a></h3>
+
+<p>When you need to generate multiple controllers at once, use <code>controllers</code>(or <code>cs</code>) notation:</p>
+
+<pre>
+$ e g:controllers A B C
+# or just
+$ e g:cs A B C
+</pre>
+
+
+<p>This will generate 3 controllers without any setups.</p>
+
+<p>Any passed setups will apply to all generated controllers:</p>
+
+<pre>
+$ e g:cs A B C e:Haml 
+</pre>
+
+
+<h3 id='namespaces'><a href='#namespaces'>Namespaces</a></h3>
+
+<p>When you need a namespaced controller, pass its name as is:</p>
+
+<pre>
+$ e g:c Foo::Bar
+</pre>
+
+
+<p>This will generate <code>Foo</code> module with <code>Bar</code> class inside:</p>
+
+<pre>
+module Foo
+  class Bar
     # ...
   end
-  class Posts < E
-    # ...
+end
+</pre>
+
+
+<p></p>
+
+<p><strong>Worth to note</strong> that <code>Bar</code> controller will be mapped to "/foo/bar" URL.<br>
+To map it to another location, use <code>route</code> option as shown above.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='generating-routes'><a href='#generating-routes'>Generating Routes</a></h2>
+
+<p>As simple as:</p>
+
+<pre>
+$ e g:route Foo bar
+# or just
+$ e g:r Foo bar
+</pre>
+
+
+<p>where <code>Foo</code> is the controller name and <code>bar</code> is the route.</p>
+
+<p>This will create "base/controllers/foo/bar_action.rb" and "base/views/foo/bar.erb" files.</p>
+
+<h3 id='mapping'><a href='#mapping'>Mapping</a></h3>
+
+<p>You can provide the URL rather than action name - it will be automatically converted according to effective <a href="Routing.html#action-mapping">path rules</a>:</p>
+
+<pre>
+$ e g:r Forum posts/latest
+</pre>
+
+
+<p>This will create <code>posts__latest</code> method in "base/controllers/forum/posts<strong>latest_action.rb" file and the "base/views/forum/posts</strong>latest.erb" template file.</p>
+
+<p>See <a href="Routing.html#action-mapping">more details on actions mapping</a>.</p>
+
+<h3 id='setups'><a href='#setups'>Setups</a></h3>
+
+<p>Setups provided at route generation will be effective only on generated route:</p>
+
+<pre>
+$ e g:c Foo e:Haml
+$ e g:r Foo bar e:Slim
+</pre>
+
+
+<p>All actions of <code>Foo</code> controller, except <code>bar</code>, will use <code>Haml</code> engine.<br>
+<code>bar</code> action will use <code>Slim</code> engine instead.</p>
+
+<h3 id='arguments'><a href='#arguments'>Arguments</a></h3>
+
+<p>If generated route are supposed to accept some arguments, simply pass them after route name:</p>
+
+<pre>
+$ e g:r Foo bar a b=nil
+</pre>
+
+
+<p>will result in:</p>
+
+<pre>
+class Foo
+
+  def bar a, b=nil
   end
 end
+</pre>
 
-Forum.run  # running Forum Slice directly
 
-# creating a new app from Forum Slice
-app = Forum.mount do 
-  # some setup
+<p><strong>Worth to note</strong> that any setups can be provided alongside arguments, they wont clash:</p>
+
+<pre>
+$ e g:r Foo bar a b=nil e:Haml f:html
+</pre>
+
+
+<p>will result in:</p>
+
+<pre>
+class Foo
+  
+  format_for :bar, 'html'
+  before :bar do
+    engine :Haml
+  end
+
+  def bar a, b=nil
+  end
 end
-app.run
+</pre>
 
-# or create a new app and mount the slice
-app = EspressoApp.new
-app.mount Forum do
-  # some setup
+
+<h3 id='multiple'><a href='#multiple'>Multiple</a></h3>
+
+<p>To generate multiple routes at once use <code>routes</code> or <code>rs</code> notation:</p>
+
+<pre>
+$ e g:rs Foo a b c
+</pre>
+
+
+<p>this will create 3 routes and 3 views.</p>
+
+<p><strong>Worth to note</strong> that any provided setups will apply on all generated actions. <strong>Not</strong> the same about arguments, they will be interpreted as action names, so do not pass any arguments when generating multiple routes.</p>
+
+<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
+
+<h2 id='generating-models'><a href='#generating-models'>Generating Models</a></h2>
+
+<pre>
+$ e g:m Foo
+</pre>
+
+
+<p>this will create "base/models/foo.rb" file.</p>
+
+<p>File content will depend on setups passed at project generation:</p>
+
+<p>If we generate a project like this:</p>
+
+<pre>
+$ e g:p App o:ActiveRecord
+</pre>
+
+
+<p>the:</p>
+
+<pre>
+$ e g:m Foo
+</pre>
+
+
+<p>will result in:</p>
+
+<pre>
+class Foo < ActiveRecord::Base
+
 end
-app.run
+</pre>
+
+
+<p>And if the project are generated like this:</p>
+
+<pre>
+$ e g:p App o:DataMapper
+</pre>
+
+
+<p>the:</p>
+
+<pre>
+$ e g:m Foo
+</pre>
+
+
+<p>will result in:</p>
+
+<pre>
+class Foo
+  include DataMapper::Resource
+
+  property :id, Serial
+end
+</pre>
+
+
+<p>To generate a model on a project without default <code>ORM</code>, use <code>orm</code> option at model generation:</p>
+
+<pre>
+$ e g:m Foo orm:ActiveRecord
+</pre>
+
+
+<p>will result in:</p>
+
+<pre>
+class Foo < ActiveRecord::Base
+
+end
+</pre>
+
+
+<p>To generate multiple models at once, use <code>models</code> or <code>ms</code> notation:</p>
+
+<pre>
+$ e g:ms A B C
 </pre>
 
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
-<h2 id='roots'><a href='#roots'>Roots</a></h2>
+<h2 id='generating-views'><a href='#generating-views'>Generating Views</a></h2>
 
-<p>To mount a controller/slice into a specific root, pass it as argument:</p>
+<p>View generator are triggered every time you generate a route, so use it only to create a template that was accidentally lost:</p>
 
 <pre>
-module Forum
-  class Users < E
-    # ...
-  end
-  class Posts < E
-    # ...
-  end
-end
-
-app = Forum.mount '/forum'
-app.run
-
-# or
-app = EspressoApp.new
-app.mount Forum, '/forum'
-app.run
+$ e g:v Foo bar
 </pre>
 
 
-<p>If controller/slice should serve multiple roots, pass them all as arguments:</p>
+<p>this will create "base/views/foo/bar.ext" template, if it does not exists.</p>
 
-<pre>
-app = Forum.mount '/forum', '/Forums'
-app.run
-
-# or
-app = EspressoApp.new
-app.mount Forum, '/forum', '/Forums'
-app.run
-</pre>
-
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='run'><a href='#run'>Run</a></h2>
-
-<p>By default Espresso will run <code>WEBrick</code> server on <code>5252</code> port.</p>
-
-<p>To run another server/port, use <code>:server</code>/<code>:port</code> options.</p>
-
-<p>If given server requires some options, pass them next to <code>:server</code> option.</p>
-
-<p><strong>Example:</strong> Use Thin server on its default port</p>
-
-<pre>
-app.run :server => :Thin
-</pre>
-
-
-<p><strong>Example:</strong> Use EventedMongrel server with custom options</p>
-
-<pre>
-app.run :server => :EventedMongrel, :port => 9090, :num_processors => 100
-</pre>
-
-
-<p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
-
-<h2 id='config-ru'><a href='#config-ru'>config.ru</a></h2>
-
-<p>Running a single controller:</p>
-
-<pre>
-require 'your-app-file(s)'
-
-run MyController
-</pre>
-
-
-<p>Running a Slice:</p>
-
-<pre>
-require 'your-app-file(s)'
-
-run MySlice
-</pre>
-
-
-<p>Running an app instance:</p>
-
-<pre>
-require 'your-app-file(s)'
-
-app = MyController.mount
-
-# or create a new Espresso application using EspressoApp
-app = EspressoApp.new :automount  # will auto-discover all available controllers
-
-run app
-</pre>
-
+<p>If template already exists, the generator will simply touch it, without modifying the name/content in any way.</p>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 

@@ -527,6 +527,17 @@
       
     </div>
     </div>
+    <div style="text-align: center;">
+      <h4>
+        Use 
+        <a href="Generator.html">Generator</a>
+        to generate: 
+        <a href="Generator.html#generating-projects">Projects</a> / 
+        <a href="Generator.html#generating-controllers">Controllers</a> / 
+        <a href="Generator.html#generating-routes">Routes</a> / 
+        <a href="Generator.html#generating-models">Models</a>
+      </h4>
+    </div>
     <hr/>
     <h2 id='global-setup'><a href='#global-setup'>Global Setup</a></h2>
 
@@ -600,7 +611,7 @@ end
 
 <h2 id='setup-by-format'><a href='#setup-by-format'>Setup by Format</a></h2>
 
-<p><a href="https://github.com/espresso/espresso/blob/master/docs/Routing.md#format">Format</a> is a part of routing mechanism
+<p><a href="Routing.html#format">Format</a> is a part of routing mechanism
 but it is also hugely used when it comes to setup actions.</p>
 
 <p>It turns out that setting up actions by name and regular expressions are not enough.</p>
@@ -686,6 +697,48 @@ class App < E
     end
     # Disclaimer: this coding style are used just for docs readability
   end
+end
+</pre>
+
+
+<p><strong>Worth to note</strong> that <code>format</code> will act on all actions.</p>
+
+<p>To set format(s) only for specific actions, use <code>format_for</code>.</p>
+
+<p><strong>Example:</strong> - only <code>pages</code> action will respond to URLs ending in .html and .xml</p>
+
+<pre>
+class App < E
+  map '/'
+
+  format_for :pages, '.xml', '.html'
+
+  def pages
+    # ...
+  end
+
+  def news
+    # ...
+  end
+
+  # ...
+end
+</pre>
+
+
+<p>Now App will respond to any of "/pages", "/pages.html", "/pages.xml" and "/news" but not "/news.html" nor "/news.xml", cause format was set for <code>pages</code> action only.</p>
+
+<p>It is also possible to disable format for specific actions by using <code>disable_format_for</code>:</p>
+
+<pre>
+class App < E
+  map '/'
+
+  format '.xml' # this will enable .xml format for all actions
+  
+  disable_format_for :news, :pages # disabling format for :pages and :news actions
+
+  # ...
 end
 </pre>
 

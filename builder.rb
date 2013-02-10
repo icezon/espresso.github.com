@@ -21,6 +21,7 @@ end
 
   html = Tilt::ERBTemplate.new(layout).render do
     engine.render.
+      gsub(/https:\/\/github\.com\/espresso\/espresso\/blob\/master\/docs\/(.*)\.md/, '\1.html').
       gsub(/\<h(\d)\>([^<]*)\<\/h\d\>/i) do
         d, w = $1, $2
         id = w.downcase.gsub(/\W/, '-')
