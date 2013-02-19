@@ -539,7 +539,21 @@
       </h4>
     </div>
     <hr/>
-    <h4>Note: Streaming in Espresso is working only with <a href="https://github.com/celluloid/reel">Reel</a> web server of version 0.3 and up</h4>
+    <h4>Note: Streaming in Espresso is working only with Thin, Rainbows! and <a href="https://github.com/celluloid/reel">Reel(0.3 and up)</a> web-servers.</h4>
+
+<p>By default Espresso will use <code>EventMachine</code> for streaming.</p>
+
+<p>If you are using Reel web server, you should instruct Espresso to use <code>Celluloid</code> backend.</p>
+
+<p>This is done via <code>streaming_backend</code> method at app level:</p>
+
+<pre>
+app = EspressoApp.new do
+  streaming_backend :Celluloid
+  # ...
+end
+</pre>
+
 
 <h2 id='server-sent-events'><a href='#server-sent-events'>Server-Sent Events</a></h2>
 
@@ -562,21 +576,14 @@ class App < E
   map '/'
   
   def subscribe
-    event_stream do |stream|
-      stream.data 'some string' # will set #wall's HTML to 'some string'
+    stream :keep_open do |stream|
+      stream << "data: some string\n\n" # will set #wall's HTML to 'some string'
     end
   end
 end
 </pre>
 
 
-<p>Other stream helpers:</p>
-
-<ul>
-<li>event</li>
-<li>retry</li>
-<li>id</li>
-</ul>
 
 
 <pre lang="html">
@@ -593,40 +600,23 @@ evs.addEventListener('time', function(e) {
 
 <pre>
 def subscribe
-  event_stream do |stream|
-    stream.event 'time'
-    stream.data  Time.now.to_s # will set #time's HTML to current time
-  end
-end
-</pre>
-
-
-<p>Writing to stream directly:</p>
-
-<pre>
-def some_action
-  event_stream do |stream|
+  stream :keep_open do |stream|
     stream << "event: time\n"
-    stream << "data:  #{Time.now}\n\n"
+    stream << "data: #{Time.now}\n\n" # will set #time's HTML to current time
   end
 end
 </pre>
 
 
-<p>Using it without <code>event_stream</code> helper:</p>
+<h3><a href="https://github.com/espresso/espresso-examples/tree/master/eventsource-chat">Real-world Example #1</a></h3>
 
-<pre>
-def some_action
-  response.body = Reel::EventStream.new do |stream|
-    # write to stream directly or via stream helpers
-  end
-end
-</pre>
-
+<h3><a href="https://github.com/espresso/espresso-examples/tree/master/calendar/app">Real-world Example #2</a></h3>
 
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='websockets'><a href='#websockets'>WebSockets</a></h2>
+
+<p>For now, WebSockets works out-of-the-box with Reel web-server only.</p>
 
 <p>As easy as:</p>
 
@@ -660,6 +650,8 @@ end
 </pre>
 
 
+<h3><a href="https://github.com/espresso/espresso-examples/tree/master/websocket-chat">Real-world Example</a></h3>
+
 <p><strong>[ <a href="#">contents &uarr;</a> ]</strong></p>
 
 <h2 id='chunked-responses'><a href='#chunked-responses'>Chunked Responses</a></h2>
@@ -676,23 +668,22 @@ for the recipient to verify that it has received the full message.
 
 <p>So, this is useful when your body is not yet ready in full and you want to start sending it by chunks.</p>
 
-<p>You should not worry about data size/encoding, everything is done under-the-hood by Espresso.</p>
-
 <p>Here is an example that will release the response instantly and then send body by chunks:</p>
 
 <pre>
 def some_heavy_action
-  chunked_stream do |socket|
+  stream do |socket|
     ExtractDataFromDBOrSomePresumablySlowAPI.each do |data|
-      socket << data.to_s
+      socket << data.bytesize.to_s(16) + "\r\n"
+      socket << data + "\r\n"
     end
-    socket.finish # close it, otherwise the browser will waiting for data forever
+    socket << "0\r\n\r\n" # close it, otherwise the browser will wait for data forever
   end
 end
 </pre>
 
 
-<p>Please make sure to do <code>socket.finish</code> after all your data sent.</p>
+<h3><a href="https://github.com/espresso/espresso-examples/blob/master/chunked-stream.rb">Real-world Example</a></h3>
 
     <hr/>
 
